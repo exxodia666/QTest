@@ -6,8 +6,10 @@ function App() {
     <div className="App">
       <Header />
       <p>Voshel v Lehu</p>
+            <p>Nu sps paluchaetsa</p>
     </div>
   );
 }
 
 export default App;
+
