@@ -1,15 +1,14 @@
 import { Provider } from "react-redux";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./App.css";
 import store from "./redux/store";
-import List from './components/List';
-import Header from './components/Header';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import Main from "./components/Main";
 
 function App() {
   return (
     <Provider store={store}>
-      <Header/>
-      <List />
+      <Main />
     </Provider>
   );
 }
