@@ -1,8 +1,8 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { loadQuizzes } from "../redux/actions/show_quizzes";
+import Loader from "./Loader";
 
 function List() {
   //const [todos, setTodos] = useState(null);
@@ -15,30 +15,18 @@ function List() {
     dispatch(loadQuizzes("todos"));
   }, [dispatch]);
 
-  console.log(state);
-  /*
-  const fetchData = async () => {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/todos"
-    );
-
-    setTodos(response.data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-  */
+  console.log(state.questions);
+  
   //НУЖНО ОТРЕНДЕРИТЬ state.questions
   if (state.questions.length) {
     return (
       <div>
         <ListGroup>
-          {todos &&
-            todos.map((todo, index) => {
+          {state.questions &&
+            state.questions.map((todo, index) => {
               return (
                 <ListGroup.Item action variant="light">
-                  {index + 1} - {todo.title}
+                  {index + 1} - {todo.question.wording}
                 </ListGroup.Item>
               );
             })}
@@ -46,7 +34,7 @@ function List() {
       </div>
     );
   } else {
-    return <p>Loading!!!</p>;
+    return <Loader/>
   }
 }
 
