@@ -13,20 +13,15 @@ export default (state = initialState, action) => {
       console.log(newArray);
       return { ...action.payload, questions: newArray };
     case SET_DONE:
+      ///TODO REFUCKTOR
       const found = state.questions.find(
         (element) => element.question.id === action.payload
       );
       const index = state.questions.indexOf(found);
-      //const newState = { ...state };
-      console.log("ID");
-      console.log(index);
-      console.log(state.questions[found.question.id]);
-
-      found.question.isDone = true;
-
-      console.log({ ...state });
-
-      return state;
+      const newState = { ...state };
+      newState.questions[index].isDone = true;
+      console.log(newState);
+      return { ...newState };
     default:
       return state;
   }

@@ -10,7 +10,7 @@ export default function QuizList() {
   const results = useSelector((state) => state.results);
   const answersStore = useSelector((state) => state.answers);
   const user = "Sanya";
-
+  
   useEffect(() => {
     dispatch(loadQuizzes("todos"));
   }, [dispatch]);
@@ -54,6 +54,7 @@ export default function QuizList() {
                 ))}
               </ul>
               <button
+                disabled={item.isDone}
                 onClick={() => {
                   const answer = {
                     question_id: item.question.id,
