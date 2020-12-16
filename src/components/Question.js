@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types"; // ES6
-import { Container, Image } from "react-bootstrap";
+import { Container, Image, Button, Alert } from "react-bootstrap";
 import {
   FormControl,
   FormControlLabel,
@@ -10,7 +10,6 @@ import {
   RadioGroup,
   Checkbox,
   FormGroup,
-  ListItem
 } from "@material-ui/core";
 import "../App.css";
 
@@ -26,22 +25,14 @@ export default function Question({
   ////
   const [value, setValue] = React.useState("");
   const [helperText, setHelperText] = React.useState("Choose wisely");
-  const [checked, setChecked] = React.useState([0]);
+  const [checked, setChecked] = React.useState([]);
   /////
   const handleRadioChange = (event) => {
     setValue(event.target.value);
   };
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
 
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
+  const handleToggle = (e) => {
+    setChecked(e.target.value);
   };
 
   if (multiple) {
@@ -56,24 +47,35 @@ export default function Question({
             roundedCircle
           />
         )}
-        <ListItem key={value} role={undefined} dense button onClick={handleToggle(value)}>
-          <FormGroup col> 
+        <Alert variant="info">
+          <Alert.Heading>{wording}</Alert.Heading>
+          <hr />
+          <p>{text}</p>
+        </Alert>
+        <RadioGroup 
+        value={value}
+        onChange={handleToggle}
+        aria-label="quiz"
+        >
           {answers &&
             answers.map((answer) => (
               <FormControlLabel
-                control={
-                  <Checkbox
-                    edge="start"
-                    checked={checked.indexOf(value) !== -1}
-                    tabIndex={-1}
-                    disableRipple
-                  />
-                }
+                value={answer.id.toString()}
+                control={<Checkbox />}
                 label={answer.text}
               />
             ))}
-            </FormGroup> 
-        </ListItem>
+        </RadioGroup>
+        <Button
+          variant="primary"
+          size="lg"
+          block
+          onClick={() =>{
+            console.log(checked);
+          }}
+        >
+          Button
+        </Button>
       </Container>
     );
   } else {
@@ -88,27 +90,37 @@ export default function Question({
             roundedCircle
           />
         )}
-        <FormControl component="fieldset">
-          <FormLabel component="legend">{wording}</FormLabel>
-          <RadioGroup
-            aria-label="quiz"
-            name="quiz"
-            value={value}
-            onChange={handleRadioChange}
-          >
-            {answers &&
-              answers.map((answer) => (
-                <FormControlLabel
-                  value={answer.id.toString()}
-                  control={<Radio />}
-                  label={answer.text}
-                />
-              ))}
-          </RadioGroup>
-        </FormControl>
-        <button onClick={() => setSelectedAnswers({ [id]: Number(value) })}>
+        <Alert variant="info">
+          <Alert.Heading>{wording}</Alert.Heading>
+          <hr />
+          <p>{text}</p>
+        </Alert>
+        <RadioGroup
+          aria-label="quiz"
+          name="quiz"
+          value={value}
+          onChange={handleRadioChange}
+        >
+          {answers &&
+            answers.map((answer) => (
+              <FormControlLabel
+                value={answer.id.toString()}
+                control={<Radio />}
+                label={answer.text}
+              />
+            ))}
+        </RadioGroup>
+
+        <Button
+          variant="primary"
+          size="lg"
+          block
+          onClick={() =>{
+            console.log(value);
+          }}
+        >
           Button
-        </button>
+        </Button>
       </Container>
     );
   }

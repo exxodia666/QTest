@@ -54,6 +54,7 @@ export default function Main() {
               setSelectedAnswers={handleAnswer}
               imageUrl={state.questions[selectedQuestion].question.image}
               id={state.questions[selectedQuestion].question.id}
+              text={state.questions[selectedQuestion].question.text}
               wording={state.questions[selectedQuestion].question.wording}
               answers={state.questions[selectedQuestion].choices}
               multiple={state.questions[selectedQuestion].question.is_multiple_choice}
