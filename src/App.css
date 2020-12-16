@@ -8,6 +8,11 @@
   margin-top: 35vh;
 }
 
+.Img {
+  display: block;
+  margin: auto;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

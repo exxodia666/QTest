@@ -10,10 +10,10 @@ import {
   RadioGroup,
 } from "@material-ui/core";
 import { Button } from "bootstrap";
+import '../App.css'
 
 export default function Question({ title, text, wording, answers, imageUrl }) {
-  const [input, setInput] = useState(null);
-  console.log(input);
+ // const [input, setInput] = useState(null);
   ////
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
@@ -22,7 +22,7 @@ export default function Question({ title, text, wording, answers, imageUrl }) {
   const handleRadioChange = (event) => {
     setValue(event.target.value);
     setHelperText(" ");
-    setError(false);
+    //setError(false);
   };
   ////
 
@@ -49,53 +49,28 @@ export default function Question({ title, text, wording, answers, imageUrl }) {
   return (
     <Container>
       {imageUrl && (
-        <Container>
-          <Image width={300} height={300} src={imageUrl} roundedCircle />
-        </Container>
+          <Image className="Img"  width={300} height={300} src={imageUrl} roundedCircle />
       )}
-      <form onSubmit={handleSubmit}>
-        <FormControl component="fieldset" error={error}>
-          <FormLabel component="legend">Pop quiz: Material-UI is...</FormLabel>
+      
+      <form>
+        <FormControl component="fieldset">
+          <FormLabel component="legend">{wording}</FormLabel>
           <RadioGroup
             aria-label="quiz"
             name="quiz"
             value={value}
             onChange={handleRadioChange}
           >
-            <FormControlLabel
-              value="best"
-              control={<Radio />}
-              label="The best!"
-            />
-            <FormControlLabel
-              value="worst"
-              control={<Radio />}
-              label="The worst."
-            />
-          </RadioGroup>
-          <FormHelperText>{helperText}</FormHelperText>
-        </FormControl>
-      </form>
-      {/*
-      <form>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">{wording}</FormLabel>
-          <RadioGroup
-            //aria-label="gender"
-            //name="gender1"
-            value={input}
-            onChange={handleRadioChange}
-          >
             {answers.map((answer) => (
               <FormControlLabel
-                value={answer.id}
+                value={answer.id.toString()}
                 control={<Radio />}
                 label={answer.text}
               />
             ))}
           </RadioGroup>
         </FormControl>
-            </form>*/}
+            </form>
     </Container>
   );
 }
