@@ -1,8 +1,11 @@
-//import Axios from "axios";
+import Axios from "axios";
 import { takeEvery, call, put } from "redux-saga/effects";
 import { LOAD_QUIZZES, showQuizzes } from "../actions/show_quizzes";
 
-//const fetchData = (p) => Axios.get(`https://jsonplaceholder.typicode.com/${p}`);
+const fetchData = (p) =>
+  Axios.get(
+    "http://134.249.181.40:7777/api/fe8ba3b8-2075-4272-aa61-036d34d4192c/"
+  );
 
 const fetchQuizzes = (id) => {
   return new Promise((resolve, reject) => {
@@ -17,9 +20,10 @@ const fetchQuizzes = (id) => {
 };
 
 function* workerLoadData(action) {
-  const json_data = yield call(fetchQuizzes, action.payload);
-  const data = JSON.parse(json_data);
-  yield put(showQuizzes(data));
+  const data = yield call(fetchData, action.payload);
+  console.log(data);
+  //const data = JSON.parse(json_data);
+  yield put(showQuizzes(data.data));
 }
 
 export function* watchLoadData() {

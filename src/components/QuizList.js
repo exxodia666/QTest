@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { saveAnswers } from "../redux/actions/save_answers";
 import { sendAnswers } from "../redux/actions/send_answers";
 import { loadQuizzes } from "../redux/actions/show_quizzes";
 
@@ -7,10 +8,13 @@ export default function QuizList() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
   const results = useSelector((state) => state.results);
+  const answersStore = useSelector((state) => state.answers);
+  console.log(
+    "🚀 ~ file: QuizList.js ~ line 12 ~ QuizList ~ answersStore",
+    answersStore
+  );
+  const user = "Sanya";
 
-  if (results) {
-    console.log("🚀", results);
-  }
   useEffect(() => {
     dispatch(loadQuizzes("todos"));
   }, [dispatch]);
@@ -48,13 +52,40 @@ export default function QuizList() {
               {item.question.wording}
               <ul>
                 {item.choices.map((i) => (
-                  <li>{i.text}</li>
+                  <>
+                    <li>{i.text}</li>
+                  </>
                 ))}
               </ul>
+              <button
+                onClick={() => {
+                  const answer = {
+                    question_id: item.question.id,
+                    choices_id: item.choices[0].id,
+                  };
+                  //console.log(item);
+                  dispatch(saveAnswers({ answer: answer, name: user }));
+                }}
+              >
+                Answer
+              </button>
             </li>
           ))}
         </ul>
         <button onClick={submitAnswers}>Submit</button>
+        {answersStore && (
+          <>
+            <p>{answersStore.name}</p>
+            <ul>
+              {answersStore.answers.map((item) => (
+                <li>
+                  <p>Question: {item.question_id}</p>
+                  <p>Choice: {item.choices_id}</p>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </>
     );
   } else {
