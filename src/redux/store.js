@@ -2,6 +2,7 @@ import { applyMiddleware, compose, createStore } from "redux";
 import rootReducer from "./reducers";
 import createSagaMiddleware from "redux-saga";
 import { watchLoadData } from "./sagas/quizzes";
+import { watchSendData } from "./sagas/answers";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -14,5 +15,6 @@ const store = createStore(
 );
 
 sagaMiddleware.run(watchLoadData);
+sagaMiddleware.run(watchSendData);
 
 export default store;
