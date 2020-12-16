@@ -2,17 +2,13 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { saveAnswers } from "../redux/actions/save_answers";
 import { sendAnswers } from "../redux/actions/send_answers";
-import { loadQuizzes } from "../redux/actions/show_quizzes";
+import { loadQuizzes, setDone } from "../redux/actions/show_quizzes";
 
 export default function QuizList() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
   const results = useSelector((state) => state.results);
   const answersStore = useSelector((state) => state.answers);
-  console.log(
-    "🚀 ~ file: QuizList.js ~ line 12 ~ QuizList ~ answersStore",
-    answersStore
-  );
   const user = "Sanya";
 
   useEffect(() => {
@@ -49,7 +45,7 @@ export default function QuizList() {
         <ul>
           {state.questions.map((item) => (
             <li key={item.question.id}>
-              {item.question.wording}
+              {item.question.wording} {item.isDone.toString()}
               <ul>
                 {item.choices.map((i) => (
                   <>
@@ -61,9 +57,9 @@ export default function QuizList() {
                 onClick={() => {
                   const answer = {
                     question_id: item.question.id,
-                    choices_id: item.choices[0].id,
+                    choices_id: [item.choices[0].id, item.choices[1].id],
                   };
-                  //console.log(item);
+                  dispatch(setDone(item.question.id));
                   dispatch(saveAnswers({ answer: answer, name: user }));
                 }}
               >
@@ -80,7 +76,12 @@ export default function QuizList() {
               {answersStore.answers.map((item) => (
                 <li>
                   <p>Question: {item.question_id}</p>
-                  <p>Choice: {item.choices_id}</p>
+                  <ul>
+                    Choice:{" "}
+                    {item.choices_id.map((i) => (
+                      <li>{i}</li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>

@@ -7,8 +7,6 @@ import {
   Navbar,
   NavDropdown,
 } from "react-bootstrap";
-import post_request from "../post_request";
-
 export default function Header() {
   return (
     <Navbar bg="light" expand="lg">
@@ -34,9 +32,7 @@ export default function Header() {
         </Nav>
         <Form inline>
           <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-success" onClick={post_request}>
-            Search
-          </Button>
+          <Button variant="outline-success">Search</Button>
         </Form>
       </Navbar.Collapse>
     </Navbar>

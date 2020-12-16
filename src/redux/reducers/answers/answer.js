@@ -11,10 +11,7 @@ export default (state = initialState, action) => {
     case SAVE_ANSWERS:
       const newAnswers = [...state.answers];
 
-      console.log("Payload: ");
-      console.log(action.payload);
       newAnswers.push(action.payload.answer);
-      console.log("🚀 ~ file: answer.js ~ line 25 ~ newAnswers", newAnswers);
       return {
         name: action.payload.name,
         answers: newAnswers,
