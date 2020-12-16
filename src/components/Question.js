@@ -10,10 +10,17 @@ import {
   RadioGroup,
 } from "@material-ui/core";
 import { Button } from "bootstrap";
-import '../App.css'
+import "../App.css";
 
-export default function Question({ title, text, wording, answers, imageUrl }) {
- // const [input, setInput] = useState(null);
+export default function Question({
+  id,
+  text,
+  wording,
+  answers,
+  imageUrl,
+  setSelectedAnswers,
+}) {
+  // const [input, setInput] = useState(null);
   ////
   const [value, setValue] = React.useState("");
   const [error, setError] = React.useState(false);
@@ -21,8 +28,6 @@ export default function Question({ title, text, wording, answers, imageUrl }) {
   /////
   const handleRadioChange = (event) => {
     setValue(event.target.value);
-    setHelperText(" ");
-    //setError(false);
   };
   ////
 
@@ -49,34 +54,40 @@ export default function Question({ title, text, wording, answers, imageUrl }) {
   return (
     <Container>
       {imageUrl && (
-          <Image className="Img"  width={300} height={300} src={imageUrl} roundedCircle />
+        <Image
+          className="Img"
+          width={300}
+          height={300}
+          src={imageUrl}
+          roundedCircle
+        />
       )}
-      
-      <form>
-        <FormControl component="fieldset">
-          <FormLabel component="legend">{wording}</FormLabel>
-          <RadioGroup
-            aria-label="quiz"
-            name="quiz"
-            value={value}
-            onChange={handleRadioChange}
-          >
-            {answers.map((answer) => (
-              <FormControlLabel
-                value={answer.id.toString()}
-                control={<Radio />}
-                label={answer.text}
-              />
-            ))}
-          </RadioGroup>
-        </FormControl>
-            </form>
+      <FormControl component="fieldset">
+        <FormLabel component="legend">{wording}</FormLabel>
+        <RadioGroup
+          aria-label="quiz"
+          name="quiz"
+          value={value}
+          onChange={handleRadioChange}
+        >
+          {answers.map((answer) => (
+            <FormControlLabel
+              value={answer.id.toString()}
+              control={<Radio />}
+              label={answer.text}
+            />
+          ))}
+        </RadioGroup>
+      </FormControl>
+      <button onClick={() => setSelectedAnswers({ [id]: Number(value) })}>
+        Button
+      </button>
     </Container>
   );
 }
 
 Question.propTypes = {
-  title: PropTypes.string,
+  id: PropTypes.number,
   wording: PropTypes.string,
   text: PropTypes.string,
   imageUrl: PropTypes.string,

@@ -17,8 +17,10 @@ const fetchQuizzes = (id) => {
 };
 
 function* workerLoadData(action) {
-  const data = yield call(fetchData, action.payload);
-  yield put(showQuizzes(data.data));
+  const data = yield call(fetchQuizzes, action.payload);
+  const dataJ = JSON.parse(data);
+  console.log(dataJ)
+  yield put(showQuizzes(dataJ));
 }
 
 export function* watchLoadData() {

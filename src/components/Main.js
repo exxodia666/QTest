@@ -15,10 +15,13 @@ export default function Main() {
   //ТУТ ГРУЗЯТСЯ ТЕСТЫ
 
   const [selectedQuestion, setSelectedQuestion] = useState(0);
-  //console.log(state.questions[selectedQuestion].question.title);
-  //const selected_question = state.questions.find(
-  //  (element) => element.question.id === selectedQuestion
-  //);
+  const [selectedAnswers, setSelectedAnswers] = useState([]);
+
+  console.log(selectedAnswers);
+
+  const handleAnswer = (answer) => {
+    setSelectedAnswers([...selectedAnswers, answer]);
+  };
 
   const handleSelect = (id) => {
     console.log(id);
@@ -33,13 +36,15 @@ export default function Main() {
 
   //todo choises
   if (state.questions.length) {
-    console.log(state.questions[selectedQuestion].choices);
+    console.log(state.questions[selectedQuestion]);
     return (
       <>
         <Header />
+        {selectedAnswers && <p>{selectedAnswers.toString()}</p>}
         <Row>
           <Col sm={4}>
             <List
+              selectedAnswers={selectedAnswers}
               state={state}
               handleSelect={handleSelect}
               selectedQuestion={selectedQuestion}
@@ -47,8 +52,9 @@ export default function Main() {
           </Col>
           <Col sm={8}>
             <Question
+              setSelectedAnswers={handleAnswer}
               imageUrl={state.questions[selectedQuestion].question.image}
-              title={state.questions[selectedQuestion].question.title}
+              id={state.questions[selectedQuestion].question.id}
               wording={state.questions[selectedQuestion].question.wording}
               answers={state.questions[selectedQuestion].choices}
             />
