@@ -8,8 +8,9 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
+  Checkbox,
+  FormGroup,
 } from "@material-ui/core";
-import { Button } from "bootstrap";
 import "../App.css";
 
 export default function Question({
@@ -19,71 +20,81 @@ export default function Question({
   answers,
   imageUrl,
   setSelectedAnswers,
+  multiple,
 }) {
-  // const [input, setInput] = useState(null);
   ////
   const [value, setValue] = React.useState("");
-  const [error, setError] = React.useState(false);
   const [helperText, setHelperText] = React.useState("Choose wisely");
   /////
   const handleRadioChange = (event) => {
     setValue(event.target.value);
   };
-  ////
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    if (value === "best") {
-      setHelperText("You got it!");
-      setError(false);
-    } else if (value === "worst") {
-      setHelperText("Sorry, wrong answer!");
-      setError(true);
-    } else {
-      setHelperText("Please select an option.");
-      setError(true);
-    }
-  };
-  ////
-
-  //   const handleRadioChange = (e) => {
-  //     // console.log(e.target.value);
-  //     setInput(e.target.value);
-  //   };
-  return (
-    <Container>
-      {imageUrl && (
-        <Image
-          className="Img"
-          width={300}
-          height={300}
-          src={imageUrl}
-          roundedCircle
-        />
-      )}
-      <FormControl component="fieldset">
-        <FormLabel component="legend">{wording}</FormLabel>
-        <RadioGroup
-          aria-label="quiz"
-          name="quiz"
-          value={value}
-          onChange={handleRadioChange}
-        >
-          {answers.map((answer) => (
+  if (multiple) {
+    return (
+      <Container>
+        {imageUrl && (
+          <Image
+            className="Img"
+            width={300}
+            height={300}
+            src={imageUrl}
+            roundedCircle
+          />
+        )}
+        <FormGroup col>
+          {answers && 
+          answers.map((answer)=>{
             <FormControlLabel
-              value={answer.id.toString()}
-              control={<Radio />}
-              label={answer.text}
-            />
-          ))}
-        </RadioGroup>
-      </FormControl>
-      <button onClick={() => setSelectedAnswers({ [id]: Number(value) })}>
-        Button
-      </button>
-    </Container>
-  );
+            control={
+              <Checkbox
+                //checked={state.checkedB}
+                //onChange={handleChange}
+                name={answer.id.toString()}
+                color="primary"
+              />
+            }
+            label={answer.text}
+          />
+          })}
+        </FormGroup>
+      </Container>
+    );
+  } else {
+    return (
+      <Container>
+        {imageUrl && (
+          <Image
+            className="Img"
+            width={300}
+            height={300}
+            src={imageUrl}
+            roundedCircle
+          />
+        )}
+        <FormControl component="fieldset">
+          <FormLabel component="legend">{wording}</FormLabel>
+          <RadioGroup
+            aria-label="quiz"
+            name="quiz"
+            value={value}
+            onChange={handleRadioChange}
+          >
+            {answers &&
+              answers.map((answer) => (
+                <FormControlLabel
+                  value={answer.id.toString()}
+                  control={<Radio />}
+                  label={answer.text}
+                />
+              ))}
+          </RadioGroup>
+        </FormControl>
+        <button onClick={() => setSelectedAnswers({ [id]: Number(value) })}>
+          Button
+        </button>
+      </Container>
+    );
+  }
 }
 
 Question.propTypes = {

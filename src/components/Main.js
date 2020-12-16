@@ -17,7 +17,7 @@ export default function Main() {
   const [selectedQuestion, setSelectedQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
 
-  console.log(selectedAnswers);
+  //console.log(selectedAnswers);
 
   const handleAnswer = (answer) => {
     setSelectedAnswers([...selectedAnswers, answer]);
@@ -33,10 +33,9 @@ export default function Main() {
   }, [dispatch]);
 
   //НУЖНО ОТРЕНДЕРИТЬ state.questions
-
+  //console.log(state.questions[selectedQuestion].is_multiple_choice)
   //todo choises
   if (state.questions.length) {
-    console.log(state.questions[selectedQuestion]);
     return (
       <>
         <Header />
@@ -57,6 +56,7 @@ export default function Main() {
               id={state.questions[selectedQuestion].question.id}
               wording={state.questions[selectedQuestion].question.wording}
               answers={state.questions[selectedQuestion].choices}
+              multiple={state.questions[selectedQuestion].question.is_multiple_choice}
             />
           </Col>
         </Row>
