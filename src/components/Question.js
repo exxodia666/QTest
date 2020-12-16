@@ -10,6 +10,7 @@ import {
   RadioGroup,
   Checkbox,
   FormGroup,
+  ListItem
 } from "@material-ui/core";
 import "../App.css";
 
@@ -25,10 +26,24 @@ export default function Question({
   ////
   const [value, setValue] = React.useState("");
   const [helperText, setHelperText] = React.useState("Choose wisely");
+  const [checked, setChecked] = React.useState([0]);
   /////
   const handleRadioChange = (event) => {
     setValue(event.target.value);
   };
+  const handleToggle = (value) => () => {
+    const currentIndex = checked.indexOf(value);
+    const newChecked = [...checked];
+
+    if (currentIndex === -1) {
+      newChecked.push(value);
+    } else {
+      newChecked.splice(currentIndex, 1);
+    }
+
+    setChecked(newChecked);
+  };
+
   if (multiple) {
     return (
       <Container>
@@ -41,22 +56,24 @@ export default function Question({
             roundedCircle
           />
         )}
-        <FormGroup col>
-          {answers && 
-          answers.map((answer)=>{
-            <FormControlLabel
-            control={
-              <Checkbox
-                //checked={state.checkedB}
-                //onChange={handleChange}
-                name={answer.id.toString()}
-                color="primary"
+        <ListItem key={value} role={undefined} dense button onClick={handleToggle(value)}>
+          <FormGroup col> 
+          {answers &&
+            answers.map((answer) => (
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    edge="start"
+                    checked={checked.indexOf(value) !== -1}
+                    tabIndex={-1}
+                    disableRipple
+                  />
+                }
+                label={answer.text}
               />
-            }
-            label={answer.text}
-          />
-          })}
-        </FormGroup>
+            ))}
+            </FormGroup> 
+        </ListItem>
       </Container>
     );
   } else {
