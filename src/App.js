@@ -1,11 +1,18 @@
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Header from './components/Header';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
+
+import Header from "./components/Header";
+import QuizList from "./components/QuizList";
+import store from "./redux/store";
+
+//export default store;
+
 function App() {
   return (
-    <div className="App">
+    <Provider store={store}>
       <Header />
-    </div>
+      <QuizList />
+    </Provider>
   );
 }
 
