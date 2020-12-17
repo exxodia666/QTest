@@ -4,7 +4,7 @@ import { Container, Button } from "react-bootstrap";
 import { Checkbox } from "@material-ui/core";
 import "../App.css";
 import { useDispatch } from "react-redux";
-import { setSelected } from "../redux/actions/show_quizzes";
+import { setDone, setSelected } from "../redux/actions/show_quizzes";
 
 const Question = ({
   isDone,
@@ -18,23 +18,13 @@ const Question = ({
   selected,
 }) => {
   const dispatch = useDispatch();
-  //const [state, setstate] = useState(answers);
-  // useEffect(() => {
-  //   setstate(answers);
-  //   return () => {
-  //     setstate(answers);
-  //   };
-  // }, [id]);
+  
   const handleSelectItem = (e) => {
     dispatch(setSelected({ answ: e.target.value, id }));
   };
 
   return (
     <Container>
-      {/* {selected.map((i) => {
-        return <p key={i.id}>{i.selected.toString() + ": " + i.id}</p>;
-      })} */}
-
       {answers.map((item, index) => {
         return (
           <li key={item.id}>
@@ -50,12 +40,12 @@ const Question = ({
         );
       })}
       <Button
-        disabled={false}
+        disabled={isDone}
         variant="primary"
         size="lg"
         block
         onClick={() => {
-          console.log("LEL");
+          dispatch(setDone(id));
         }}
       >
         Ответить

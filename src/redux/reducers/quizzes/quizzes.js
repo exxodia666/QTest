@@ -1,4 +1,8 @@
-import { SHOW_QUIZZES, SET_SELECTED } from "../../actions/show_quizzes";
+import {
+  SHOW_QUIZZES,
+  SET_SELECTED,
+  SET_DONE,
+} from "../../actions/show_quizzes";
 
 const initialState = { quiz: {}, questions: [] };
 // eslint-disable-next-line
@@ -8,10 +12,21 @@ export default (state = initialState, action) => {
       const newArray = action.payload.questions.map((item) => {
         let newChoices = item.choices.map((i) => ({ ...i, isSelected: false }));
         item.choices = newChoices;
+        item.isDone = false;
         return item;
       });
       return { questions: newArray, quiz: action.payload.quiz };
-    
+
+    case SET_DONE:
+      ///TODO REFUCKTOR
+      const found = state.questions.find(
+        (element) => element.question.id === action.payload
+      );
+      const index = state.questions.indexOf(found);
+      const newobj = { ...state };
+      newobj.questions[index].isDone = true;
+
+      return { ...newobj };
     case SET_SELECTED:
       ///TODO REFUCKTOR
       const newState = { ...state };
@@ -19,7 +34,7 @@ export default (state = initialState, action) => {
         (element) => element.question.id === action.payload.id
       );
       const indexQ = newState.questions.indexOf(foundQ);
-      newState.questions[indexQ].choices.map((i) => console.log(i));
+      //newState.questions[indexQ].choices.map((i) => );
       const foundA = newState.questions[indexQ].choices.find((element) => {
         return element.id === action.payload.answ;
       });
@@ -29,7 +44,7 @@ export default (state = initialState, action) => {
           ...i,
           isSelected: false,
         }));
-        console.log(newChoices);
+
         newState.questions[indexQ].choices = newChoices;
       }
 
