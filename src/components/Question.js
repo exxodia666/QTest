@@ -22,7 +22,8 @@ const Question = ({
   const handleSelectItem = (e) => {
     dispatch(setSelected({ answ: e.target.value, id }));
   };
-
+  //TODO RENDER IMAGE
+  // RENDER TEXT
   return (
     <Container>
       {answers.map((item, index) => {
