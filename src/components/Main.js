@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { sendAnswers } from "../redux/actions/send_answers";
 import { loadQuizzes } from "../redux/actions/show_quizzes";
 import Header from "./Header";
 import List from "./List";
@@ -12,12 +13,11 @@ export default function Main() {
   //ТУТ подключен редакс стор
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
+  const result = useSelector((state) => state.results);
   //ТУТ ГРУЗЯТСЯ ТЕСТЫ
 
   const [selectedQuestion, setSelectedQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
-
-  //console.log(state.questions);
 
   const handleAnswer = (answer) => {
     setSelectedAnswers([...selectedAnswers, answer]);
@@ -31,14 +31,16 @@ export default function Main() {
     dispatch(loadQuizzes(7777));
   }, [dispatch]);
 
-  //НУЖНО ОТРЕНДЕРИТЬ state.questions
-  //console.log(state.questions[selectedQuestion].is_multiple_choice)
-  //todo choises
+  const found = state.questions.find((i) => i.isDone === false);
+  console.log(result);
   if (state.questions.length) {
     return (
       <>
         <Header />
         {selectedAnswers && <p>{selectedAnswers.toString()}</p>}
+        {result.status === 200 && (
+          <p>{result.data.name + " : " + result.data.rating}</p>
+        )}
         <Row>
           <Col sm={4}>
             <List
@@ -50,6 +52,7 @@ export default function Main() {
           </Col>
           <Col sm={8}>
             <Question
+              isDone={state.questions[selectedQuestion].isDone}
               setSelectedAnswers={handleAnswer}
               imageUrl={state.questions[selectedQuestion].question.image}
               id={state.questions[selectedQuestion].question.id}
@@ -62,6 +65,16 @@ export default function Main() {
             />
           </Col>
         </Row>
+        {!found && (
+          <button
+            onClick={() => {
+              console.log("Click");
+              dispatch(sendAnswers(state.questions));
+            }}
+          >
+            Отправить
+          </button>
+        )}
       </>
     );
   } else {
