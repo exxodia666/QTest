@@ -18,7 +18,7 @@ const Question = ({
   selected,
 }) => {
   const dispatch = useDispatch();
-  
+
   const handleSelectItem = (e) => {
     dispatch(setSelected({ answ: e.target.value, id }));
   };
@@ -29,6 +29,7 @@ const Question = ({
         return (
           <li key={item.id}>
             <Checkbox
+              disabled={isDone}
               onChange={handleSelectItem}
               checked={item.isSelected}
               value={item.id}
