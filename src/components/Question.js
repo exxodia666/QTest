@@ -1,10 +1,12 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types"; // ES6
-import { Container, Button } from "react-bootstrap";
-import { Checkbox } from "@material-ui/core";
+import { Container, Button, Image, Row, Col, Alert } from "react-bootstrap";
+import { Checkbox, List, ListItem } from "@material-ui/core";
 import "../App.css";
 import { useDispatch } from "react-redux";
 import { setDone, setSelected } from "../redux/actions/show_quizzes";
+import ModalComponent from "./Modal";
+import { Modal } from "bootstrap";
 
 const Question = ({
   isDone,
@@ -15,32 +17,64 @@ const Question = ({
   imageUrl,
   setSelectedAnswers,
   multiple,
-  selected,
+  s,
 }) => {
   const dispatch = useDispatch();
 
   const handleSelectItem = (e) => {
     dispatch(setSelected({ answ: e.target.value, id }));
   };
+
+  const [open, setOpen] = React.useState(false);
+
+  const toggleOpen = () => {
+    setOpen(!open);
+  };
+
   //TODO RENDER IMAGE
   // RENDER TEXT
   return (
     <Container>
-      {answers.map((item, index) => {
-        return (
-          <li key={item.id}>
-            <Checkbox
-              disabled={isDone}
-              onChange={handleSelectItem}
-              checked={item.isSelected}
-              value={item.id}
-              id={item.id}
-            />
-            <label>{item.text}</label>
-            <label>{multiple.toString()}</label>
-          </li>
-        );
-      })}
+      {/* <Modal open={open}
+      setOpen={toggleOpen}
+      src={imageUrl}
+      /> */}
+      <Alert variant="light">
+        <Row>
+          <Col>
+            <Alert.Heading>{wording}</Alert.Heading>
+          </Col>
+          {imageUrl && (
+            <Col>
+              <Image
+                className="Img"
+                width={350}
+                //height={300}
+                src={imageUrl}
+                rounded
+              />
+            </Col>
+          )}
+        </Row>
+        <hr />
+        <p className="qtext">{text}</p>
+      </Alert>
+      <List>
+        {answers.map((item) => {
+          return (
+            <ListItem key={item.id}>
+              <Checkbox
+                disabled={isDone}
+                onChange={handleSelectItem}
+                checked={item.isSelected}
+                value={item.id}
+                id={item.id}
+              />
+              <label>{item.text}</label>
+            </ListItem>
+          );
+        })}
+      </List>
       <Button
         disabled={isDone}
         variant="primary"
@@ -63,105 +97,3 @@ Question.propTypes = {
   answers: PropTypes.array,
 };
 export default memo(Question);
-
-/*
-if (multiple) {
-    return (
-      <Container>
-        {imageUrl && (
-          <Image
-            className="Img"
-            width={300}
-            height={300}
-            src={imageUrl}
-            roundedCircle
-          />
-        )}
-        <Alert variant="info">
-          <Alert.Heading>{wording}</Alert.Heading>
-          <hr />
-          <p>{text}</p>
-        </Alert>
-        <RadioGroup 
-        value={value}
-        onChange={handleToggle}
-        aria-label="quiz"
-        >
-          {answers &&
-            answers.map((answer) => (
-              <FormControlLabel
-                value={answer.id.toString()}
-                control={<Checkbox />}
-                label={answer.text}
-              />
-            ))}
-        </RadioGroup>
-        <Button
-          variant="primary"
-          size="lg"
-          block
-          onClick={() =>{
-            console.log(checked);
-          }}
-        >
-          Button
-        </Button>
-      </Container>
-    );
-  } else {
-    return (
-      <Container>
-        {imageUrl && (
-          <Image
-            className="Img"
-            width={300}
-            height={300}
-            src={imageUrl}
-            roundedCircle
-          />
-        )}
-        <Alert variant="info">
-          <Alert.Heading>{wording}</Alert.Heading>
-          <hr />
-          <p>{text}</p>
-        </Alert>
-        <RadioGroup
-          aria-label="quiz"
-          name="quiz"
-          value={value}
-          onChange={handleRadioChange}
-        >
-          {answers &&
-            answers.map((answer) => (
-              <FormControlLabel
-                value={answer.id.toString()}
-                control={<Radio />}
-                label={answer.text}
-              />
-            ))}
-        </RadioGroup>
-
-        <Button
-          variant="primary"
-          size="lg"
-          block
-          onClick={() =>{
-            console.log(value);
-          }}
-        >
-          Button
-        </Button>
-      </Container>
-    );
-  }////
-  const [value, setValue] = React.useState("");
-  const [helperText, setHelperText] = React.useState("Choose wisely");
-  const [checked, setChecked] = React.useState([]);
-  /////
-  const handleRadioChange = (event) => {
-    setValue(event.target.value);
-  };
-
-  const handleToggle = (e) => {
-    setChecked(e.target.value);
-  };*/
