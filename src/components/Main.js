@@ -38,6 +38,8 @@ export default function Main() {
       <>
         <Header />
         {selectedAnswers && <p>{selectedAnswers.toString()}</p>}
+        {//ВЫВОД ПОЛЬЗОВАТЕЛЯ И РЕЗУЛЬТАТА
+        }
         {result.status === 200 && (
           <p>{result.data.name + " : " + result.data.rating}</p>
         )}
