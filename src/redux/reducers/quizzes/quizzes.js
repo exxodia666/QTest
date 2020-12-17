@@ -11,6 +11,7 @@ export default (state = initialState, action) => {
         return item;
       });
       return { questions: newArray, quiz: action.payload.quiz };
+    
     case SET_SELECTED:
       ///TODO REFUCKTOR
       const newState = { ...state };

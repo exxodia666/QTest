@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { setSelected } from "../redux/actions/show_quizzes";
 
 const Question = ({
+  isDone,
   id,
   text,
   wording,
@@ -49,6 +50,7 @@ const Question = ({
         );
       })}
       <Button
+        disabled={false}
         variant="primary"
         size="lg"
         block

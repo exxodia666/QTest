@@ -31,9 +31,7 @@ export default function Main() {
     dispatch(loadQuizzes(7777));
   }, [dispatch]);
 
-  //НУЖНО ОТРЕНДЕРИТЬ state.questions
-  //console.log(state.questions[selectedQuestion].is_multiple_choice)
-  //todo choises
+  console.log(state.questions[0]);
   if (state.questions.length) {
     return (
       <>
