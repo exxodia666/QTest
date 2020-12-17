@@ -17,14 +17,13 @@ export default function Main() {
   const [selectedQuestion, setSelectedQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
 
-  //console.log(selectedAnswers);
+  //console.log(state.questions);
 
   const handleAnswer = (answer) => {
     setSelectedAnswers([...selectedAnswers, answer]);
   };
 
   const handleSelect = (id) => {
-    console.log(id);
     setSelectedQuestion(id);
   };
 
@@ -57,7 +56,9 @@ export default function Main() {
               text={state.questions[selectedQuestion].question.text}
               wording={state.questions[selectedQuestion].question.wording}
               answers={state.questions[selectedQuestion].choices}
-              multiple={state.questions[selectedQuestion].question.is_multiple_choice}
+              multiple={
+                state.questions[selectedQuestion].question.is_multiple_choice
+              }
             />
           </Col>
         </Row>

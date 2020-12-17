@@ -1,19 +1,12 @@
-import React, { useState } from "react";
+import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types"; // ES6
-import { Container, Image, Button, Alert } from "react-bootstrap";
-import {
-  FormControl,
-  FormControlLabel,
-  FormHelperText,
-  FormLabel,
-  Radio,
-  RadioGroup,
-  Checkbox,
-  FormGroup,
-} from "@material-ui/core";
+import { Container, Button } from "react-bootstrap";
+import { Checkbox } from "@material-ui/core";
 import "../App.css";
+import { useDispatch } from "react-redux";
+import { setSelected } from "../redux/actions/show_quizzes";
 
-export default function Question({
+const Question = ({
   id,
   text,
   wording,
@@ -21,21 +14,64 @@ export default function Question({
   imageUrl,
   setSelectedAnswers,
   multiple,
-}) {
-  ////
-  const [value, setValue] = React.useState("");
-  const [helperText, setHelperText] = React.useState("Choose wisely");
-  const [checked, setChecked] = React.useState([]);
-  /////
-  const handleRadioChange = (event) => {
-    setValue(event.target.value);
+  selected,
+}) => {
+  const dispatch = useDispatch();
+  //const [state, setstate] = useState(answers);
+  // useEffect(() => {
+  //   setstate(answers);
+  //   return () => {
+  //     setstate(answers);
+  //   };
+  // }, [id]);
+  const handleSelectItem = (e) => {
+    dispatch(setSelected({ answ: e.target.value, id }));
   };
 
-  const handleToggle = (e) => {
-    setChecked(e.target.value);
-  };
+  return (
+    <Container>
+      {/* {selected.map((i) => {
+        return <p key={i.id}>{i.selected.toString() + ": " + i.id}</p>;
+      })} */}
 
-  if (multiple) {
+      {answers.map((item, index) => {
+        return (
+          <li key={item.id}>
+            <Checkbox
+              onChange={handleSelectItem}
+              checked={item.isSelected}
+              value={item.id}
+              id={item.id}
+            />
+            <label>{item.text}</label>
+            <label>{multiple.toString()}</label>
+          </li>
+        );
+      })}
+      <Button
+        variant="primary"
+        size="lg"
+        block
+        onClick={() => {
+          console.log("LEL");
+        }}
+      >
+        Ответить
+      </Button>
+    </Container>
+  );
+};
+Question.propTypes = {
+  id: PropTypes.string,
+  wording: PropTypes.string,
+  text: PropTypes.string,
+  imageUrl: PropTypes.string,
+  answers: PropTypes.array,
+};
+export default memo(Question);
+
+/*
+if (multiple) {
     return (
       <Container>
         {imageUrl && (
@@ -123,13 +159,15 @@ export default function Question({
         </Button>
       </Container>
     );
-  }
-}
+  }////
+  const [value, setValue] = React.useState("");
+  const [helperText, setHelperText] = React.useState("Choose wisely");
+  const [checked, setChecked] = React.useState([]);
+  /////
+  const handleRadioChange = (event) => {
+    setValue(event.target.value);
+  };
 
-Question.propTypes = {
-  id: PropTypes.number,
-  wording: PropTypes.string,
-  text: PropTypes.string,
-  imageUrl: PropTypes.string,
-  answers: PropTypes.array,
-};
+  const handleToggle = (e) => {
+    setChecked(e.target.value);
+  };*/

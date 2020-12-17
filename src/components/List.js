@@ -1,9 +1,6 @@
 import ListGroup from "react-bootstrap/ListGroup";
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { loadQuizzes } from "../redux/actions/show_quizzes";
+import React from "react";
 import Loader from "./Loader";
-//import { propTypes } from "react-bootstrap/esm/Image";
 import PropTypes from "prop-types"; // ES6
 
 function List({ state, handleSelect, selectedQuestion }) {
@@ -15,6 +12,7 @@ function List({ state, handleSelect, selectedQuestion }) {
             state.questions.map((item, index) => {
               return (
                 <ListGroup.Item
+                  key={index}
                   action
                   variant={selectedQuestion === index ? "dark" : "light"}
                   onClick={() => handleSelect(index)}
