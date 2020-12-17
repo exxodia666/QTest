@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { Image } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -19,11 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ModalComponent({
-  open,
-  setOpen,
-  src,
-}) {
+export default function ModalComponent({ open, setOpen, src }) {
   const classes = useStyles();
   // const [open, setOpen] = React.useState(false);
 
@@ -34,29 +30,27 @@ export default function ModalComponent({
   // const handleClose = () => {
   //   setOpen(false);
   // };
-
+  console.log(Modal);
   return (
-    <div>
+    <Container>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
-        onClose={setOpen}
+        onClose={() => setOpen()}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
           timeout: 500,
         }}
       >
-        <Fade in={open}>
-          <Image
-            className="Img"
-            src={src}
-            rounded
-          />
-        </Fade>
+        <div>
+          <Fade in={open}>
+            <Image className="Img" src={src} rounded />
+          </Fade>
+        </div>
       </Modal>
-    </div>
+    </Container>
   );
 }
