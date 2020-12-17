@@ -11,6 +11,17 @@ export default (state = initialState, action) => {
         return item;
       });
       return { questions: newArray, quiz: action.payload.quiz };
+    case SET_DONE:
+      ///TODO REFUCKTOR
+      const found = state.questions.find(
+        (element) => element.question.id === action.payload
+      );
+      const index = state.questions.indexOf(found);
+      const newObj = { ...state };
+      newObj.questions[index].isDone = true;
+      console.log(newObj);
+      return { ...newObj };
+
     case SET_SELECTED:
       ///TODO REFUCKTOR
       const newState = { ...state };
