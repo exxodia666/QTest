@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Container, ListGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { loadQuizList } from "../redux/actions/load_quiz_list";
 import { sendAnswers } from "../redux/actions/send_answers";
 import { loadQuizzes } from "../redux/actions/show_quizzes";
 import Header from "./Header";
-import List from "./List";
+import ListQuiz from "./ListQuiz";
 import Loader from "./Loader";
 import Question from "./Question";
 
@@ -32,16 +32,38 @@ export default function Main() {
   };
   //ЗАГРУЗКА ТЕСТОВ
   useEffect(() => {
-    //dispatch(loadQuizzes(7777));
     dispatch(loadQuizList());
   }, [dispatch]);
 
+  const [quizzes, setQuizzes] = useState(true);
+
   const found = state.questions.find((i) => i.isDone === false);
   console.log(result);
-  if (state.questions.length) {
+
+  if (quiz_list.status === 200 && quizzes) {
     return (
       <>
         <Header />
+        
+        <ListGroup>
+          {quiz_list.data.quizzes.map((qz) => {
+            return (
+              <ListGroup.Item
+                onClick={() => {
+                  setQuizzes(false);
+                  dispatch(loadQuizzes(qz.id));
+                }}
+              >
+                {qz.quiz_name}
+              </ListGroup.Item>
+            );
+          })}
+        </ListGroup>
+      </>
+    );
+  } else if (state.questions.length && !quizzes) {
+    return (
+      <>
         {selectedAnswers && <p>{selectedAnswers.toString()}</p>}
         {
           //ВЫВОД ПОЛЬЗОВАТЕЛЯ И РЕЗУЛЬТАТА
@@ -51,7 +73,7 @@ export default function Main() {
         )}
         <Row>
           <Col sm={4}>
-            <List
+            <ListQuiz
               selectedAnswers={selectedAnswers}
               state={state}
               handleSelect={handleSelect}
@@ -85,7 +107,7 @@ export default function Main() {
         )}
       </>
     );
-  } else {
+  }else {
     return <Loader />;
   }
 }

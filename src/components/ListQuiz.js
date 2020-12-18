@@ -3,7 +3,7 @@ import React from "react";
 import Loader from "./Loader";
 import PropTypes from "prop-types"; // ES6
 
-function List({ state, handleSelect, selectedQuestion }) {
+function ListQuiz({ state, handleSelect, selectedQuestion }) {
   if (state.questions.length) {
     return (
       <div>
@@ -29,10 +29,10 @@ function List({ state, handleSelect, selectedQuestion }) {
   }
 }
 
-List.propTypes = {
+ListQuiz.propTypes = {
   handleSelect: PropTypes.func,
   state: PropTypes.object,
   selectedQuestion: PropTypes.number,
 };
 
-export default List;
+export default ListQuiz;

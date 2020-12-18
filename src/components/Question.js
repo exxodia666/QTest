@@ -35,7 +35,8 @@ const Question = ({
   // RENDER TEXT
   return (
     <Container>
-      <Modal open={open} setOpen={toggleOpen} src={imageUrl} />
+      
+      {/* <Modal open={open} setOpen={toggleOpen} src={imageUrl} /> */}
       <Alert variant="light">
         <Row>
           <Col>
