@@ -7,7 +7,7 @@ const fetchData = () => Axios.get("http://134.249.181.40:7777/api/");
 
 function* workerLoadData() {
   const data = yield call(fetchData);
-  //console.log(data);
+  console.log(data);
   yield put(showQuizList(data));
 }
 

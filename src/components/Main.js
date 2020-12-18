@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { loadQuizList } from "../redux/actions/load_quiz_list";
 import { sendAnswers } from "../redux/actions/send_answers";
 import { loadQuizzes } from "../redux/actions/show_quizzes";
 import Header from "./Header";
@@ -14,8 +15,11 @@ export default function Main() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
   const result = useSelector((state) => state.results);
-  //ТУТ ГРУЗЯТСЯ ТЕСТЫ
+  //QUIZ LIST STORE -->
+  const quiz_list = useSelector((state) => state.quiz_list);
+  console.log("🚀 ~ file: Main.js ~ line 26 ~ Main ~ quiz_list", quiz_list);
 
+  //ТУТ ГРУЗЯТСЯ ТЕСТЫ
   const [selectedQuestion, setSelectedQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
 
@@ -26,9 +30,10 @@ export default function Main() {
   const handleSelect = (id) => {
     setSelectedQuestion(id);
   };
-
+  //ЗАГРУЗКА ТЕСТОВ
   useEffect(() => {
-    dispatch(loadQuizzes(7777));
+    //dispatch(loadQuizzes(7777));
+    dispatch(loadQuizList());
   }, [dispatch]);
 
   const found = state.questions.find((i) => i.isDone === false);
@@ -38,7 +43,8 @@ export default function Main() {
       <>
         <Header />
         {selectedAnswers && <p>{selectedAnswers.toString()}</p>}
-        {//ВЫВОД ПОЛЬЗОВАТЕЛЯ И РЕЗУЛЬТАТА
+        {
+          //ВЫВОД ПОЛЬЗОВАТЕЛЯ И РЕЗУЛЬТАТА
         }
         {result.status === 200 && (
           <p>{result.data.name + " : " + result.data.rating}</p>

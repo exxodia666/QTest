@@ -38,6 +38,7 @@ export default function QuizList() {
     );
   };
   console.log(quiz_list);
+  //ПРИМЕР ВЫВОДА ТЕСТОВ
   if (quiz_list.status === 200 && quizzes) {
     return (
       <>
