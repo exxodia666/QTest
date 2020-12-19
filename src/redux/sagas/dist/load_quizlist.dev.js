@@ -36,11 +36,10 @@ function workerLoadData() {
 
         case 2:
           data = _context.sent;
-          console.log(data);
-          _context.next = 6;
+          _context.next = 5;
           return (0, _effects.put)((0, _load_quiz_list.showQuizList)(data));
 
-        case 6:
+        case 5:
         case "end":
           return _context.stop();
       }

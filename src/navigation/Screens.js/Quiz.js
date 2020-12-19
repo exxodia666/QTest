@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ListQuiz from "../../components/ListQuiz";
 import Loader from "../../components/Loader";
 import Question from "../../components/Question";
@@ -12,7 +12,6 @@ export default function Quiz() {
   let { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
-  const result = useSelector((state) => state.results);
 
   //ТУТ ГРУЗЯТСЯ ТЕСТЫ
   const [selectedQuestion, setSelectedQuestion] = useState(0);
@@ -31,18 +30,10 @@ export default function Quiz() {
     dispatch(loadQuizzes(id));
   }, [dispatch, id]);
 
-  console.log(state);
-
   if (state.questions.length) {
     return (
       <>
         {selectedAnswers && <p>{selectedAnswers.toString()}</p>}
-        {
-          //ВЫВОД ПОЛЬЗОВАТЕЛЯ И РЕЗУЛЬТАТА
-        }
-        {result.status === 200 && (
-          <p>{result.data.name + " : " + result.data.rating}</p>
-        )}
         <Row>
           <Col sm={4}>
             <ListQuiz
@@ -67,16 +58,7 @@ export default function Quiz() {
             />
           </Col>
         </Row>
-        {!found && (
-          <button
-            onClick={() => {
-              console.log("Click");
-              dispatch(sendAnswers({ obj: state.questions, id }));
-            }}
-          >
-            Отправить
-          </button>
-        )}
+        {!found && <Link to={`/results/${id}`}>Send</Link>}
       </>
     );
   } else return <Loader />;
