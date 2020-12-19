@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { loadQuizList } from "../redux/actions/load_quiz_list";
 import { sendAnswers } from "../redux/actions/send_answers";
 import { loadQuizzes } from "../redux/actions/show_quizzes";
-import Header from "./Header";
 import ListQuiz from "./ListQuiz";
 import Loader from "./Loader";
 import Question from "./Question";
@@ -43,8 +42,6 @@ export default function Main() {
   if (quiz_list.status === 200 && quizzes) {
     return (
       <>
-        <Header />
-        
         <ListGroup>
           {quiz_list.data.quizzes.map((qz) => {
             return (
@@ -107,7 +104,7 @@ export default function Main() {
         )}
       </>
     );
-  }else {
+  } else {
     return <Loader />;
   }
 }
