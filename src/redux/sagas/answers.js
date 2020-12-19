@@ -2,11 +2,8 @@ import Axios from "axios";
 import { takeEvery, call, put } from "redux-saga/effects";
 import { SEND_ANSWERS, showResult } from "../actions/send_answers";
 
-const sendAnswers = (p) =>
-  Axios.post(
-    "http://134.249.181.40:7777/api/fe8ba3b8-2075-4272-aa61-036d34d4192c/answer/",
-    p
-  );
+const sendAnswers = ({ obj, id }) =>
+  Axios.post(`http://134.249.181.40:7777/api/${id}/answer/`, obj);
 //TODO NORMAL USER
 // {
 //   "name": "Sanya",
@@ -19,7 +16,7 @@ function* workerSendData(action) {
   ///console.log(choicesArray);
   const reqObj = {
     name: "Sanya",
-    answers: action.payload.map((item) => ({
+    answers: action.payload.obj.map((item) => ({
       question_id: item.question.id,
       choices_id: item.choices
         .filter((i) => i.isSelected)
@@ -29,7 +26,7 @@ function* workerSendData(action) {
     })),
   };
   console.log(reqObj);
-  const res = yield call(sendAnswers, reqObj);
+  const res = yield call(sendAnswers, { obj: reqObj, id: action.payload.id });
   yield put(showResult(res));
 }
 
