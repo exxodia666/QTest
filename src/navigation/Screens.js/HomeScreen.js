@@ -28,7 +28,7 @@ export default function HomeScreen() {
           {quiz_list.data.quizzes.map((qz) => {
             return (
               <ListGroup.Item>
-                <Link to={`/quiz/${qz.id}`}>{qz.quiz_name}</Link>
+                <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/quiz/${qz.id}`}>{qz.quiz_name}</Link>
               </ListGroup.Item>
             );
           })}
