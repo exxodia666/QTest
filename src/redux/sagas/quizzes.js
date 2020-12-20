@@ -4,22 +4,9 @@ import { LOAD_QUIZZES, showQuizzes } from "../actions/show_quizzes";
 
 const fetchData = (p) => Axios.get(`http://134.249.181.40:7777/api/${p}/`);
 
-// const fetchQuizzes = (id) => {
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       if (id) {
-//         resolve(
-//           '{"quiz":{"id":1,"quiz_name":"First quiz","creation_date":"2020-12-15T11:32:27.153608+02:00"},"questions":[{"question":{"id":1,"quiz_id":1,"wording":"Whats up Dude?","text":"","image":"","is_multiple_choice":false},"choices":[{"id":1,"question_id":1,"text":"Good"},{"id":2,"question_id":1,"text":"Could be better"},{"id":3,"question_id":1,"text":"Bad"}]},{"question":{"id":2,"quiz_id":1,"wording":"Do you like this","text":"","image":"","is_multiple_choice":false},"choices":[{"id":4,"question_id":2,"text":"Yep"},{"id":5,"question_id":2,"text":"Could be better"},{"id":6,"question_id":2,"text":"Nope"}]}]}'
-//         );
-//       }
-//     }, 0.5);
-//   });
-// };
-
 function* workerLoadData(action) {
   const data = yield call(fetchData, action.payload);
-  //const dataJ = JSON.parse(data);
-  yield put(showQuizzes(data.data));
+  yield put(showQuizzes(data));
 }
 
 export function* watchLoadData() {

@@ -3,15 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.watchSendData = watchSendData;
+exports.watchLoadData = watchLoadData;
 
 var _axios = _interopRequireDefault(require("axios"));
 
 var _effects = require("redux-saga/effects");
-
-var _results = require("../actions/results");
-
-var _send_answers = require("../actions/send_answers");
 
 var _show_quizzes = require("../actions/show_quizzes");
 
@@ -19,49 +15,30 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 var _marked =
 /*#__PURE__*/
-regeneratorRuntime.mark(workerSendData),
+regeneratorRuntime.mark(workerLoadData),
     _marked2 =
 /*#__PURE__*/
-regeneratorRuntime.mark(watchSendData);
+regeneratorRuntime.mark(watchLoadData);
 
-var sendAnswers = function sendAnswers(_ref) {
-  var obj = _ref.obj,
-      id = _ref.id;
-  return _axios["default"].post("http://134.249.181.40:7777/api/".concat(id, "/answer/"), obj);
-}; //TODO NORMAL USER
+var fetchData = function fetchData(p) {
+  return _axios["default"].get("http://134.249.181.40:7777/api/".concat(p, "/"));
+};
 
-
-function workerSendData(action) {
-  var reqObj, res;
-  return regeneratorRuntime.wrap(function workerSendData$(_context) {
+function workerLoadData(action) {
+  var data;
+  return regeneratorRuntime.wrap(function workerLoadData$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          reqObj = {
-            name: "Sanya",
-            answers: action.payload.obj.map(function (item) {
-              return {
-                question_id: item.question.id,
-                choices_id: item.choices.filter(function (i) {
-                  return i.isSelected;
-                }).map(function (i) {
-                  return i.id;
-                })
-              };
-            })
-          };
-          _context.next = 3;
-          return (0, _effects.call)(sendAnswers, {
-            obj: reqObj,
-            id: action.payload.id
-          });
+          _context.next = 2;
+          return (0, _effects.call)(fetchData, action.payload);
 
-        case 3:
-          res = _context.sent;
-          _context.next = 6;
-          return (0, _effects.put)((0, _results.addResults)(res));
+        case 2:
+          data = _context.sent;
+          _context.next = 5;
+          return (0, _effects.put)((0, _show_quizzes.showQuizzes)(data));
 
-        case 6:
+        case 5:
         case "end":
           return _context.stop();
       }
@@ -69,14 +46,14 @@ function workerSendData(action) {
   }, _marked);
 }
 
-function watchSendData() {
-  return regeneratorRuntime.wrap(function watchSendData$(_context2) {
+function watchLoadData() {
+  return regeneratorRuntime.wrap(function watchLoadData$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
           _context2.next = 3;
-          return (0, _effects.takeEvery)(_send_answers.SEND_ANSWERS, workerSendData);
+          return (0, _effects.takeEvery)(_show_quizzes.LOAD_QUIZZES, workerLoadData);
 
         case 3:
           _context2.next = 8;

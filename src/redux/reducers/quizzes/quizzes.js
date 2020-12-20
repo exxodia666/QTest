@@ -2,20 +2,29 @@ import {
   SHOW_QUIZZES,
   SET_SELECTED,
   SET_DONE,
+  CLEAR_QUIZ,
 } from "../../actions/show_quizzes";
 
-const initialState = { quiz: {}, questions: [] };
+const initialState = { status: null, quiz: {}, questions: [] };
 // eslint-disable-next-line
 export default (state = initialState, action) => {
   switch (action.type) {
+    case CLEAR_QUIZ:
+      return { ...initialState };
+
     case SHOW_QUIZZES:
-      const newArray = action.payload.questions.map((item) => {
+      const newArray = action.payload.data.questions.map((item) => {
         let newChoices = item.choices.map((i) => ({ ...i, isSelected: false }));
         item.choices = newChoices;
         item.isDone = false;
         return item;
       });
-      return { questions: newArray, quiz: action.payload.quiz };
+      const newObj = {
+        status: action.payload.status,
+        questions: newArray,
+        quiz: action.payload.data.quiz,
+      };
+      return newObj;
 
     case SET_DONE:
       ///TODO REFUCKTOR

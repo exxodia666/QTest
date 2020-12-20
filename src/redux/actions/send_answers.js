@@ -1,5 +1,5 @@
 export const SEND_ANSWERS = "ANSWERS/SEND_ANSWERS";
-export const SHOW_RESULTS = "RESULT/SHOW_RESULTS";
+// export const SHOW_RESULTS = "RESULT/SHOW_RESULTS";
 
 export const sendAnswers = (payload) => {
   return {
@@ -7,9 +7,10 @@ export const sendAnswers = (payload) => {
     payload,
   };
 };
-export const showResult = (payload) => {
-  return {
-    type: SHOW_RESULTS,
-    payload,
-  };
-};
+
+// export const showResult = (payload) => {
+//   return {
+//     type: SHOW_RESULTS,
+//     payload,
+//   };
+// };

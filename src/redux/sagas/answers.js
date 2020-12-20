@@ -1,19 +1,13 @@
 import Axios from "axios";
 import { takeEvery, call, put } from "redux-saga/effects";
-import { SEND_ANSWERS, showResult } from "../actions/send_answers";
+import { addResults } from "../actions/results";
+import { SEND_ANSWERS } from "../actions/send_answers";
+import { clearQuiz } from "../actions/show_quizzes";
 
 const sendAnswers = ({ obj, id }) =>
   Axios.post(`http://134.249.181.40:7777/api/${id}/answer/`, obj);
 //TODO NORMAL USER
-// {
-//   "name": "Sanya",
-//   "answers":[{"question_id":1, "choices_id":[1]},{"question_id":1, "choices_id":[1]}]
-// }
 function* workerSendData(action) {
-  console.log("WORKER");
-  console.log(action.payload);
-  ////const choicesArray = [...action.payload.choices];
-  ///console.log(choicesArray);
   const reqObj = {
     name: "Sanya",
     answers: action.payload.obj.map((item) => ({
@@ -25,9 +19,8 @@ function* workerSendData(action) {
         }),
     })),
   };
-  console.log(reqObj);
   const res = yield call(sendAnswers, { obj: reqObj, id: action.payload.id });
-  yield put(showResult(res));
+  yield put(addResults(res));
 }
 
 export function* watchSendData() {

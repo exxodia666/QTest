@@ -1,12 +1,12 @@
-import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
+import React, { memo } from "react";
 import PropTypes from "prop-types"; // ES6
 import { Container, Button, Image, Row, Col, Alert } from "react-bootstrap";
 import { Checkbox, List, ListItem } from "@material-ui/core";
 import "../App.css";
 import { useDispatch } from "react-redux";
 import { setDone, setSelected } from "../redux/actions/show_quizzes";
-import ModalComponent from "./Modal";
-import { Modal } from "bootstrap";
+//import ModalComponent from "./Modal";
+//import { Modal } from "bootstrap";
 
 const Question = ({
   isDone,
@@ -15,9 +15,7 @@ const Question = ({
   wording,
   answers,
   imageUrl,
-  setSelectedAnswers,
   multiple,
-  s,
 }) => {
   const dispatch = useDispatch();
 
@@ -25,25 +23,18 @@ const Question = ({
     dispatch(setSelected({ answ: e.target.value, id }));
   };
 
-  const [open, setOpen] = React.useState(false);
-
-  const toggleOpen = () => {
-    setOpen(!open);
-  };
-
   //TODO RENDER IMAGE
   // RENDER TEXT
   return (
     <Container>
-      
       {/* <Modal open={open} setOpen={toggleOpen} src={imageUrl} /> */}
       <Alert variant="light">
         <Row>
           <Col>
             <Alert.Heading>{wording}</Alert.Heading>
-            {multiple && 
-            <Alert variant='info'>Можете выбрать несколько ваиантов</Alert>
-            }
+            {multiple && (
+              <Alert variant="info">Можете выбрать несколько ваиантов</Alert>
+            )}
           </Col>
           {imageUrl && (
             <Col>

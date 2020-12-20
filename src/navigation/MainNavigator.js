@@ -23,6 +23,9 @@ export default function MainNavigator() {
         <Route path="/results/:id">
           <ResultsScreen />
         </Route>
+        <Route path="/results/">
+          <ResultsScreen />
+        </Route>
       </Switch>
     </Router>
   );
