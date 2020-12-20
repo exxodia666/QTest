@@ -27,8 +27,13 @@ export default function HomeScreen() {
         <ListGroup>
           {quiz_list.data.quizzes.map((qz) => {
             return (
-              <ListGroup.Item>
-                <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to={`/quiz/${qz.id}`}>{qz.quiz_name}</Link>
+              <ListGroup.Item key={qz.id}>
+                <Link
+                  style={{ color: "inherit", textDecoration: "inherit" }}
+                  to={`/quiz/${qz.id}`}
+                >
+                  {qz.quiz_name}
+                </Link>
               </ListGroup.Item>
             );
           })}
