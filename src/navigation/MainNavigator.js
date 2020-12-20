@@ -27,3 +27,4 @@ export default function MainNavigator() {
     </Router>
   );
 }
+///TODO если есть рейтинг - не отправлять пост

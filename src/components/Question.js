@@ -41,6 +41,9 @@ const Question = ({
         <Row>
           <Col>
             <Alert.Heading>{wording}</Alert.Heading>
+            {multiple && 
+            <Alert variant='info'>Можете выбрать несколько ваиантов</Alert>
+            }
           </Col>
           {imageUrl && (
             <Col>
