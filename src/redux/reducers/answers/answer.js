@@ -10,7 +10,6 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SAVE_ANSWERS:
       const newAnswers = [...state.answers];
-
       newAnswers.push(action.payload.answer);
       return {
         name: action.payload.name,
