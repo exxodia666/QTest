@@ -24,25 +24,23 @@ export default function HomeScreen() {
 
   if (quiz_list.status === 200) {
     return (
-      <>
-        <ListGroup>
-          {quiz_list.data.quizzes.map((qz) => {
-            return (
-              <ListGroup.Item key={qz.id}>
-                <Link
-                  style={{ color: "inherit", textDecoration: "inherit" }}
-                  to={`/quiz/${qz.id}`}
-                >
-                  {qz.quiz_name}
-                </Link>
-              </ListGroup.Item>
-            );
-          })}
-        </ListGroup>
-      </>
+      <ul class="collection">
+        {quiz_list.data.quizzes.map((qz) => {
+          return (
+            <li class="collection-item" key={qz.id}>
+              <Link
+                style={{ color: "red", textDecoration: "inherit" }}
+                to={`/quiz/${qz.id}`}
+              >
+                {qz.quiz_name}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
     );
   } else if (quiz_list.status === 404) {
-    <PageNotFound/>
+    <PageNotFound />;
   } else {
     return <Loader />;
   }
