@@ -1,10 +1,11 @@
 import { Provider } from "react-redux";
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import store from "./redux/store";
 import MainNavigator from "./navigation/MainNavigator";
 import { Profiler } from "react";
+import Loader from "./components/Loader/Loader";
+
 function App() {
   const callback = (id, phase, actualTime, baseTime, startTime, commitTime) => {
     console.log(`${id}'s ${phase} phase:`);
@@ -16,6 +17,7 @@ function App() {
   return (
     <Provider store={store}>
       <Profiler id="Movies" onRender={callback}>
+        <Loader />
         <MainNavigator />
       </Profiler>
     </Provider>
