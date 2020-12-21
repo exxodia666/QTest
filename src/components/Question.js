@@ -33,7 +33,7 @@ const Question = ({
           <Col>
             <Alert.Heading>{wording}</Alert.Heading>
             {multiple && (
-              <Alert variant="info">Можете выбрать несколько ваиантов</Alert>
+              <Alert variant="info">Можете выбрать несколько ваиантов!</Alert>
             )}
           </Col>
           {imageUrl && (
