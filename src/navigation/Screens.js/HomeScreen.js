@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { loadQuizList } from "../../redux/actions/load_quiz_list";
 //import { loadQuizzes } from "../../redux/actions/show_quizzes";
+import PageNotFound from "../../components/PageNotFound";
 
 export default function HomeScreen() {
   //ТУТ подключен редакс стор
@@ -40,6 +41,8 @@ export default function HomeScreen() {
         </ListGroup>
       </>
     );
+  } else if (quiz_list.status === 404) {
+    <PageNotFound/>
   } else {
     return <Loader />;
   }
