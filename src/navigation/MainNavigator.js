@@ -33,3 +33,4 @@ export default function MainNavigator() {
   );
 }
 ///TODO если есть рейтинг - не отправлять пост
+// ya tut
