@@ -14,12 +14,14 @@ function App() {
     console.log(`Start time: ${startTime}`);
     console.log(`Commit time: ${commitTime}`);
   };
+
+  ///TODO поле ввода ключа на приватный тест
+  //TODO Check boxes and radio buttons
   return (
     <Provider store={store}>
-      <Profiler id="Movies" onRender={callback}>
-        <Loader />
-        <MainNavigator />
-      </Profiler>
+      {/* <Profiler id="Movies" onRender={callback}> */}
+      <MainNavigator />
+      {/* </Profiler> */}
     </Provider>
   );
 }

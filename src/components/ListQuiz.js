@@ -1,4 +1,3 @@
-import ListGroup from "react-bootstrap/ListGroup";
 import React from "react";
 import Loader from "./Loader";
 import PropTypes from "prop-types"; // ES6
@@ -7,21 +6,28 @@ function ListQuiz({ state, handleSelect, selectedQuestion }) {
   if (state.questions.length) {
     return (
       <div>
-        <ListGroup>
+        <ul className="collection">
           {state.questions &&
             state.questions.map((item, index) => {
               return (
-                <ListGroup.Item
+                <li
                   key={index}
                   action
-                  variant={selectedQuestion === index ? "dark" : "light"}
-                  onClick={() => handleSelect(index)}
+                  //variant={}
                 >
-                  {index + 1} - {item.question.wording}
-                </ListGroup.Item>
+                  <p
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleSelect(index)}
+                    className={`collection-item ${
+                      selectedQuestion === index ? "active" : ""
+                    }`}
+                  >
+                    {index + 1} - {item.question.wording}
+                  </p>
+                </li>
               );
             })}
-        </ListGroup>
+        </ul>
       </div>
     );
   } else {
