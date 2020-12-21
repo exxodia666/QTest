@@ -60,34 +60,21 @@ export default function ResultsScreen() {
   //MOJESH MNE SUCTION BAHNYT
   if (result.status === 200 || result.results.length) {
     return (
-      <Card>
-        <CardHeader
-          avatar={
-            <Avatar
-              alt={`${result.results.name}`}
-              src="https://cdn.discordapp.com/attachments/709748357572198421/787351142039289856/photo_2020-12-08_19-10-34.jpg"
-            />
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title={`${result.results[0].name}`}
-        />
-        <ol>
-          {result.results.map((i) => {
-            console.log(i);
-            return (
-              <>
-                <li>
-                  {i.quiz_name}: {(i.rating * 100).toFixed(0)}
-                </li>
-              </>
-            );
-          })}
-        </ol>
-      </Card>
+      <ul className="collection with-header">
+        <li className="collection-header">
+          <h4>{`${result.results[0].name}`}</h4>
+        </li>
+        {result.results.map((i) => {
+          console.log(i);
+          return (
+            <>
+              <li className="collection-item">
+                {i.quiz_name}: {(i.rating * 100).toFixed(0)}
+              </li>
+            </>
+          );
+        })}
+      </ul>
     );
   } else {
     return <Loader />;
