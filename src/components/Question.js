@@ -20,6 +20,7 @@ const Question = ({
   const dispatch = useDispatch();
 
   const handleSelectItem = (e) => {
+    console.log("Clicked");
     dispatch(setSelected({ answ: e.target.value, id }));
   };
 
@@ -33,7 +34,7 @@ const Question = ({
           <Col>
             <Alert.Heading>{wording}</Alert.Heading>
             {multiple && (
-              <Alert variant="info">Можете выбрать несколько ваиантов</Alert>
+              <Alert variant="info">Можете выбрать несколько ваиантов!</Alert>
             )}
           </Col>
           {imageUrl && (
@@ -55,14 +56,21 @@ const Question = ({
         {answers.map((item) => {
           return (
             <ListItem key={item.id}>
-              <Checkbox
-                disabled={isDone}
-                onChange={handleSelectItem}
-                checked={item.isSelected}
-                value={item.id}
-                id={item.id}
-              />
-              <label>{item.text}</label>
+              <p>
+                <label>
+                  <input
+                    disabled={isDone}
+                    onChange={handleSelectItem}
+                    checked={item.isSelected}
+                    value={item.id}
+                    id={item.id}
+                    //id="indeterminate-checkbox"
+                    type="checkbox"
+                    //onChange={handleSelectItem}
+                  />
+                  <span>{item.text}</span>
+                </label>
+              </p>
             </ListItem>
           );
         })}

@@ -21,6 +21,9 @@ export default function Quiz() {
 
   useEffect(() => {
     dispatch(loadQuizzes(id));
+    return () => {
+      dispatch(clearQuiz());
+    };
   }, [dispatch, id]);
 
   useEffect(() => {
