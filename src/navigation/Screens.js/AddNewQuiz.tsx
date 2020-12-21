@@ -13,7 +13,7 @@ export const AddQuizScreen: React.FunctionComponent = () => {
             <div className="input-field col s12">
               <i className="material-icons prefix">textsms</i>
               <input type="text" id="autocomplete-input" className="autocomplete"/>
-                <label>Autocomplete</label>
+              <label htmlFor='autocomplete-input'>Autocomplete</label>
               </div>
             </div>
           </div>
