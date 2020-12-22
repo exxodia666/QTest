@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types"; // ES6
 import { Container, Button, Image, Row, Col, Alert } from "react-bootstrap";
-import { Checkbox, List, ListItem } from "@material-ui/core";
+import { List, ListItem } from "@material-ui/core";
 import "../App.css";
 import { useDispatch } from "react-redux";
 import { setDone, setSelected } from "../redux/actions/show_quizzes";

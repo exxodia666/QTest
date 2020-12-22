@@ -8,26 +8,29 @@ import Loader from "../../components/Loader";
 //import Question from "../../components/Question";
 import { sendAnswers } from "../../redux/actions/send_answers";
 //import { loadQuizzes } from "../../redux/actions/show_quizzes";
-import Avatar from "@material-ui/core/Avatar";
-import { Card, CardHeader, IconButton } from "@material-ui/core";
-import MoreVertIcon from "@material-ui/icons/MoreVert";
+//import Avatar from "@material-ui/core/Avatar";
+//import { Card, CardHeader, IconButton } from "@material-ui/core";
+//import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { clearQuiz } from "../../redux/actions/show_quizzes";
-import getQuizName from "../../utils/getQuizName";
+//import getQuizName from "../../utils/getQuizName";
+import { useHistory } from "react-router-dom";
 
 export default function ResultsScreen() {
   const { id } = useParams();
+  const history = useHistory();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
   const result = useSelector((state) => state.results);
-
+  //const [req, setreq] = useState(false);
   //  const [resultArray, setResultArray] = useState([]);
 
   useEffect(() => {
-    if (id) {
+    if (id && state.questions.length) {
       dispatch(sendAnswers({ obj: state.questions, id }));
+      history.push("/results");
     }
     return () => dispatch(clearQuiz());
-  }, [dispatch, id, state.questions]);
+  }, [dispatch, id]);
 
   //TODO QUIZ NAMES
   // const getName = async (id, rating) => {
@@ -53,25 +56,17 @@ export default function ResultsScreen() {
   //   );
   // }, [result.results]);
 
-  console.log(result);
-
-  //TODO EBOSH DESIGN SANYA BLYAT
-  //NAHOI TEBE BATYA
-  //MOJESH MNE SUCTION BAHNYT
   if (result.status === 200 || result.results.length) {
     return (
       <ul className="collection with-header">
-        <li className="collection-header">
+        <li className="collection-header" key={Math.random()}>
           <h4>{`${result.results[0].name}`}</h4>
         </li>
         {result.results.map((i) => {
-          console.log(i);
           return (
-            <>
-              <li className="collection-item">
-                {i.quiz_name}: {(i.rating * 100).toFixed(0)}
-              </li>
-            </>
+            <li className="collection-item" key={i.id}>
+              {i.quiz_name}: {(i.rating * 100).toFixed(0)}
+            </li>
           );
         })}
       </ul>

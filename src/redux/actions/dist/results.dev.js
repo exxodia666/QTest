@@ -8,6 +8,7 @@ var ADD_RESULTS = "RESULT/ADD_RESULTS";
 exports.ADD_RESULTS = ADD_RESULTS;
 
 var addResults = function addResults(payload) {
+  //console.log(payload);
   return {
     type: ADD_RESULTS,
     payload: payload

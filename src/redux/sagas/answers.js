@@ -6,7 +6,9 @@ import { clearQuiz } from "../actions/show_quizzes";
 
 const sendAnswers = ({ obj, id }) =>
   Axios.post(`http://134.249.181.40:7777/api/${id}/answer/`, obj);
+
 //TODO NORMAL USER
+
 function* workerSendData(action) {
   const reqObj = {
     name: "Sanya",
@@ -20,6 +22,7 @@ function* workerSendData(action) {
     })),
   };
   const res = yield call(sendAnswers, { obj: reqObj, id: action.payload.id });
+  console.log(res);
   yield put(addResults(res));
 }
 

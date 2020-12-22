@@ -58,10 +58,11 @@ function workerSendData(action) {
 
         case 3:
           res = _context.sent;
-          _context.next = 6;
+          console.log(res);
+          _context.next = 7;
           return (0, _effects.put)((0, _results.addResults)(res));
 
-        case 6:
+        case 7:
         case "end":
           return _context.stop();
       }

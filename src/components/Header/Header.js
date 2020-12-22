@@ -1,23 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
+
 export default function Header() {
   // const history = useHistory();
   return (
     <nav>
-      <div class="nav-wrapper mv">
+      <div className="nav-wrapper mv">
         <Link
           style={{
             color: "inherit",
             textDecoration: "inherit",
             cursor: "pointer",
           }}
-          class="brand-logo left"
+          className="brand-logo left"
           to="/"
         >
           QTest
         </Link>
-        <ul class="right hide-on-med-and-down">
+        <ul className="right hide-on-med-and-down">
           <li>
             <Link to="/add">Add</Link>
           </li>

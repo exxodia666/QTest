@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Image, Alert } from "react-bootstrap";
+import { Container, Image } from "react-bootstrap";
 
 export default function PageNotFound() {
     return (
