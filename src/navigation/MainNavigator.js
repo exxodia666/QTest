@@ -5,6 +5,7 @@ import AddQuizScreen from "./Screens.js/AddQuizScreen";
 import HomeScreen from "./Screens.js/HomeScreen";
 import Quiz from "./Screens.js/Quiz";
 import ResultsScreen from "./Screens.js/ResultsScreen";
+import { UserScreen } from "./Screens.js/UserScreen.tsx";
 //import AddNewQuiz from "./Screens/AddNewQuiz.tsx"
 //import { AddQuizScreen } from "./Screens.js/AddNewQuiz.tsx";
 
@@ -14,6 +15,9 @@ export default function MainNavigator() {
       <Header />
       <Switch>
         <Route exact path="/">
+          <UserScreen />
+        </Route>
+        <Route path="/">
           <HomeScreen />
         </Route>
         <Route path="/add">
