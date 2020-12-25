@@ -1,6 +1,4 @@
 import { ADD_RESULTS } from "../../actions/results";
-import { SHOW_RESULTS } from "../../actions/send_answers";
-
 const initialState = {
   status: null,
   results: [],
@@ -15,7 +13,7 @@ export default (state = initialState, action) => {
       newArray.push(action.payload.data);
       const newobj = {
         status: action.payload.status,
-        results: newArray
+        results: newArray,
       };
       //console.log(newobj);
       return newobj;

@@ -9,6 +9,7 @@ import { loadState, saveState } from "./sessionStorage";
 const sagaMiddleware = createSagaMiddleware();
 
 export const persistedState = loadState();
+
 const store = createStore(
   rootReducer,
   persistedState,

@@ -1,9 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
 export default function Header() {
   // const history = useHistory();
+  const user = useSelector((state) => state.user.user_name);
   return (
     <nav>
       <div className="nav-wrapper mv">
@@ -29,7 +31,7 @@ export default function Header() {
             <Link to="/about">About ASS</Link>
           </li>
           <li>
-            <Link to="/results">Logged as: Sanya</Link>
+            <Link to="/results">Logged as: {user}</Link>
           </li>
         </ul>
       </div>

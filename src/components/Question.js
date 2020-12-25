@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import PropTypes from "prop-types"; // ES6
 import { Container, Button, Image, Row, Col, Alert } from "react-bootstrap";
 import { List, ListItem } from "@material-ui/core";
-import "../App.css";
 import { useDispatch } from "react-redux";
 import { setDone, setSelected } from "../redux/actions/show_quizzes";
 //import ModalComponent from "./Modal";
@@ -20,7 +19,6 @@ const Question = ({
   const dispatch = useDispatch();
 
   const handleSelectItem = (e) => {
-    console.log("Clicked");
     dispatch(setSelected({ answ: e.target.value, id }));
   };
 

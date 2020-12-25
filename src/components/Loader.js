@@ -1,6 +1,5 @@
 import React from "react";
 import Spinner from "react-bootstrap/Spinner";
-import '../App.css';
 
 export default function Loader() {
   return (

@@ -56,15 +56,14 @@ function watchLoadData() {
           return (0, _effects.takeEvery)(_show_quizzes.LOAD_QUIZZES, workerLoadData);
 
         case 3:
-          _context2.next = 8;
+          _context2.next = 7;
           break;
 
         case 5:
           _context2.prev = 5;
           _context2.t0 = _context2["catch"](0);
-          console.log(_context2.t0);
 
-        case 8:
+        case 7:
         case "end":
           return _context2.stop();
       }

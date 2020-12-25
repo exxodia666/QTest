@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useEffect } from "react";
 //import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,16 +20,20 @@ export default function ResultsScreen() {
   const history = useHistory();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
+  //const user = useSelector((state) => state.user.user_name);
   const result = useSelector((state) => state.results);
   //const [req, setreq] = useState(false);
   //  const [resultArray, setResultArray] = useState([]);
 
+  const user = useSelector((state) => state.user.user_name);
+
   useEffect(() => {
     if (id && state.questions.length) {
-      dispatch(sendAnswers({ obj: state.questions, id }));
+      dispatch(sendAnswers({ obj: state.questions, id, user }));
       history.push("/results");
     }
     return () => dispatch(clearQuiz());
+    // eslint-disable-next-line
   }, [dispatch, id]);
 
   //TODO QUIZ NAMES

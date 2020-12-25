@@ -7,8 +7,6 @@ exports["default"] = void 0;
 
 var _results = require("../../actions/results");
 
-var _send_answers = require("../../actions/send_answers");
-
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }

@@ -13,8 +13,6 @@ var _results = require("../actions/results");
 
 var _send_answers = require("../actions/send_answers");
 
-var _show_quizzes = require("../actions/show_quizzes");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var _marked =
@@ -38,7 +36,7 @@ function workerSendData(action) {
       switch (_context.prev = _context.next) {
         case 0:
           reqObj = {
-            name: "Sanya",
+            name: action.payload.user,
             answers: action.payload.obj.map(function (item) {
               return {
                 question_id: item.question.id,
@@ -58,11 +56,10 @@ function workerSendData(action) {
 
         case 3:
           res = _context.sent;
-          console.log(res);
-          _context.next = 7;
+          _context.next = 6;
           return (0, _effects.put)((0, _results.addResults)(res));
 
-        case 7:
+        case 6:
         case "end":
           return _context.stop();
       }
@@ -80,15 +77,14 @@ function watchSendData() {
           return (0, _effects.takeEvery)(_send_answers.SEND_ANSWERS, workerSendData);
 
         case 3:
-          _context2.next = 8;
+          _context2.next = 7;
           break;
 
         case 5:
           _context2.prev = 5;
           _context2.t0 = _context2["catch"](0);
-          console.log(_context2.t0);
 
-        case 8:
+        case 7:
         case "end":
           return _context2.stop();
       }
