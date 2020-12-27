@@ -20,6 +20,7 @@ export default function AddQuizScreen() {
 
   function addAnswers() {
     let div = document.getElementById('list_answers')
+    //div.preventDefault();
     let inpNL = div.querySelectorAll('input')
     let inp = Array.from(inpNL);
     let choiceNum = inp[inp.length-1].name.split('choice')
@@ -28,11 +29,12 @@ export default function AddQuizScreen() {
     <div>
     <input type="text" name="choice${Num}" placeholder="Вариант ответа"/>
     </div>`
-  } 
+  }
 
   function addNewQuestion() {
     
   }
+
   return (
     <Container>
       <div
@@ -71,33 +73,41 @@ export default function AddQuizScreen() {
         }}
       >
         <h2>Добавить вопрос</h2>
-        <div>
-        <div>
-          <input type="text" name="question" placeholder="Название опроса" />
+        <form id="quiz">
+          <div id="question1">
+            <input type="text" name="question" placeholder="Название опроса" />
 
-          <div id="list_answers">
-            <div>
-              <input type="text" name="choice1" placeholder="Вариант ответа"/>
+            <div id="list_answers">
+              <div>
+                <input
+                  type="text"
+                  name="choice1"
+                  placeholder="Вариант ответа"
+                />
+              </div>
+
+              <div>
+                <input
+                  type="text"
+                  name="choice2"
+                  placeholder="Вариант ответа"
+                />
+              </div>
             </div>
-
             <div>
-              <input type="text" name="choice2" placeholder="Вариант ответа" />
+              <i onClick={addAnswers} style={{cursor:"pointer"}} class="medium material-icons">add_circle_outline</i>
+              <i onClick={addNewQuestion} style={{cursor:"pointer"}} class="medium material-icons">fast_forward</i>
             </div>
           </div>
-          <div>
-            <i onClick={addAnswers} class="medium material-icons">add_circle_outline</i>
-            <i onClick={addNewQuestion} class="medium material-icons">fast_forward</i>
-          </div>
-        </div>
-        </div>
+        </form>
         <button
-            class="btn waves-effect waves-light"
-            type="submit"
-            onClick={saveQuizName}
-          >
-            Создать тест
-            <i class="material-icons right">send</i>
-          </button>
+          class="btn waves-effect waves-light"
+          type="submit"
+          onClick={saveQuizName}
+        >
+          Создать тест
+          <i class="material-icons right">send</i>
+        </button>
       </div>
     </Container>
   );

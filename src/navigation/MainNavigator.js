@@ -7,7 +7,7 @@ import Quiz from "./Screens.js/Quiz";
 import ResultsScreen from "./Screens.js/ResultsScreen";
 import { UserScreen } from "./Screens.js/UserScreen.js";
 //import AddNewQuiz from "./Screens/AddNewQuiz.tsx"
-//import { AddQuizScreen } from "./Screens.js/AddNewQuiz.tsx";
+import  AddQuizScreen  from "./Screens.js/AddQuizScreen";
 
 export default function MainNavigator() {
   return (
@@ -20,9 +20,9 @@ export default function MainNavigator() {
         <Route path="/home">
           <HomeScreen />
         </Route>
-        {/* <Route path="/add">
+        <Route path="/add">
           <AddQuizScreen />
-        </Route> */}
+        </Route>
         <Route path="/quiz/:id">
           <Quiz />
         </Route>
