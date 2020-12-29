@@ -9,5 +9,4 @@ const addedQuizzes = (state = {}, action) => {
       return state;
   }
 };
-
 export default addedQuizzes;

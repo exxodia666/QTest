@@ -1,10 +1,54 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Button, Row, Col, Alert } from "react-bootstrap";
+import { add_test } from "../../redux/actions/add_test";
 
 export default function AddQuizScreen() {
   const dispatch = useDispatch();
   const [newQuestion, setNewQuestion] = useState([]);
+  //TODO TEXT OR IMAGE
+  //TODO CHECKBOXES
+  // {
+  //   "quiz": {
+  //     "quiz_name": "Test request",
+  //     "is_public": "true"
+  //   },
+  //   "questions": [
+  //     {
+  //       "question": {
+  //         "wording": "Test question 1",
+  //         "is_multiple_choice": "true"
+  //       },
+  //       "choices": [
+  //         {
+  //           "text": "Test choice 1 1",
+  //           "is_correct": "true"
+  //         },
+  //         {
+  //           "text": "Test choice 1 2"
+  //         },
+  //         {
+  //           "text": "Test choice 1 3"
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       "question": {
+  //         "wording": "Test question 2"
+  //       },
+  //       "choices": [
+  //         {
+  //           "text": "Test choice 2 1"
+  //         },
+  //         {
+  //           "text": "Test choice 2 2",
+  //           "is_correct": "true"
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // }
+
   const [array, setArray] = useState([
     {
       question_id: 0,
@@ -53,13 +97,11 @@ export default function AddQuizScreen() {
           break;
         case "choice":
           if (
-            data.questions[parseInt(armel[2])]["choices"][
-              parseInt(armel[3])
-            ]
+            data.questions[parseInt(armel[2])]["choices"][parseInt(armel[3])]
           ) {
-            data.questions[parseInt(armel[2])]["choices"][
-              parseInt(armel[3])
-            ][armel[1]] = el.value != "on" ? el.value : el.checked;
+            data.questions[parseInt(armel[2])]["choices"][parseInt(armel[3])][
+              armel[1]
+            ] = el.value != "on" ? el.value : el.checked;
           } else {
             data.questions[parseInt(armel[2])]["choices"][
               parseInt(armel[3])
@@ -70,8 +112,8 @@ export default function AddQuizScreen() {
           break;
       }
     });
-    console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', data)
-    //dispatch(data);
+    console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", data);
+    dispatch(add_test(data));
   }
 
   function addAnswers(el) {
