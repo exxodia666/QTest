@@ -1,26 +1,28 @@
 import {
-  ADD_TEST,
   ADD_TEST_SUCCESS,
   ADD_TEST_ERROR,
+  RESET_TEST,
 } from "../../actions/add_test";
 
 const initialState = {
-  status: "HUI SASI",
+  status: "idle",
 };
 //eslint-disable-next-line
-
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TEST_SUCCESS:
-      //console.log(KEKWAS, action.payload);
       return {
-        status: action.payload,
+        status: action.payload.status,
+        message: action.payload.action,
       };
     case ADD_TEST_ERROR:
-      ///console.log(KEKERROR, action.payload);
       return {
-        status: action.payload,
+        status: 404,
+        message: action.payload,
       };
+
+    case RESET_TEST:
+      return { ...initialState };
     default:
       return state;
   }

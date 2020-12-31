@@ -1,12 +1,20 @@
 import Axios from "axios";
 import { takeEvery, call, put } from "redux-saga/effects";
-import { LOAD_QUIZZES, showQuizzes } from "../actions/show_quizzes";
+import {
+  loadQuizzesError,
+  LOAD_QUIZZES,
+  showQuizzes,
+} from "../actions/show_quizzes";
 
 const fetchData = (p) => Axios.get(`http://134.249.181.40:7777/api/${p}/`);
 
 function* workerLoadData(action) {
-  const data = yield call(fetchData, action.payload);
-  yield put(showQuizzes(data));
+  try {
+    const data = yield call(fetchData, action.payload);
+    yield put(showQuizzes(data));
+  } catch (e) {
+    yield put(loadQuizzesError(e.message));
+  }
 }
 
 export function* watchLoadData() {

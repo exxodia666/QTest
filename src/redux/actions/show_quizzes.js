@@ -3,6 +3,7 @@ export const LOAD_QUIZZES = "QUIZ/LOAD_QUIZZES";
 export const SET_SELECTED = "QUIZ/SET_SELECTED";
 export const SET_DONE = "QUIZ/SET_DONE";
 export const CLEAR_QUIZ = "QUIZ/CLEAR_QUIZ";
+export const LOAD_QUIZZES_ERROR = "QUIZ/LOAD_QUIZZES_ERROR";
 
 export const clearQuiz = () => {
   return {
@@ -34,6 +35,13 @@ export const showQuizzes = (payload) => {
 export const loadQuizzes = (payload) => {
   return {
     type: LOAD_QUIZZES,
+    payload,
+  };
+};
+
+export const loadQuizzesError = (payload) => {
+  return {
+    type: LOAD_QUIZZES_ERROR,
     payload,
   };
 };

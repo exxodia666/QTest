@@ -6,16 +6,15 @@ import "./styles.css";
 export default function Header() {
   // const history = useHistory();
   const user = useSelector((state) => state.user.user_name);
+  console.log("RENDER HEADER");
   return (
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
-        <Link class="navbar-brand"
-        to="/"
-        >
+    <nav className="navbar navbar-expand-lg navbar-dark">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
           <span>Q</span>TEST
         </Link>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavDropdown"
@@ -23,24 +22,27 @@ export default function Header() {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <Link class="nav-link active" aria-current="page" to="/add">
+        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className="nav-link active" aria-current="page" to="/add">
                 Add
               </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/contacts">
-              Contacts
+            <li className="nav-item">
+              <Link className="nav-link" to="/contacts">
+                Contacts
               </Link>
             </li>
-            <li class="nav-item">
-              <Link class="nav-link" to="/about">
-              About ASS
+            <li className="nav-item">
+              <Link className="nav-link" to="/about">
+                About ASS
               </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/results">Logged as: {user}</Link>
             </li>
           </ul>
         </div>
@@ -49,34 +51,32 @@ export default function Header() {
   );
 }
 
-
-  //  <nav>
-  //     <div className="nav-wrapper mv">
-  //       <Link
-  //         style={{
-  //           color: "inherit",
-  //           textDecoration: "inherit",
-  //           cursor: "pointer",
-  //         }}
-  //         className="brand-logo left"
-  //         to="/"
-  //       >
-  //         QTest
-  //       </Link>
-  //       <ul className="right hide-on-med-and-down">
-  //         <li>
-  //           <Link to="/add">Add</Link>
-  //         </li>
-  //         <li>
-  //           <Link to="/contacts">Contacts</Link>
-  //         </li>
-  //         <li>
-  //           <Link to="/about">About ASS</Link>
-  //         </li>
-  //         <li>
-  //           <Link to="/results">Logged as: {user}</Link>
-  //         </li>
-  //       </ul>
-  //     </div>
-  //   </nav> 
-
+//  <nav>
+//     <div className="nav-wrapper mv">
+//       <Link
+//         style={{
+//           color: "inherit",
+//           textDecoration: "inherit",
+//           cursor: "pointer",
+//         }}
+//         className="brand-logo left"
+//         to="/"
+//       >
+//         QTest
+//       </Link>
+//       <ul className="right hide-on-med-and-down">
+//         <li>
+//           <Link to="/add">Add</Link>
+//         </li>
+//         <li>
+//           <Link to="/contacts">Contacts</Link>
+//         </li>
+//         <li>
+//           <Link to="/about">About ASS</Link>
+//         </li>
+//         <li>
+//           <Link to="/results">Logged as: {user}</Link>
+//         </li>
+//       </ul>
+//     </div>
+//   </nav>

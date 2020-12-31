@@ -3,6 +3,7 @@ import Loader from "./Loader";
 import PropTypes from "prop-types"; // ES6
 
 function ListQuiz({ state, handleSelect, selectedQuestion }) {
+  console.log("LIST QUIZ");
   if (state.questions.length) {
     return (
       <div>
@@ -12,7 +13,6 @@ function ListQuiz({ state, handleSelect, selectedQuestion }) {
               return (
                 <li
                   key={index}
-                  action
                   //variant={}
                 >
                   <p
@@ -41,4 +41,4 @@ ListQuiz.propTypes = {
   selectedQuestion: PropTypes.number,
 };
 
-export default ListQuiz;
+export default React.memo(ListQuiz);

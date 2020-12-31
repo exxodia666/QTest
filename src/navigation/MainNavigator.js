@@ -7,9 +7,8 @@ import Quiz from "./Screens.js/Quiz";
 import ResultsScreen from "./Screens.js/ResultsScreen";
 import { UserScreen } from "./Screens.js/UserScreen.js";
 //import AddNewQuiz from "./Screens/AddNewQuiz.tsx"
-import  AddQuizScreen  from "./Screens.js/AddQuizScreen";
-
-export default function MainNavigator() {
+import AddQuizScreen from "./Screens.js/AddQuizScreen";
+function MainNavigator() {
   return (
     <Router>
       <Header />
@@ -36,5 +35,4 @@ export default function MainNavigator() {
     </Router>
   );
 }
-///TODO если есть рейтинг - не отправлять пост
-// ya tut
+export default React.memo(MainNavigator);

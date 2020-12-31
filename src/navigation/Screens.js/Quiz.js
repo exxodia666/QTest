@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
@@ -8,17 +8,16 @@ import Question from "../../components/Question";
 //import { sendAnswers } from "../../redux/actions/send_answers";
 import { clearQuiz, loadQuizzes } from "../../redux/actions/show_quizzes";
 
-export default function Quiz() {
+export default memo(function Quiz() {
   let { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
-
-  //ТУТ ГРУЗЯТСЯ ТЕСТЫ
   const [selectedQuestion, setSelectedQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const history = useHistory();
   const found = state.questions.find((i) => i.isDone === false);
 
+  console.log("RENDER TEST SCREEN");
   useEffect(() => {
     dispatch(loadQuizzes(id));
     return () => {
@@ -42,7 +41,6 @@ export default function Quiz() {
   if (state.status === 200) {
     return (
       <>
-        {selectedAnswers && <p>{selectedAnswers.toString()}</p>}
         <Row>
           <Col sm={4}>
             <ListQuiz
@@ -69,5 +67,8 @@ export default function Quiz() {
         </Row>
       </>
     );
+  } else if (state.status === 404) {
+    console.log(state);
+    return <p>ERROR: {state.message}</p>;
   } else return <Loader />;
-}
+});

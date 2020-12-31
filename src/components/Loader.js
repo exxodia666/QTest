@@ -1,7 +1,6 @@
 import React from "react";
 import Spinner from "react-bootstrap/Spinner";
-
-export default function Loader() {
+function Loader() {
   return (
     <div className="Loader">
       <Spinner animation="grow" variant="primary" />
@@ -14,3 +13,5 @@ export default function Loader() {
     </div>
   );
 }
+
+export default React.memo(Loader);

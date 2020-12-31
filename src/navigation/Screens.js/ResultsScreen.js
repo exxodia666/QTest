@@ -20,13 +20,11 @@ export default function ResultsScreen() {
   const history = useHistory();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
-  //const user = useSelector((state) => state.user.user_name);
   const result = useSelector((state) => state.results);
-  //const [req, setreq] = useState(false);
-  //  const [resultArray, setResultArray] = useState([]);
-
   const user = useSelector((state) => state.user.user_name);
-
+  
+  console.log("RESULTS SCREEN");
+  
   useEffect(() => {
     if (id && state.questions.length) {
       dispatch(sendAnswers({ obj: state.questions, id, user }));
@@ -35,31 +33,7 @@ export default function ResultsScreen() {
     return () => dispatch(clearQuiz());
     // eslint-disable-next-line
   }, [dispatch, id]);
-
-  //TODO QUIZ NAMES
-  // const getName = async (id, rating) => {
-  //   const name = await getQuizName(id);
-  //   console.log(name.data.quiz.quiz_name);
-  //   const newArray = [...resultArray];
-  //   newArray.push({
-  //     name: name.data.quiz.quiz_name,
-  //     rating,
-  //   });
-  //   console.log(newArray);
-  //   setResultArray([...newArray]);
-  // };
-
-  // useEffect(() => {
-  //   console.log(result);
-  //   result.results.forEach((i) => {
-  //     getName(i.quiz_id, i.rating);
-  //   });
-  //   console.log(
-  //     "🚀 ~ file: ResultsScreen.js ~ line 51 ~ useEffect ~ resultArray",
-  //     resultArray
-  //   );
-  // }, [result.results]);
-
+  
   if (result.status === 200 || result.results.length) {
     return (
       <ul className="collection with-header">
@@ -68,7 +42,7 @@ export default function ResultsScreen() {
         </li>
         {result.results.map((i) => {
           return (
-            <li className="collection-item" key={i.id}>
+            <li className="collection-item" key={Math.random()}>
               {i.quiz_name}: {(i.rating * 100).toFixed(0)}
             </li>
           );
