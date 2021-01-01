@@ -6,17 +6,14 @@ import { loadQuizList } from "../../redux/actions/load_quiz_list";
 //import { loadQuizzes } from "../../redux/actions/show_quizzes";
 import PageNotFound from "../../components/PageNotFound";
 import { useHistory } from "react-router-dom";
-
-export default function HomeScreen() {
-  //ТУТ подключен редакс стор
+function HomeScreen() {
   const dispatch = useDispatch();
-  //QUIZ LIST STORE -->
   const quiz_list = useSelector((state) => state.quiz_list);
   const [input, setinput] = useState("");
   const history = useHistory();
-
-  //ЗАГРУЗКА ТЕСТОВ
+  console.log("RENDER HOME SCREEN");
   useEffect(() => {
+    console.log("LOAD QUIZZES DISPATCH");
     dispatch(loadQuizList());
   }, [dispatch]);
 
@@ -24,7 +21,7 @@ export default function HomeScreen() {
     if (e.code === "Enter") {
       const id = e.target.value;
       //("e46af85b-abd6-42cb-aaea-3b8376637d15");
-      let re = /^[0-z]{8}-[0-z]{4}-[0-z]{4}-[0-z]{4}-[0-z]{12}-$/;
+      //let re = /^[0-z]{8}-[0-z]{4}-[0-z]{4}-[0-z]{4}-[0-z]{12}-$/;
       if (id[8] === "-") {
         history.push(`/quiz/${e.target.value}`);
       }
@@ -92,8 +89,9 @@ export default function HomeScreen() {
       </ul>
     );
   } else if (quiz_list.status === 404) {
-    <PageNotFound />;
+    return <p>ERROR: {quiz_list.message}</p>;
   } else {
     return <Loader />;
   }
 }
+export default React.memo(HomeScreen);

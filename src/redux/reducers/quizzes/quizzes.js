@@ -3,15 +3,20 @@ import {
   SET_SELECTED,
   SET_DONE,
   CLEAR_QUIZ,
+  LOAD_QUIZZES_ERROR,
 } from "../../actions/show_quizzes";
 
-const initialState = { status: null, quiz: {}, questions: [] };
+const initialState = {
+  status: null,
+  message: null,
+  quiz: {},
+  questions: [],
+};
 // eslint-disable-next-line
 export default (state = initialState, action) => {
   switch (action.type) {
     case CLEAR_QUIZ:
       return { ...initialState };
-
     case SHOW_QUIZZES:
       const newArray = action.payload.data.questions.map((item) => {
         let newChoices = item.choices.map((i) => ({ ...i, isSelected: false }));
@@ -25,7 +30,6 @@ export default (state = initialState, action) => {
         quiz: action.payload.data.quiz,
       };
       return newObj;
-
     case SET_DONE:
       ///TODO REFUCKTOR
       const found = state.questions.find(
@@ -60,6 +64,8 @@ export default (state = initialState, action) => {
       newState.questions[indexQ].choices[indexA].isSelected = !newState
         .questions[indexQ].choices[indexA].isSelected;
       return { ...newState };
+    case LOAD_QUIZZES_ERROR:
+      return { ...initialState, status: 404, message: action.payload };
     default:
       return state;
   }

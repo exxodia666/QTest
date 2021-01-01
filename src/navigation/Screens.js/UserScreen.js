@@ -9,16 +9,20 @@ export const UserScreen = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.user);
+  
+  console.log("RENDER USER");
 
   if (user.user_name.length) {
     history.push("/home");
   }
+  
   const handleName = (e) => {
     if (e.key === "Enter") {
       dispatch(add_user({ user_name: ref.current.value }));
       ref.current.value = "";
     }
   };
+  
   return (
     <div className="row p">
       <div className="input-field col s6">

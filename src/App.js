@@ -6,12 +6,13 @@ import MainNavigator from "./navigation/MainNavigator";
 
 function App() {
   const callback = (id, phase, actualTime, baseTime, startTime, commitTime) => {
-    console.log(`${id}'s ${phase} phase:`);
-    console.log(`Actual time: ${actualTime}`);
-    console.log(`Base time: ${baseTime}`);
-    console.log(`Start time: ${startTime}`);
-    console.log(`Commit time: ${commitTime}`);
+    // console.log(`${id}'s ${phase} phase:`);
+    // console.log(`Actual time: ${actualTime}`);
+    // console.log(`Base time: ${baseTime}`);
+    // console.log(`Start time: ${startTime}`);
+    // console.log(`Commit time: ${commitTime}`);
   };
+  console.log("RENDER APP");
   return (
     <Provider store={store}>
       <Profiler id="Quizzes" onRender={callback}>

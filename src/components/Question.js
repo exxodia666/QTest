@@ -21,9 +21,7 @@ const Question = ({
   const handleSelectItem = (e) => {
     dispatch(setSelected({ answ: e.target.value, id }));
   };
-
-  //TODO RENDER IMAGE
-  // RENDER TEXT
+  console.log(`QUESTION ${text}`);
   return (
     <Container>
       {/* <Modal open={open} setOpen={toggleOpen} src={imageUrl} /> */}
