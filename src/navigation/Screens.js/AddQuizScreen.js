@@ -1,10 +1,9 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Container, Button, Row, Col, Alert } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { Container, Col } from "react-bootstrap";
 
 export default function AddQuizScreen() {
   const dispatch = useDispatch();
-  const [newQuestion, setNewQuestion] = useState([]);
   const [array, setArray] = useState([
     {
       question_id: 0,
