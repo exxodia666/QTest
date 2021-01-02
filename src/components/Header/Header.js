@@ -9,13 +9,13 @@ export default function Header() {
   console.log("RENDER HEADER");
   return (
     <header class="header">
-    <div class="container">
+    <div class="container__header">
         <div class="header__body">
             <Link to="/" class="header__logo">
                 <p><span>Q</span>TEST</p>
             </Link>
 
-            <nav class="header__menu">
+            <nav class="header__menu__">
                 <ul class="header__list">
                     <li>
                         <Link to="/add" class="header__link">Add</Link>
