@@ -11,7 +11,9 @@ function HomeScreen() {
   const quiz_list = useSelector((state) => state.quiz_list);
   const [input, setinput] = useState("");
   const history = useHistory();
+
   console.log("RENDER HOME SCREEN");
+
   useEffect(() => {
     console.log("LOAD QUIZZES DISPATCH");
     dispatch(loadQuizList());
@@ -20,9 +22,8 @@ function HomeScreen() {
   const handleOnClick = (e) => {
     if (e.code === "Enter") {
       const id = e.target.value;
-      //("e46af85b-abd6-42cb-aaea-3b8376637d15");
-      //let re = /^[0-z]{8}-[0-z]{4}-[0-z]{4}-[0-z]{4}-[0-z]{12}-$/;
-      if (id[8] === "-") {
+      let re = /^((\w){8})-((\w){4})-((\w){4})-((\w){4})-((\w){12})$/g;
+      if (re.test(id)) {
         history.push(`/quiz/${e.target.value}`);
       }
     }
@@ -39,7 +40,6 @@ function HomeScreen() {
                   <input
                     id="text"
                     type="text"
-                    //placeholder="Enter your quiz"
                     value={input}
                     onChange={(e) => setinput(e.target.value)}
                   />

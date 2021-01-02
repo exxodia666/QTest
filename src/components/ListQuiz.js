@@ -4,8 +4,7 @@ import PropTypes from "prop-types"; // ES6
 import "./styles/style.css";
 
 function ListQuiz({ state, handleSelect, selectedQuestion }) {
-  console.log("LIST QUIZ");
-  if (state.questions.length) {
+  if (state().length) {
     return (
       <div className="leftbar">
         <div className="quizlist">
@@ -49,7 +48,7 @@ function ListQuiz({ state, handleSelect, selectedQuestion }) {
 
 ListQuiz.propTypes = {
   handleSelect: PropTypes.func,
-  state: PropTypes.object,
+  state: PropTypes.func,
   selectedQuestion: PropTypes.number,
 };
 
