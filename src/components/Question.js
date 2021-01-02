@@ -60,9 +60,7 @@ const Question = ({
                     checked={item.isSelected}
                     value={item.id}
                     id={item.id}
-                    //id="indeterminate-checkbox"
                     type="checkbox"
-                    //onChange={handleSelectItem}
                   />
                   <span>{item.text}</span>
                 </label>

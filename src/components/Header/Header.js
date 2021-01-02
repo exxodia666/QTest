@@ -8,46 +8,41 @@ export default function Header() {
   const user = useSelector((state) => state.user.user_name);
   console.log("RENDER HEADER");
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark">
-      <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          <span>Q</span>TEST
-        </Link>
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link active" aria-current="page" to="/add">
-                Add
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contacts">
-                Contacts
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                About ASS
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/results">Logged as: {user}</Link>
-            </li>
-          </ul>
+    <header class="header">
+    <div class="container__header">
+        <div class="header__body">
+            <Link to="/" class="header__logo">
+                <p><span>Q</span>TEST</p>
+            </Link>
+
+            <nav class="header__menu__">
+                <ul class="header__list">
+                    <li>
+                        <Link to="/add" class="header__link">Add</Link>
+                    </li>
+                    <li>
+                        <Link to="/contacts" class="header__link">Contacts</Link>
+                    </li>
+                    <li>
+                        <Link to="/about" class="header__link">About Ass</Link>
+                    </li>
+                </ul>
+            </nav>
+            <div class="header__user">
+                <Link to="/results">
+                    <p> Logged as: {user}</p>
+                </Link>
+            </div>
+            <div class="header__burger">
+                <span>
+
+                </span>
+            </div>
+
+
         </div>
-      </div>
-    </nav>
+    </div>
+</header>
   );
 }
 

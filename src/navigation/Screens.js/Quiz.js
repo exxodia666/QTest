@@ -5,7 +5,6 @@ import { useHistory, useParams } from "react-router-dom";
 import ListQuiz from "../../components/ListQuiz";
 import Loader from "../../components/Loader";
 import Question from "../../components/Question";
-//import { sendAnswers } from "../../redux/actions/send_answers";
 import { clearQuiz, loadQuizzes } from "../../redux/actions/show_quizzes";
 
 export default memo(function Quiz() {

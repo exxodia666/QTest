@@ -1,6 +1,5 @@
 import { Provider } from "react-redux";
 import { Profiler } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import store from "./redux/store";
 import MainNavigator from "./navigation/MainNavigator";
 
