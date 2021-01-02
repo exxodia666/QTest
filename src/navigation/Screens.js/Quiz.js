@@ -18,6 +18,7 @@ export default memo(function Quiz() {
   const found = state.questions.find((i) => i.isDone === false);
 
   console.log("RENDER TEST SCREEN");
+
   useEffect(() => {
     dispatch(loadQuizzes(id));
     return () => {
@@ -37,7 +38,7 @@ export default memo(function Quiz() {
   const handleSelect = (id) => {
     setSelectedQuestion(id);
   };
-
+  const stateToQuestionName = () => state.questions.map((i) => i.question.wording);
   if (state.status === 200) {
     return (
       <>
@@ -45,7 +46,7 @@ export default memo(function Quiz() {
           <Col sm={4}>
             <ListQuiz
               selectedAnswers={selectedAnswers}
-              state={state}
+              state={stateToQuestionName}
               handleSelect={handleSelect}
               selectedQuestion={selectedQuestion}
             />

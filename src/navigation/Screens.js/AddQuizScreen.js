@@ -22,16 +22,17 @@ export default function AddQuizScreen() {
       ],
     },
   ]);
-  const [quiz_name, setQuiz_name] = useState("");
+  
   React.useEffect(() => {
     return () => {
       dispatch(reset_add_test());
     };
   }, [dispatch]);
+
   function normalno(el) {
     el.preventDefault();
   }
-  console.log(test_status);
+
   function saveQuizName() {
     let inputs = document.querySelectorAll("form input");
     let data = {
@@ -132,10 +133,6 @@ export default function AddQuizScreen() {
               <div className="input-field col s6">
                 <input
                   id="icon_prefix2"
-                  onChange={(e) => {
-                    setQuiz_name(e.target.value);
-                  }}
-                  value={quiz_name}
                   className="materialize-textarea"
                   placeholder="Enter your Quiz name"
                   name="quiz-name"

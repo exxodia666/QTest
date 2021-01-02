@@ -3,13 +3,12 @@ import Loader from "./Loader";
 import PropTypes from "prop-types"; // ES6
 
 function ListQuiz({ state, handleSelect, selectedQuestion }) {
-  console.log("LIST QUIZ");
-  if (state.questions.length) {
+  if (state().length) {
     return (
       <div>
         <ul className="collection">
-          {state.questions &&
-            state.questions.map((item, index) => {
+          {state() &&
+            state().map((item, index) => {
               return (
                 <li
                   key={index}
@@ -22,7 +21,7 @@ function ListQuiz({ state, handleSelect, selectedQuestion }) {
                       selectedQuestion === index ? "active" : ""
                     }`}
                   >
-                    {index + 1} - {item.question.wording}
+                    {index + 1} - {item}
                   </p>
                 </li>
               );
@@ -37,7 +36,7 @@ function ListQuiz({ state, handleSelect, selectedQuestion }) {
 
 ListQuiz.propTypes = {
   handleSelect: PropTypes.func,
-  state: PropTypes.object,
+  state: PropTypes.func,
   selectedQuestion: PropTypes.number,
 };
 
