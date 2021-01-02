@@ -1,5 +1,4 @@
 import React, { memo, useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import ListQuiz from "../../components/ListQuiz";
@@ -40,16 +39,12 @@ export default memo(function Quiz() {
   if (state.status === 200) {
     return (
       <>
-        <Row>
-          <Col sm={4}>
             <ListQuiz
               selectedAnswers={selectedAnswers}
               state={state}
               handleSelect={handleSelect}
               selectedQuestion={selectedQuestion}
             />
-          </Col>
-          <Col sm={8}>
             <Question
               isDone={state.questions[selectedQuestion].isDone}
               setSelectedAnswers={handleAnswer}
@@ -62,8 +57,6 @@ export default memo(function Quiz() {
                 state.questions[selectedQuestion].question.is_multiple_choice
               }
             />
-          </Col>
-        </Row>
       </>
     );
   } else if (state.status === 404) {

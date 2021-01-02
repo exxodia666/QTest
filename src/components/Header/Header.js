@@ -4,45 +4,64 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 
 export default function Header() {
-  // const history = useHistory();
   const user = useSelector((state) => state.user.user_name);
   console.log("RENDER HEADER");
   return (
-    <header class="header">
-    <div class="container__header">
+    <header className="header">
+      <div className="container__header">
         <div class="header__body">
-            <Link to="/" class="header__logo">
-                <p><span>Q</span>TEST</p>
-            </Link>
+          <Link to="/" className="header__logo">
+            <p>
+              <span>Q</span>TEST
+            </p>
+          </Link>
 
-            <nav class="header__menu__">
-                <ul class="header__list">
-                    <li>
-                        <Link to="/add" class="header__link">Add</Link>
-                    </li>
-                    <li>
-                        <Link to="/contacts" class="header__link">Contacts</Link>
-                    </li>
-                    <li>
-                        <Link to="/about" class="header__link">About Ass</Link>
-                    </li>
-                </ul>
-            </nav>
-            <div class="header__user">
-                <Link to="/results">
-                    <p> Logged as: {user}</p>
+          <nav className="header__menu__">
+            <ul className="header__list">
+              <li>
+                <Link to="/add" className="header__link">
+                  Add
                 </Link>
-            </div>
-            <div class="header__burger">
-                <span>
-
-                </span>
-            </div>
-
-
+              </li>
+              <li>
+                <Link to="/contacts" className="header__link">
+                  Contacts
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="header__link">
+                  About Ass
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <div className="header__user">
+            <Link to="/results">
+              <p> Logged as: {user}</p>
+            </Link>
+          </div>
+          <div
+            className="header__burger"
+            onClick={() => {
+              document
+                .getElementsByClassName("header__burger")[0]
+                .classList.toggle("active");
+              document
+                .getElementsByClassName("header__menu")[0]
+                .classList.toggle("active");
+              document
+                .getElementsByClassName("overlay")[0]
+                .classList.toggle("overlay_active");
+              document
+                .getElementsByClassName("leftbar")[0]
+                .classList.remove("leftbar_active");
+            }}
+          >
+            <span></span>
+          </div>
         </div>
-    </div>
-</header>
+      </div>
+    </header>
   );
 }
 
