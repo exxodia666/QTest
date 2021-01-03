@@ -1,9 +1,18 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
-export default function Header() {
+export default function Header({takeState}) {
+
+const [header, setHeader] = useState("");
+
+  function burger() {
+    setHeader((header == "") ? "active" : "");
+    takeState()
+    // $('.leftbar').removeClass('leftbar_active');
+  }
+
   const user = useSelector((state) => state.user.user_name);
   console.log("RENDER HEADER");
   return (
@@ -16,7 +25,7 @@ export default function Header() {
             </p>
           </Link>
 
-          <nav className="header__menu__">
+          <nav className={`header__menu__ ${header}`}>
             <ul className="header__list">
               <li>
                 <Link to="/add" className="header__link">
@@ -40,23 +49,7 @@ export default function Header() {
               <p> Logged as: {user}</p>
             </Link>
           </div>
-          <div
-            className="header__burger"
-            onClick={() => {
-              document
-                .getElementsByClassName("header__burger")[0]
-                .classList.toggle("active");
-              document
-                .getElementsByClassName("header__menu")[0]
-                .classList.toggle("active");
-              document
-                .getElementsByClassName("overlay")[0]
-                .classList.toggle("overlay_active");
-              document
-                .getElementsByClassName("leftbar")[0]
-                .classList.remove("leftbar_active");
-            }}
-          >
+          <div className={`header__burger ${header}`} onClick={burger}>
             <span></span>
           </div>
         </div>

@@ -1,0 +1,349 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+.checkbox_ {
+    height: 29px;
+    
+  }
+  
+  .checkbox_ p {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 0px;
+            flex: 1 0 0;
+    padding-top: 4px;
+    height: 23;
+    color: #383838;
+    font-size: 16px;
+    margin-left: 10px;
+    margin: 0px;
+  }
+
+
+  .checkbox_ input[type="checkbox_"] {
+    opacity: 0;
+  }
+  
+  .checkbox_ label {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    /*16px width of fake checkbox_ + 6px distance between fake checkbox_ and text*/
+    padding-left: 32px;
+  }
+  
+  .checkbox_ label::before,
+  .checkbox_ label::after {
+    position: absolute;
+    content: "";
+    /*Needed for the line-height to take effect*/
+    display: inline-block;
+  }
+  
+  /*Outer box of the fake checkbox_*/
+  .checkbox_ label::before {
+    height: 18px;
+    width: 18px;
+    border-radius: 2px;
+    border: 2px solid #707070;
+    left: 0px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 26px;
+            flex: 0 0 26px;
+    /*(24px line-height - 16px height of fake checkbox_) / 2 - 1px for the border
+       *to vertically center it.
+       */
+    top: 3px;
+  }
+  
+  /*Checkmark of the fake checkbox_*/
+  .checkbox_ label::after {
+    height: 6px;
+    width: 11px;
+    border-left: 2px solid #707070;
+    border-bottom: 2px solid #707070;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    left: 4px;
+    top: 8px;
+  }
+  
+  /*Hide the checkmark by default*/
+  .checkbox_ input[type="checkbox_"] + label::after {
+    content: none;
+  }
+  
+  /*Unhide on the checked state*/
+  .checkbox_ input[type="checkbox_"]:checked + label::after {
+    content: "";
+  }
+body {
+  margin: 0px;
+  font-family: "Roboto", sans-serif;
+  min-width: 300px;
+}
+
+input {
+  border: 0px;
+  outline: none;
+}
+
+p {
+  margin: 10px 0px 10px 0px;
+}
+
+.content_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: calc(100vh - 50px);
+  padding: 0px 10px 0px 10px;
+}
+
+.content {
+  height: auto;
+  margin: 15px auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 768px;
+          flex: 0 1 768px;
+  max-width: 768px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.title_container {
+  text-align: center;
+}
+
+.title_container p {
+  color: #484848;
+  font-size: 20px;
+}
+
+.test-name_container {
+  margin: 0px 0px 25px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.text-input {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+  border-bottom: 1px solid #4E4E4E;
+  font-size: 16px;
+  padding-bottom: 5px;
+  color: #484848;
+}
+
+.text-input:focus {
+  border-bottom: 2px solid #4185C9;
+  margin-bottom: -1px;
+}
+
+.text-input::-webkit-input-placeholder {
+  color: #989898;
+}
+
+.text-input:-ms-input-placeholder {
+  color: #989898;
+}
+
+.text-input::-ms-input-placeholder {
+  color: #989898;
+}
+
+.text-input::placeholder {
+  color: #989898;
+}
+
+.create-test_form_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.create-test_form {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.question_container {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 15px;
+  border: 1px solid #D9D9D9;
+}
+
+.question-title_container {
+  margin: 0px 0px 25px 0px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  text-align: center;
+  background-color: #E8F3FF;
+}
+
+.question-title_container p {
+  color: #646464;
+  font-size: 18px;
+}
+
+.question-name_container {
+  margin: 0px 0px 25px 0px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.answers_container {
+  margin: 0px 0px 0px 0px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.answers_container .answer_container {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.inp {
+  display: none;
+}
+
+.add-answer-button_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0px 0px 15px 0px;
+}
+
+.add-question-button_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 25px 0px 25px 0px;
+}
+
+.button {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 200px;
+          flex: 0 1 200px;
+  height: 38px;
+  cursor: pointer;
+}
+
+.button p {
+  font-size: 15px;
+}
+
+.add-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #4185C9;
+}
+
+.add-button p {
+  color: #fff;
+  margin: 0;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+}
+
+.add-button .add-img {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  height: auto;
+  margin-right: 8px;
+}
+
+.add-button .add-img div {
+  margin: auto;
+  background: url("add-img.svg") no-repeat center;
+  width: 17px;
+  height: 17px;
+}
+
+.create-button_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0px 0px 25px 0px;
+}
+
+.create-button_container .create-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #E86464;
+}
+
+.create-button_container .create-button p {
+  color: #fff;
+}

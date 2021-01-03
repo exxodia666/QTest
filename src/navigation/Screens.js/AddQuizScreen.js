@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Col } from "react-bootstrap";
 import { add_test, reset_add_test } from "../../redux/actions/add_test";
+import "./styles/create-test.css"
 
 export default function AddQuizScreen() {
   const dispatch = useDispatch();
@@ -116,7 +117,80 @@ export default function AddQuizScreen() {
   }
   if (test_status.status === "idle") {
     return (
-      <Container>
+      <div className="content_container">
+        <div className="content">
+            <div className="title_container">
+                <p>Создать тест</p>
+            </div>
+            <div className="test-name_container">
+                <input type="text" className="text-input" placeholder="Название теста"/>
+            </div>
+            <div className="create-test_form_container">
+                <form action="" className="create-test_form">
+                    <div className="question_container">
+                        <div className="question-title_container">
+                            <p>Вопрос 1</p>
+                        </div>
+                        <div className="question-name_container">
+                            <input type="text" className="text-input" placeholder="Название вопроса"/>
+                        </div>
+                        <div className="answers_container">
+                            <div className="answer_container">
+                                <div className="checkbox_">
+                                    <input type="checkbox_" id="checkbox__1" className="inp"/>
+                                    <label for="checkbox__1"></label>
+                                </div>
+                                <input type="text" className="text-input" placeholder="Ответ 1"/>
+                            </div>
+                            <div className="answer_container">
+                                <div className="checkbox_">
+                                    <input type="checkbox_" id="checkbox__2" className="inp"/>
+                                    <label for="checkbox__2"></label>
+                                </div>
+                                <input type="text" className="text-input" placeholder="Ответ 2"/>
+                            </div>
+                        </div>
+                        <div className="add-answer-button_container">
+                            <div className="add-answer-button add-button button">
+                                <div className="add-img">
+                                    <div></div>
+                                </div>
+                                <p>Добавить ответ</p>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div className="add-question-button_container">
+                        <div className="add-question-button add-button button">
+                            <div className="add-img">
+                                <div></div>
+                            </div>
+                            <p>Добавить вопрос</p>
+
+                        </div>
+                    </div>
+
+                    <div className="create-button_container">
+                        <div className="create-button button">
+                            <p>Создать</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    );
+    ///Обработка ошибок 404
+  } else if (test_status.status === 404) {
+    return <p>ERRRROR</p>;
+    ///Екран Успешного добавления теста
+  } else if (test_status.status === 200) {
+    return <p>ADD_TEST_SUCCESS</p>;
+  }
+}
+
+{/* <Container>
         <div
           style={{
             margin: "auto",
@@ -127,13 +201,13 @@ export default function AddQuizScreen() {
         >
           <h1>Создать тест</h1>
         </div>
-        <div className="row">
-          <form className="col s12" onSubmit={normalno}>
-            <div className="row">
-              <div className="input-field col s6">
+        <div classNameName="row">
+          <form classNameName="col s12" onSubmit={normalno}>
+            <div classNameName="row">
+              <div classNameName="input-field col s6">
                 <input
                   id="icon_prefix2"
-                  className="materialize-textarea"
+                  classNameName="materialize-textarea"
                   placeholder="Enter your Quiz name"
                   name="quiz-name"
                 />
@@ -170,7 +244,7 @@ export default function AddQuizScreen() {
                           />
                           <label>
                             <input
-                              type="checkbox"
+                              type="checkbox_"
                               name={`choice-is_correct-${elQ.question_id}-${el.choise_id}`}
                             />
                             <span>this true?</span>
@@ -185,7 +259,7 @@ export default function AddQuizScreen() {
                         addAnswers(elQ.question_id);
                       }}
                       style={{ cursor: "pointer" }}
-                      className="medium material-icons"
+                      classNameName="medium material-icons"
                     >
                       add_circle_outline
                     </i>
@@ -199,27 +273,18 @@ export default function AddQuizScreen() {
             <i
               onClick={addNewQuestion}
               style={{ cursor: "pointer" }}
-              className="medium material-icons"
+              classNameName="medium material-icons"
             >
               fast_forward
             </i>
           </div>
           <button
-            className="btn waves-effect waves-light"
+            classNameName="btn waves-effect waves-light"
             type="submit"
             onClick={saveQuizName}
           >
             Создать тест
-            <i className="material-icons right">send</i>
+            <i classNameName="material-icons right">send</i>
           </button>
         </div>
-      </Container>
-    );
-    ///Обработка ошибок 404
-  } else if (test_status.status === 404) {
-    return <p>ERRRROR</p>;
-    ///Екран Успешного добавления теста
-  } else if (test_status.status === 200) {
-    return <p>ADD_TEST_SUCCESS</p>;
-  }
-}
+      </Container> */}

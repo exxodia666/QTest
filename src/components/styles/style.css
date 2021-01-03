@@ -135,6 +135,13 @@ html body {
   display: -ms-flexbox;
   display: flex;
   font-size: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+}
+
+.quizlist .quizlist_item a:hover {
+  color: #d44b4b;
 }
 
 .quizlist .quizlist_item a span {
@@ -202,7 +209,7 @@ html body {
       -ms-flex: 0 0 37px;
           flex: 0 0 37px;
   background-color: #fff;
-  padding: 8px 10px 8px 10px;
+  padding: 15px 15px 15px 15px;
 }
 
 .complete-btn {
@@ -213,7 +220,7 @@ html body {
   display: -ms-flexbox;
   display: flex;
   background-color: #fff;
-  background-color: #FF350C;
+  background-color: #e57373;
   text-decoration: none;
 }
 
@@ -259,8 +266,8 @@ html body {
 }
 
 .title_container {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 15px;
   text-align: center;
 }
 
@@ -313,7 +320,7 @@ html body {
 
 .buttons_container {
   margin-top: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -526,7 +533,6 @@ hr {
     display: flex;
     text-decoration: none;
     border-radius: 3px;
-    border: 1px solid #484848;
     padding: 8px 25px 7px 25px;
   }
   .list-btn .arrow {
@@ -540,19 +546,19 @@ hr {
     display: flex;
   }
   .list-btn .arrow .arrow_icon {
-    margin-top: 5px;
+    margin-top: 6px;
     width: 10px;
     height: 10px;
     background: url("arrow.svg") no-repeat center;
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    -webkit-transform: rotate(-180deg);
-            transform: rotate(-180deg);
-  }
-  .list-btn .arrow .arrow_icon_active {
-    margin-top: 6px;
     -webkit-transform: rotate(0deg);
             transform: rotate(0deg);
+  }
+  .list-btn .arrow .arrow_icon_active {
+    margin-top: 5px;
+    -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
   }
   .list-btn p {
     -webkit-box-flex: 1;

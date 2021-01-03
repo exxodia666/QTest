@@ -4,12 +4,13 @@ import PropTypes from "prop-types"; // ES6
 import "./styles/style.css";
 
 function ListQuiz({ state, handleSelect, selectedQuestion }) {
-  if (state().length) {
+  console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', state)
+  if (state.length) {
     return (
       <div className="leftbar">
         <div className="quizlist">
-          {state.questions &&
-            state.questions.map((item, index) => {
+          {state &&
+            state.map((item, index) => {
               return (
                 <div className="quizlist_item unvoted">
                   <a key={index}>
@@ -19,12 +20,12 @@ function ListQuiz({ state, handleSelect, selectedQuestion }) {
                       className="quizlist_item_name"
                       onClick={() => handleSelect(index)}
                     >
-                      {item.question.wording}
+                      {item}
                     </p>
 
                     <div
                       className={`icon ${
-                        selectedQuestion === index ? "" : "voted"
+                        selectedQuestion === index ? "voted" : ""
                       }`}
                     >
                       <div></div>

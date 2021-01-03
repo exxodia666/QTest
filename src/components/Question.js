@@ -16,6 +16,7 @@ const Question = ({
   answers,
   imageUrl,
   multiple,
+  overlay
 }) => {
   const dispatch = useDispatch();
 
@@ -50,7 +51,6 @@ const Question = ({
                     value={item.id}
                     id={item.id}
                     type="checkbox"
-                    className="inp"
                   />
 
                   <label>
@@ -75,9 +75,9 @@ const Question = ({
           onClick={(e) => {
             e.preventDefault();
             document.getElementsByClassName('leftbar')[0].classList.toggle('leftbar_active')
-            document.getElementsByClassName('arrow_icon')[0].classList.toggle('arrow_icon_active')
+            //document.getElementsByClassName('arrow_icon')[0].classList.toggle('arrow_icon_active')
             document.getElementsByClassName('header__burger')[0].classList.remove('active')
-            document.getElementsByClassName('header__menu')[0].classList.remove('active')
+            document.getElementsByClassName('header__menu__')[0].classList.remove('active')
             document.getElementsByClassName('overlay')[0].classList.remove('overlay_active')
           }}
         >
@@ -87,10 +87,10 @@ const Question = ({
           </div>
         </a>
       </div>
-      <div className="overlay"
+      <div className={`overlay ${overlay}`}
       onClick={(e)=>{
         document.getElementsByClassName('header__burger')[0].classList.remove('active')
-        document.getElementsByClassName('header__menu')[0].classList.remove('active')
+        document.getElementsByClassName('header__menu__')[0].classList.remove('active')
         document.getElementsByClassName('overlay')[0].classList.remove('overlay_active')
       }}
       ></div>
