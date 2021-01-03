@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Col } from "react-bootstrap";
 import { add_test, reset_add_test } from "../../redux/actions/add_test";
-import "./styles/create-test.css"
+import "./styles/create-test.css";
 
 export default function AddQuizScreen() {
   const dispatch = useDispatch();
@@ -23,19 +22,15 @@ export default function AddQuizScreen() {
       ],
     },
   ]);
-  
+
   React.useEffect(() => {
     return () => {
       dispatch(reset_add_test());
     };
   }, [dispatch]);
 
-  function normalno(el) {
-    el.preventDefault();
-  }
-
   function saveQuizName() {
-    let inputs = document.querySelectorAll("form input");
+    let inputs = document.querySelectorAll("input");
     let data = {
       quiz_name: "",
       questions: [],
@@ -74,7 +69,7 @@ export default function AddQuizScreen() {
           break;
       }
     });
-    //console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", data);
+    console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", data);
     dispatch(add_test(data));
   }
   function addAnswers(el) {
@@ -119,67 +114,94 @@ export default function AddQuizScreen() {
     return (
       <div className="content_container">
         <div className="content">
-            <div className="title_container">
-                <p>Создать тест</p>
-            </div>
-            <div className="test-name_container">
-                <input type="text" className="text-input" placeholder="Название теста"/>
-            </div>
-            <div className="create-test_form_container">
-                <form action="" className="create-test_form">
-                    <div className="question_container">
-                        <div className="question-title_container">
-                            <p>Вопрос 1</p>
-                        </div>
-                        <div className="question-name_container">
-                            <input type="text" className="text-input" placeholder="Название вопроса"/>
-                        </div>
-                        <div className="answers_container">
+          <div className="title_container">
+            <p>Создать тест</p>
+          </div>
+          <div className="test-name_container">
+            <input
+              type="text"
+              className="text-input"
+              name="quiz-name"
+              placeholder="Название теста"
+            />
+          </div>
+          <div className="create-test_form_container">
+            <form action="" className="create-test_form">
+              <div className="question_container">
+                {array.map((elQ) => {
+                  return (
+                    <>
+                      <div className="question-title_container">
+                        <p>Вопрос {elQ.question_id+1}</p>
+                      </div>
+                      <div className="question-name_container">
+                        <input
+                          type="text"
+                          className="text-input"
+                          placeholder="Название вопроса"
+                          name={`question-wording-${elQ.question_id}`}
+                        />
+                      </div>
+                      <div className="answers_container">
+                        {elQ.choises.map((el) => {
+                          return (
                             <div className="answer_container">
-                                <div className="checkbox_">
-                                    <input type="checkbox_" id="checkbox__1" className="inp"/>
-                                    <label for="checkbox__1"></label>
-                                </div>
-                                <input type="text" className="text-input" placeholder="Ответ 1"/>
+                              <div className="checkbox_">
+                                <input
+                                  type="checkbox"
+                                  name={`choice-is_correct-${elQ.question_id}-${el.choise_id}`}
+                                  className="inp"
+                                />
+                                <label for={`checkbox_${el.choise_id}`}></label>
+                              </div>
+                              <input
+                                type="text"
+                                className="text-input"
+                                placeholder={`Ответ ${el.choise_id + 1}`}
+                                name={`choice-text-${elQ.question_id}-${el.choise_id}`}
+                              />
                             </div>
-                            <div className="answer_container">
-                                <div className="checkbox_">
-                                    <input type="checkbox_" id="checkbox__2" className="inp"/>
-                                    <label for="checkbox__2"></label>
-                                </div>
-                                <input type="text" className="text-input" placeholder="Ответ 2"/>
-                            </div>
-                        </div>
+                          );
+                        })}
                         <div className="add-answer-button_container">
-                            <div className="add-answer-button add-button button">
-                                <div className="add-img">
-                                    <div></div>
-                                </div>
-                                <p>Добавить ответ</p>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <div className="add-question-button_container">
-                        <div className="add-question-button add-button button">
+                          <div
+                            onClick={() => {
+                              addAnswers(elQ.question_id);
+                            }}
+                            className="add-answer-button add-button button"
+                          >
                             <div className="add-img">
-                                <div></div>
+                              <div></div>
                             </div>
                             <p>Добавить вопрос</p>
-
+                          </div>
                         </div>
-                    </div>
+                      </div>
+                    </>
+                  );
+                })}
+              </div>
+              <div className="add-question-button_container">
+                <div
+                  onClick={addNewQuestion}
+                  className="add-question-button add-button button"
+                >
+                  <div className="add-img">
+                    <div></div>
+                  </div>
+                  <p>Добавить вопрос</p>
+                </div>
+              </div>
 
-                    <div className="create-button_container">
-                        <div className="create-button button">
-                            <p>Создать</p>
-                        </div>
-                    </div>
-                </form>
-            </div>
+              <div className="create-button_container">
+                <div className="create-button button" onClick={saveQuizName}>
+                  <p>Создать</p>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
-    </div>
+      </div>
     );
     ///Обработка ошибок 404
   } else if (test_status.status === 404) {
@@ -190,7 +212,8 @@ export default function AddQuizScreen() {
   }
 }
 
-{/* <Container>
+{
+  /* <Container>
         <div
           style={{
             margin: "auto",
@@ -287,4 +310,5 @@ export default function AddQuizScreen() {
             <i classNameName="material-icons right">send</i>
           </button>
         </div>
-      </Container> */}
+      </Container> */
+}

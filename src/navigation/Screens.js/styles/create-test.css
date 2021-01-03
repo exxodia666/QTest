@@ -17,7 +17,7 @@
   }
 
 
-  .checkbox_ input[type="checkbox_"] {
+  .checkbox_ input[type="checkbox"] {
     opacity: 0;
   }
   
@@ -68,12 +68,12 @@
   }
   
   /*Hide the checkmark by default*/
-  .checkbox_ input[type="checkbox_"] + label::after {
+  .checkbox_ input[type="checkbox"] + label::after {
     content: none;
   }
   
   /*Unhide on the checked state*/
-  .checkbox_ input[type="checkbox_"]:checked + label::after {
+  .checkbox_ input[type="checkbox"]:checked + label::after {
     content: "";
   }
 body {
