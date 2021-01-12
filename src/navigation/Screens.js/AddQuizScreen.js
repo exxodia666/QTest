@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { add_test, reset_add_test } from "../../redux/actions/add_test";
 import QuestionComponent from "../../components/Form/Question";
-//import "./styles/create-test.css";
-
+import "./styles/create-test.css";
+import { Container } from "react-bootstrap";
 export default function AddQuizScreen() {
   const dispatch = useDispatch();
   const test_status = useSelector((state) => state.add_test);
@@ -88,17 +88,17 @@ export default function AddQuizScreen() {
       ...prevArray.map((e) =>
         e.question_id === el
           ? {
-            ...e,
-            choises: [
-              ...e.choises,
-              {
-                choise_id:
-                  prevArray[el].choises[prevArray[el].choises.length - 1]
-                    .choise_id + 1,
-                isCorect: false,
-              },
-            ],
-          }
+              ...e,
+              choises: [
+                ...e.choises,
+                {
+                  choise_id:
+                    prevArray[el].choises[prevArray[el].choises.length - 1]
+                      .choise_id + 1,
+                  isCorect: false,
+                },
+              ],
+            }
           : e
       ),
     ]);
@@ -137,7 +137,7 @@ export default function AddQuizScreen() {
           <h1>Создать тест</h1>
         </div>
         <div className="row">
-          <form className="col s12" onSubmit={normalno}>
+          <form className="col s12">
             <div className="row">
               <div className="input-field col s6">
                 <input
@@ -181,6 +181,7 @@ export default function AddQuizScreen() {
               fast_forward
             </i>
           </div>
+          <button onClick={saveQuizName}>Add</button>
         </div>
       </Container>
     );
@@ -246,13 +247,13 @@ export default function AddQuizScreen() {
   //                           name={`choice-text-${elQ.question_id}-${el.choise_id}`}
   //                           placeholder="Название опроса"
   //                         />
-                          // <label>
-                          //   <input
-                          //     type="checkbox_"
-                          //     name={`choice-is_correct-${elQ.question_id}-${el.choise_id}`}
-                          //   />
-                          //   <span>this true?</span>
-                          // </label>
+  // <label>
+  //   <input
+  //     type="checkbox_"
+  //     name={`choice-is_correct-${elQ.question_id}-${el.choise_id}`}
+  //   />
+  //   <span>this true?</span>
+  // </label>
   //                       </>
   //                     );
   //                   })}
@@ -291,14 +292,11 @@ export default function AddQuizScreen() {
   //           <i classNameName="material-icons right">send</i>
   //         </button>
   //       </div>
-  //     </> 
+  //     </>
 }
 
-
-
-
-
-{/* <div className="content_container">
+{
+  /* <div className="content_container">
         <div className="content">
           <div className="title_container">
             <p>Создать тест</p>
@@ -387,4 +385,5 @@ export default function AddQuizScreen() {
             </form>
           </div>
         </div>
-      </div> */}
+      </div> */
+}
