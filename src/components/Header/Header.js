@@ -9,7 +9,7 @@ export default function Header({ takeState }) {
 
   function burger() {
     setHeader((header == "") ? "active" : "");
-    takeState()
+    //takeState()
     // $('.leftbar').removeClass('leftbar_active');
   }
 

@@ -96,7 +96,7 @@ const Question = ({
         </a>
       </div>
       <div
-        className={`overlay ${overlay}`}
+        className={`overlay`}
         onClick={(e) => {
           document
             .getElementsByClassName("header__burger")[0]
