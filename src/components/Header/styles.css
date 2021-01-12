@@ -131,88 +131,20 @@ a {
   font-size: 15px;
   color: #757575;
   
-}
-.header__list li a:hover{
-  transition: all 0.3s;
-  color: #2e2e2e;
-}
-
-.header__link {
-
-  font-size: 18px;
-  text-decoration: none;
-  outline: none;
-}
-
-@media (max-width: 767px) {
-  .header__burger {
-    display: block;
-    position: relative;
-    width: 25px;
-    height: 20px;
-    z-index: 5;
-  }
-  .header__burger.active:before {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-    top: 9px;
-  }
-  .header__burger.active:after {
-    -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-    bottom: 9px;
-  }
-  .header__burger.active span {
-    -webkit-transform: scale(0);
-            transform: scale(0);
-  }
-  .header__burger span {
-    position: absolute;
-    background-color: black;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    top: 9px;
-    -webkit-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-  }
-  .header__burger:before {
-    content: '';
-    background-color: black;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    left: 0;
-    top: 1px;
-    -webkit-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-  }
-  .header__burger:after {
-    content: '';
-    background-color: black;
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    left: 0;
-    bottom: 1px;
-    -webkit-transition: all 0.3s ease 0s;
-    transition: all 0.3s ease 0s;
-  }
-  .header__menu {
-    position: fixed;
-    top: calc(-100%);
-    left: 0;
-    width: 100%;
-    height: auto;
-    background-color: #fff;
-    padding: 70px 0px 0px 0px;
-    z-index: 3;
-    -webkit-transition: all 0.3s ease 0s;
-    transition: all 0.7s ease 0s;
-    border-bottom: 1px solid #afafaf;
-  }
-  .header__menu.active {
-    top: 0;
+ }
+ .header__user a{
+   max-width: 200px;
+   font-size: 14px;
+   color: #2775FF;
+   }
+ .header__user a p{
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+ }
+ 
+ .header__burger {
+   display: none;
    
   }
   .header__list {

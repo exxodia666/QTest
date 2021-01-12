@@ -1,11 +1,11 @@
-import React, {useState, useContext} from "react";
+import React, { useState, useContext } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
-export default function Header({takeState}) {
+export default function Header({ takeState }) {
 
-const [header, setHeader] = useState("");
+  const [header, setHeader] = useState("");
 
   function burger() {
     setHeader((header == "") ? "active" : "");

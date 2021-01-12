@@ -76,17 +76,17 @@ export default function AddQuizScreen() {
       ...prevArray.map((e) =>
         e.question_id === el
           ? {
-              ...e,
-              choises: [
-                ...e.choises,
-                {
-                  choise_id:
-                    prevArray[el].choises[prevArray[el].choises.length - 1]
-                      .choise_id + 1,
-                  isCorect: false,
-                },
-              ],
-            }
+            ...e,
+            choises: [
+              ...e.choises,
+              {
+                choise_id:
+                  prevArray[el].choises[prevArray[el].choises.length - 1]
+                    .choise_id + 1,
+                isCorect: false,
+              },
+            ],
+          }
           : e
       ),
     ]);
@@ -156,32 +156,39 @@ export default function AddQuizScreen() {
                                 </label>
                               </div>
                               <input
-                                type="text"
-                                className="text-input"
-                                placeholder={`Ответ ${el.choise_id + 1}`}
-                                name={`choice-text-${elQ.question_id}-${el.choise_id}`}
+                                type="checkbox"
+                                name={`choice-is_correct-${elQ.question_id}-${el.choise_id}`}
+                                className="inp"
                               />
+                              <label for={`checkbox_${el.choise_id}`}></label>
                             </div>
-                          );
-                        })}
-                        <div className="add-answer-button_container">
-                          <div
-                            onClick={() => {
-                              addAnswers(elQ.question_id);
-                            }}
-                            className="add-answer-button add-button button"
-                          >
-                            <div className="add-img">
-                              <div></div>
-                            </div>
-                            <p>Добавить вопрос</p>
+                            <input
+                              type="text"
+                              className="text-input"
+                              placeholder={`Ответ ${el.choise_id + 1}`}
+                              name={`choice-text-${elQ.question_id}-${el.choise_id}`}
+                            />
                           </div>
+                        );
+                      })}
+                      <div className="add-answer-button_container">
+                        <div
+                          onClick={() => {
+                            addAnswers(elQ.question_id);
+                          }}
+                          className="add-answer-button add-button button"
+                        >
+                          <div className="add-img">
+                            <div></div>
+                          </div>
+                          <p>Добавить ответ</p>
                         </div>
                       </div>
-                    </>
-                  );
-                })}
-              </div>
+                    </div>
+                  </div>
+                );
+              })}
+
               <div className="add-question-button_container">
                 <div
                   onClick={addNewQuestion}

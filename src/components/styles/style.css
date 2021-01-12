@@ -69,13 +69,14 @@ html body {
 }
 
 .leftbar {
+  margin-top: 1px;
   height: calc(100vh - 50px);
   width: 30%;
   left: 0px;
   right: 0px;
   position: absolute;
   float: left;
-  z-index: 2;
+  z-index: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -232,6 +233,11 @@ html body {
   color: #fff;
 }
 
+.complete-btn:hover {
+  border-bottom: 3px solid #FFC2C2;
+  margin-bottom: -3px;
+}
+
 .list-btn_container {
   display: none;
 }
@@ -331,6 +337,7 @@ html body {
 
 .button_vote {
   cursor: pointer;
+  margin-top: 3px;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 200px;
           flex: 0 0 200px;
@@ -344,6 +351,11 @@ html body {
   border: 0px;
   font-size: 16px;
   outline: none;
+}
+
+.button_vote:hover {
+  border-bottom: 3px solid #C2E1FF;
+  margin-top: 3px;
 }
 
 .button_voted {
@@ -386,6 +398,10 @@ hr {
   font-size: 16px;
   margin-left: 10px;
   margin: 0px;
+}
+
+.checkbox p:hover {
+  color: black;
 }
 
 .overlay {
@@ -546,19 +562,19 @@ hr {
     display: flex;
   }
   .list-btn .arrow .arrow_icon {
-    margin-top: 6px;
+    margin-top: 5px;
     width: 10px;
     height: 10px;
     background: url("arrow.svg") no-repeat center;
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  .list-btn .arrow .arrow_icon_active {
-    margin-top: 5px;
     -webkit-transform: rotate(-180deg);
             transform: rotate(-180deg);
+  }
+  .list-btn .arrow .arrow_icon_active {
+    margin-top: 6px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
   }
   .list-btn p {
     -webkit-box-flex: 1;
