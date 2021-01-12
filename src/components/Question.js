@@ -1,11 +1,8 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types"; // ES6
-import { Container, Button, Image, Row, Col, Alert } from "react-bootstrap";
-import { List, ListItem } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setDone, setSelected } from "../redux/actions/show_quizzes";
 //import ModalComponent from "./Modal";
-//import { Modal } from "bootstrap";
 import "./styles/style.css";
 
 const Question = ({
@@ -16,7 +13,7 @@ const Question = ({
   answers,
   imageUrl,
   multiple,
-  overlay
+  overlay,
 }) => {
   const dispatch = useDispatch();
 
@@ -65,6 +62,10 @@ const Question = ({
               type="button"
               className="button_vote button"
               value="Ответить"
+              disabled={isDone}
+              onClick={() => {
+                dispatch(setDone(id));
+              }}
             />
           </div>
         </div>
@@ -74,11 +75,18 @@ const Question = ({
           className="list-btn"
           onClick={(e) => {
             e.preventDefault();
-            document.getElementsByClassName('leftbar')[0].classList.toggle('leftbar_active')
-            //document.getElementsByClassName('arrow_icon')[0].classList.toggle('arrow_icon_active')
-            document.getElementsByClassName('header__burger')[0].classList.remove('active')
-            document.getElementsByClassName('header__menu__')[0].classList.remove('active')
-            document.getElementsByClassName('overlay')[0].classList.remove('overlay_active')
+            document
+              .getElementsByClassName("leftbar")[0]
+              .classList.toggle("leftbar_active");
+            document
+              .getElementsByClassName("header__burger")[0]
+              .classList.remove("active");
+            document
+              .getElementsByClassName("header__menu__")[0]
+              .classList.remove("active");
+            document
+              .getElementsByClassName("overlay")[0]
+              .classList.remove("overlay_active");
           }}
         >
           <p>Список</p>
@@ -87,12 +95,19 @@ const Question = ({
           </div>
         </a>
       </div>
-      <div className={`overlay ${overlay}`}
-      onClick={(e)=>{
-        document.getElementsByClassName('header__burger')[0].classList.remove('active')
-        document.getElementsByClassName('header__menu__')[0].classList.remove('active')
-        document.getElementsByClassName('overlay')[0].classList.remove('overlay_active')
-      }}
+      <div
+        className={`overlay ${overlay}`}
+        onClick={(e) => {
+          document
+            .getElementsByClassName("header__burger")[0]
+            .classList.remove("active");
+          document
+            .getElementsByClassName("header__menu__")[0]
+            .classList.remove("active");
+          document
+            .getElementsByClassName("overlay")[0]
+            .classList.remove("overlay_active");
+        }}
       ></div>
     </>
   );

@@ -25,7 +25,7 @@ const [header, setHeader] = useState("");
             </p>
           </Link>
 
-          <nav className={`header__menu__ ${header}`}>
+          <nav className={`header__menu ${header}`}>
             <ul className="header__list">
               <li>
                 <Link to="/add" className="header__link">

@@ -1,0 +1,122 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+html body {
+  margin: 0px;
+  font-family: "Roboto", sans-serif;
+}
+
+p {
+  margin: 0;
+  cursor: default;
+}
+
+.content_container {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: calc(100vh - 50px);
+  padding: 0px 10px 0px 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: auto;
+}
+
+.content {
+  margin: 0px 0px 20px 0px;
+  max-width: 768px;
+}
+
+.title_container {
+  text-align: center;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+
+.title_container p {
+  color: #484848;
+  font-size: 20px;
+}
+
+.quizbox_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.quizbox {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #E8F3FF;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.quiz-info {
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.quiz-info .quiz-title {
+  -webkit-box-flex: 2;
+      -ms-flex: 2 0 0px;
+          flex: 2 0 0;
+}
+
+.quiz-info .quiz-title p {
+  color: #484848;
+  font-size: calc(12px + 5 * (100vw / 1920));
+}
+
+.quiz-info .quiz-quantity {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  margin-left: 10px;
+}
+
+.quiz-info .quiz-quantity p {
+  color: #484848;
+  font-size: calc(9px + 5 * (100vw / 1920));
+}
+
+.quiz-result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.quiz-result p {
+  color: #484848;
+  font-size: calc(9px + 5 * (100vw / 1920));
+}
