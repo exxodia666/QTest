@@ -1,0 +1,596 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+p {
+  margin: 0px;
+}
+
+*::-moz-selection {
+  background-color: transparent;
+}
+
+*::selection {
+  background-color: transparent;
+}
+
+*::-moz-selection {
+  background-color: transparent;
+}
+
+* {
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  /*IE10*/
+  -ms-user-select: none;
+  user-select: none;
+  /*You just need this if you are only concerned with android and not desktop browsers.*/
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+input[type="text"], textarea, [contenteditable] {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.current {
+  background-color: #E8F3FF !important;
+}
+
+.current span {
+  color: #414141 !important;
+}
+
+.current .quizlist_item_name {
+  color: #414141 !important;
+}
+
+a {
+  outline: none;
+}
+
+html body {
+  margin: 0px;
+  font-family: "Roboto", sans-serif;
+}
+
+.main_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.navbar {
+  height: 50px;
+  background-color: #414141;
+}
+
+.leftbar {
+  margin-top: 1px;
+  height: calc(100vh - 50px);
+  width: 30%;
+  left: 0px;
+  right: 0px;
+  position: absolute;
+  float: left;
+  z-index: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-right: 1px solid #b9b9b9;
+}
+
+.quizlist {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: auto;
+  padding-bottom: 5px;
+  background-color: #fff;
+  /*-----SCROLLBAR----*/
+  /*&::-webkit-scrollbar {
+        width: 10px;
+        background-color: #f9f9fd;
+      }
+      
+    &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #838383;
+      }
+      
+    &::-webkit-scrollbar-track {
+        width: 0px;
+        background-color: #e4e4e4;
+    }*/
+}
+
+.quizlist .quizlist_item {
+  padding: 10px 15px 10px 15px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-family: "Roboto", sans-serif;
+}
+
+.quizlist .quizlist_item a {
+  color: #494949;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 15px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+}
+
+.quizlist .quizlist_item a:hover {
+  color: #d44b4b;
+}
+
+.quizlist .quizlist_item a span {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 15px;
+          flex: 0 0 15px;
+  font-weight: 400;
+}
+
+.quizlist .quizlist_item a p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+  margin: 0;
+  margin-right: 15px;
+  margin-left: 5px;
+}
+
+.quizlist .voted a {
+  color: #D6D6D6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.quizlist .voted .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  height: auto;
+}
+
+.quizlist .voted .icon div {
+  margin: auto;
+  background: url("voted.svg") no-repeat center;
+  width: 18px;
+  height: 18px;
+}
+
+.quizlist .unvoted .icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  height: auto;
+}
+
+.quizlist .unvoted .icon div {
+  margin: auto;
+  background: url("unvoted.svg") no-repeat center;
+  width: 18px;
+  height: 15px;
+}
+
+.complete-btn_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 37px;
+          flex: 0 0 37px;
+  background-color: #fff;
+  padding: 15px 15px 15px 15px;
+}
+
+.complete-btn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fff;
+  background-color: #e57373;
+  text-decoration: none;
+}
+
+.complete-btn p {
+  font-family: "Roboto", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  margin: auto;
+  color: #fff;
+}
+
+.complete-btn:hover {
+  border-bottom: 3px solid #FFC2C2;
+  margin-bottom: -3px;
+}
+
+.list-btn_container {
+  display: none;
+}
+
+.content {
+  height: calc(100vh - 50px);
+  background-color: #fff;
+  width: 70%;
+  float: right;
+  position: relative;
+  z-index: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: auto;
+}
+
+.quiz_body {
+  padding-left: 20px;
+  padding-right: 20px;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: auto;
+}
+
+.title_container {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.title_container p {
+  font-size: 18px;
+  color: #646464;
+}
+
+.container-fluid {
+  overflow-x: hidden;
+}
+
+.quizname {
+  background-color: #E8F3FF;
+  margin: 0px 0px 50px 0px;
+  padding: 10px 0px 12px 15px;
+  height: auto;
+  position: relative;
+}
+
+.quizname p {
+  color: #646464;
+  font-size: 17px;
+  margin-bottom: 0px;
+}
+
+.image_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 30px;
+}
+
+.description_container {
+  padding-bottom: 20px;
+  border-bottom: 1px solid black;
+}
+
+.description_container p {
+  font-size: 15px;
+  color: #868686;
+}
+
+.buttons_container {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.button_vote {
+  cursor: pointer;
+  margin-top: 3px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 200px;
+          flex: 0 0 200px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  height: auto;
+  color: #fff;
+  background-color: #4185C9;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 0px;
+  font-size: 16px;
+  outline: none;
+}
+
+.button_vote:hover {
+  border-bottom: 3px solid #C2E1FF;
+  margin-top: 3px;
+}
+
+.button_voted {
+  background-color: #979797;
+}
+
+.accomplish_button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-decoration: none;
+}
+
+/*------------------------------------------------------------------------------CHECKBOX*/
+.inp {
+  display: none;
+}
+
+.checkbox_container {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+hr {
+  color: #414141;
+}
+
+.checkbox {
+  height: 29;
+  margin-bottom: 15px;
+}
+
+.checkbox p {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+  padding-top: 4px;
+  height: 23;
+  color: #383838;
+  font-size: 16px;
+  margin-left: 10px;
+  margin: 0px;
+}
+
+.checkbox p:hover {
+  color: black;
+}
+
+.overlay {
+  height: calc(100vh - 50px);
+  position: relative;
+  z-index: -2;
+  background-color: black;
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.overlay_active {
+  z-index: 2;
+  opacity: 0.7;
+}
+
+.checkbox input[type="checkbox"] {
+  opacity: 0;
+}
+
+.checkbox label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  /*16px width of fake checkbox + 6px distance between fake checkbox and text*/
+  padding-left: 32px;
+}
+
+.checkbox label::before,
+.checkbox label::after {
+  position: absolute;
+  content: "";
+  /*Needed for the line-height to take effect*/
+  display: inline-block;
+}
+
+/*Outer box of the fake checkbox*/
+.checkbox label::before {
+  height: 18px;
+  width: 18px;
+  border-radius: 2px;
+  border: 2px solid #707070;
+  left: 0px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 26px;
+          flex: 0 0 26px;
+  /*(24px line-height - 16px height of fake checkbox) / 2 - 1px for the border
+     *to vertically center it.
+     */
+  top: 3px;
+}
+
+/*Checkmark of the fake checkbox*/
+.checkbox label::after {
+  height: 7px;
+  width: 12px;
+  border-left: 2px solid #707070;
+  border-bottom: 2px solid #707070;
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  left: 4px;
+  top: 7px;
+}
+
+/*Hide the checkmark by default*/
+.checkbox input[type="checkbox"] + label::after {
+  content: none;
+}
+
+/*Unhide on the checked state*/
+.checkbox input[type="checkbox"]:checked + label::after {
+  content: "";
+}
+
+/*------------------------------------------------------------------------------CHECKBOX*/
+@media (max-width: 768px) {
+  .quiz_body {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .button_vote {
+    font-size: 17px;
+  }
+  .content {
+    height: calc(100vh - 100px);
+    overflow: visible;
+  }
+  .leftbar {
+    -webkit-transform: translateY(calc(+100%));
+            transform: translateY(calc(+100%));
+    width: 100%;
+    position: fixed;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    height: calc(100vh - 100px);
+  }
+  .quizlist .quizlist_item {
+    font-size: 15px;
+  }
+  .quizlist::-webkit-scrollbar {
+    width: 0px;
+  }
+  .quizlist::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+  }
+  .quizlist::-webkit-scrollbar-track {
+    width: 0px;
+  }
+  .quizlist .voted .icon div {
+    background: url("voted.svg") no-repeat center;
+  }
+  .quizlist .unvoted .icon div {
+    background: url("unvoted_s.svg") no-repeat center;
+  }
+  .leftbar_active {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .content {
+    width: 100%;
+  }
+  .list-btn_container {
+    background-color: #fff;
+    width: calc(100%);
+    bottom: 0;
+    position: fixed;
+    z-index: 5;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 50px;
+    -webkit-box-shadow: 0px -2px 3px #b1b1b1;
+            box-shadow: 0px -2px 3px #b1b1b1;
+  }
+  .list-btn {
+    margin: auto;
+    background-color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-decoration: none;
+    border-radius: 3px;
+    padding: 8px 25px 7px 25px;
+  }
+  .list-btn .arrow {
+    margin-left: 5px;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    height: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .list-btn .arrow .arrow_icon {
+    margin-top: 5px;
+    width: 10px;
+    height: 10px;
+    background: url("arrow.svg") no-repeat center;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+  }
+  .list-btn .arrow .arrow_icon_active {
+    margin-top: 6px;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  .list-btn p {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 0px;
+            flex: 1 0 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 15px;
+    font-weight: 500;
+    color: #484848;
+    text-decoration: none;
+  }
+  .button_vote {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 0px;
+            flex: 1 0 0;
+  }
+}

@@ -1,13 +1,16 @@
-import React, { memo, useEffect, useState } from "react";
-import { Col, Row } from "react-bootstrap";
+import React, { memo, useEffect, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import ListQuiz from "../../components/ListQuiz";
 import Loader from "../../components/Loader";
 import Question from "../../components/Question";
 import { clearQuiz, loadQuizzes } from "../../redux/actions/show_quizzes";
+import { Context } from "../MainNavigator";
 
 export default memo(function Quiz() {
+
+  const overlay =  useContext(Context)
+
   let { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
@@ -41,16 +44,13 @@ export default memo(function Quiz() {
   if (state.status === 200) {
     return (
       <>
-        <Row>
-          <Col sm={4}>
             <ListQuiz
               selectedAnswers={selectedAnswers}
-              state={stateToQuestionName}
+              state={stateToQuestionName()}
               handleSelect={handleSelect}
               selectedQuestion={selectedQuestion}
+              
             />
-          </Col>
-          <Col sm={8}>
             <Question
               isDone={state.questions[selectedQuestion].isDone}
               setSelectedAnswers={handleAnswer}
@@ -62,9 +62,8 @@ export default memo(function Quiz() {
               multiple={
                 state.questions[selectedQuestion].question.is_multiple_choice
               }
+              overlay={overlay}
             />
-          </Col>
-        </Row>
       </>
     );
   } else if (state.status === 404) {

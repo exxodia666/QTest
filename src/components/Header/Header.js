@@ -1,48 +1,60 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles.css";
 
-export default function Header() {
-  // const history = useHistory();
+export default function Header({ takeState }) {
+
+  const [header, setHeader] = useState("");
+
+  function burger() {
+    setHeader((header == "") ? "active" : "");
+    takeState()
+    // $('.leftbar').removeClass('leftbar_active');
+  }
+
   const user = useSelector((state) => state.user.user_name);
   console.log("RENDER HEADER");
   return (
-    <header class="header">
-    <div class="container__header">
+    <header className="header">
+      <div className="container__header">
         <div class="header__body">
-            <Link to="/" class="header__logo">
-                <p><span>Q</span>TEST</p>
-            </Link>
+          <Link to="/" className="header__logo">
+            <p>
+              <span>Q</span>TEST
+            </p>
+          </Link>
 
-            <nav class="header__menu__">
-                <ul class="header__list">
-                    <li>
-                        <Link to="/add" class="header__link">Add</Link>
-                    </li>
-                    <li>
-                        <Link to="/contacts" class="header__link">Contacts</Link>
-                    </li>
-                    <li>
-                        <Link to="/about" class="header__link">About Ass</Link>
-                    </li>
-                </ul>
-            </nav>
-            <div class="header__user">
-                <Link to="/results">
-                    <p> Logged as: {user}</p>
+          <nav className={`header__menu ${header}`}>
+            <ul className="header__list">
+              <li>
+                <Link to="/add" className="header__link">
+                  Add
                 </Link>
-            </div>
-            <div class="header__burger">
-                <span>
-
-                </span>
-            </div>
-
-
+              </li>
+              <li>
+                <Link to="/contacts" className="header__link">
+                  Contacts
+                </Link>
+              </li>
+              <li>
+                <Link to="/about" className="header__link">
+                  About Ass
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <div className="header__user">
+            <Link to="/results">
+              <p> Logged as: {user}</p>
+            </Link>
+          </div>
+          <div className={`header__burger ${header}`} onClick={burger}>
+            <span></span>
+          </div>
         </div>
-    </div>
-</header>
+      </div>
+    </header>
   );
 }
 
