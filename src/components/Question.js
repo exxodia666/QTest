@@ -4,9 +4,6 @@ import { Container, Button, Image, Row, Col, Alert } from "react-bootstrap";
 import { List, ListItem } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { setDone, setSelected } from "../redux/actions/show_quizzes";
-//import ModalComponent from "./Modal";
-//import { Modal } from "bootstrap";
-
 const Question = ({
   isDone,
   id,
@@ -21,7 +18,7 @@ const Question = ({
   const handleSelectItem = (e) => {
     dispatch(setSelected({ answ: e.target.value, id }));
   };
-  console.log(`QUESTION ${text}`);
+  console.log(`QUESTION ${imageUrl}`);
   return (
     <Container>
       {/* <Modal open={open} setOpen={toggleOpen} src={imageUrl} /> */}
@@ -39,7 +36,7 @@ const Question = ({
                 className="Img"
                 width={350}
                 //height={300}
-                src={imageUrl}
+                src={"http://134.249.181.40:7777" + imageUrl.picture}
                 rounded
               />
             </Col>
