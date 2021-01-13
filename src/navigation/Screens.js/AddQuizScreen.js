@@ -36,8 +36,8 @@ export default function AddQuizScreen() {
       quiz_name: "",
       questions: [],
     };
+    console.log(inputs);
     Array.from(inputs).forEach((el) => {
-      console.log(el);
       let armel = el.name.split("-");
       switch (armel[0]) {
         case "quiz":
@@ -128,13 +128,18 @@ export default function AddQuizScreen() {
     return (
       <div className="content_container">
         <div className="content__">
-            <div className="title_container">
-                <p>Создать тест</p>
-            </div>
-            <div className="test-name_container">
-                <input type="text" name="quiz-name" class="text-input" placeholder="Название теста"/>
-            </div>
-            <div className="questions_global_container">
+          <div className="title_container">
+            <p>Создать тест</p>
+          </div>
+          <div className="test-name_container">
+            <input
+              type="text"
+              name="quiz-name"
+              class="text-input"
+              placeholder="Название теста"
+            />
+          </div>
+          <form name="quiz" className="questions_global_container">
             {array.map((elQ) => {
               console.log(elQ);
               return (
@@ -145,25 +150,24 @@ export default function AddQuizScreen() {
                 />
               );
             })}
+          </form>
+          <div className="add-question-button_container">
+            <div
+              onClick={addNewQuestion}
+              className="add-question-button add-button button"
+            >
+              <div className="add-img">
+                <div></div>
+              </div>
+              <p>Добавить вопрос</p>
             </div>
-            <div className="add-question-button_container">
-                <div 
-                onClick={addNewQuestion}
-                className="add-question-button add-button button">
-                    <div className="add-img">
-                        <div></div>
-                    </div>
-                    <p>Добавить вопрос</p>
-                </div>
-            </div>
+          </div>
 
-            <div className="create-button_container">
-                <div 
-                onClick={saveQuizName}
-                className="create-button button">
-                    <p>Создать</p>
-                </div>
+          <div className="create-button_container">
+            <div onClick={saveQuizName} className="create-button button">
+              <p>Создать</p>
             </div>
+          </div>
         </div>
       </div>
     );
@@ -176,7 +180,8 @@ export default function AddQuizScreen() {
   }
 }
 
-{/* <Container>
+{
+  /* <Container>
         <div
           style={{
             margin: "auto",
@@ -234,4 +239,5 @@ export default function AddQuizScreen() {
           </div>
           <button onClick={saveQuizName}>Add</button>
         </div>
-      </Container> */}
+      </Container> */
+}

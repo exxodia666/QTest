@@ -47,58 +47,64 @@ export default function QuestionComponent({
   const [key, setKey] = useState(null);
   return (
     <div className="question_container">
-      <div classNme="question-title_container">
+      <div className="question-title_container">
         <p>Вопрос {question_id + 1}</p>
       </div>
       <div className="question-name_container">
         <input type="text" class="text-input" placeholder="Название вопроса" />
       </div>
-      <div class="add-image_container">
-        <div className="form-group">
-          <input
-            onChange={(e) => {
-              sendImages(e.target.files[0]);
-            }}
-            type="file"
-            name="file"
-            id="file"
-            className="input-file"
-          />
-          <label for="file" className="btn-tertiary">
-            <div></div>
-            <span className="js-fileName">Загрузить картинку</span>
-          </label>
-        </div>
-      </div>
-      <div className="img_container">
-        <div className="img-wrap">
-          <img src={"http://134.249.181.40:7777" + image} className="img" />
-          <div onClick={deleteImage} className="del-img-btn">
-            <div></div>
+
+      {!image && (
+        <div className="add-image_container">
+          <div className="form-group">
+            <input
+              onChange={(e) => {
+                sendImages(e.target.files[0]);
+              }}
+              type="file"
+              name="file"
+              id="file"
+              className="input-file"
+            />
+            <label for="file" className="btn-tertiary">
+              <div></div>
+              <span className="js-fileName">Загрузить картинку</span>
+            </label>
           </div>
         </div>
-      </div>
+      )}
+
+      {image && (
+        <div className="img_container">
+          <div className="img-wrap">
+            <img src={"http://134.249.181.40:7777" + image} className="img" />
+            <div onClick={deleteImage} className="del-img-btn">
+              <div></div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="description_container">
         <textarea
           placeholder="Описание"
-          rows="8"
+          rows="6"
           className="description"
         ></textarea>
       </div>
-      <div className="test">
-        <div className="test-child"></div>
-      </div>
+
       <div className="answers_container">
         {choices.map((el) => {
           return <Choice question_id={question_id} choise_id={el.choise_id} />;
         })}
       </div>
       <div className="add-answer-button_container">
-        <div 
-        onClick={() => {
-          addAnswers(question_id);
-        }}
-        className="add-answer-button add-button button">
+        <div
+          onClick={() => {
+            addAnswers(question_id);
+          }}
+          className="add-answer-button add-button button"
+        >
           <div className="add-img">
             <div></div>
           </div>
