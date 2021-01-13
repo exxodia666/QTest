@@ -16,11 +16,11 @@ const Question = ({
   overlay,
 }) => {
   const dispatch = useDispatch();
+  console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', imageUrl)
 
   const handleSelectItem = (e) => {
     dispatch(setSelected({ answ: e.target.value, id }));
   };
-  console.log(`QUESTION ${imageUrl}`);
   return (
     <>
       <div className="content">
@@ -32,7 +32,7 @@ const Question = ({
             <p>{wording}</p>
           </div>
           <div className="image_container">
-            {imageUrl && <img width={550} src={imageUrl} />}
+            {imageUrl && <img width={550} src={"http://134.249.181.40:7777"+imageUrl.picture} />}
           </div>
           <div className="description_container">
             <p>{text}</p>
@@ -41,6 +41,7 @@ const Question = ({
             {answers.map((item) => {
               return (
                 <div className="checkbox" key={item.id}>
+                  <label>
                   <input
                     disabled={isDone}
                     onChange={handleSelectItem}
@@ -48,9 +49,7 @@ const Question = ({
                     value={item.id}
                     id={item.id}
                     type="checkbox"
-                  />
-
-                  <label>
+                  />                 
                     <p>{item.text}</p>
                   </label>
                 </div>
@@ -82,7 +81,7 @@ const Question = ({
               .getElementsByClassName("header__burger")[0]
               .classList.remove("active");
             document
-              .getElementsByClassName("header__menu__")[0]
+              .getElementsByClassName("header__menu")[0]
               .classList.remove("active");
             document
               .getElementsByClassName("overlay")[0]
@@ -95,20 +94,6 @@ const Question = ({
           </div>
         </a>
       </div>
-      <div
-        className={`overlay`}
-        onClick={(e) => {
-          document
-            .getElementsByClassName("header__burger")[0]
-            .classList.remove("active");
-          document
-            .getElementsByClassName("header__menu__")[0]
-            .classList.remove("active");
-          document
-            .getElementsByClassName("overlay")[0]
-            .classList.remove("overlay_active");
-        }}
-      ></div>
     </>
   );
 };

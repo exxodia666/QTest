@@ -10,16 +10,16 @@ import AddQuizScreen from "./Screens.js/AddQuizScreen";
 export const Context = React.createContext()
 
 function MainNavigator() {
-  const [overlay, setOverlay] = useState("")
+  // const [overlay, setOverlay] = useState("")
 
-  function takeState() {
-    setOverlay((overlay == "") ? "overlay_active" : "")
-  }
+  // function takeState() {
+  //   setOverlay((overlay == "") ? "overlay_active" : "")
+  // }
 
   return (
     <Router>
-      <Context.Provider value={overlay}>
-      <Header takeState={takeState} />
+      <Context.Provider >
+      <Header />
       <Switch>
         <Route exact path="/">
           <UserScreen />

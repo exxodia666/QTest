@@ -1,18 +1,10 @@
 import React from "react";
 import { useEffect } from "react";
-//import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-//import ListQuiz from "../../components/ListQuiz";
 import Loader from "../../../components/Loader/Loader";
-//import Question from "../../components/Question";
 import { sendAnswers } from "../../../redux/actions/send_answers";
-//import { loadQuizzes } from "../../redux/actions/show_quizzes";
-//import Avatar from "@material-ui/core/Avatar";
-//import { Card, CardHeader, IconButton } from "@material-ui/core";
-//import MoreVertIcon from "@material-ui/icons/MoreVert";
 import { clearQuiz } from "../../../redux/actions/show_quizzes";
-//import getQuizName from "../../utils/getQuizName";
 import { useHistory } from "react-router-dom";
 import "./Results.css";
 
@@ -40,7 +32,7 @@ export default function ResultsScreen() {
     return (
       <>
         <div className="content_container">
-          <div className="content">
+          <div className="content__">
             <div className="title_container">
               <p>Результаты</p>
             </div>
@@ -53,9 +45,6 @@ export default function ResultsScreen() {
                         <p>
                         {i.quiz_name}
                         </p>
-                      </div>
-                      <div className="quiz-quantity">
-                      {/* {i.questions_count} вопросов */}
                       </div>
                     </div>
                     <div className="quiz-result">

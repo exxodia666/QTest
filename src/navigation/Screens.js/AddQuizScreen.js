@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { add_test, reset_add_test } from "../../redux/actions/add_test";
 import QuestionComponent from "../../components/Form/Question";
-import "./styles/create-test.css";
+import "./styles/global-master.css";
 import { Container } from "react-bootstrap";
 
 export default function AddQuizScreen() {
@@ -126,7 +126,57 @@ export default function AddQuizScreen() {
   }
   if (test_status.status === "idle") {
     return (
-      <Container>
+      <div className="content_container">
+        <div className="content__">
+            <div className="title_container">
+                <p>Создать тест</p>
+            </div>
+            <div className="test-name_container">
+                <input type="text" name="quiz-name" class="text-input" placeholder="Название теста"/>
+            </div>
+            <div className="questions_global_container">
+            {array.map((elQ) => {
+              console.log(elQ);
+              return (
+                <QuestionComponent
+                  choices={elQ.choises}
+                  addAnswers={addAnswers}
+                  question_id={elQ.question_id}
+                />
+              );
+            })}
+            </div>
+            <div className="add-question-button_container">
+                <div 
+                onClick={addNewQuestion}
+                className="add-question-button add-button button">
+                    <div className="add-img">
+                        <div></div>
+                    </div>
+                    <p>Добавить вопрос</p>
+                </div>
+            </div>
+
+            <div className="create-button_container">
+                <div 
+                onClick={saveQuizName}
+                className="create-button button">
+                    <p>Создать</p>
+                </div>
+            </div>
+        </div>
+      </div>
+    );
+    ///Обработка ошибок 404
+  } else if (test_status.status === 404) {
+    return <p>ERRRROR</p>;
+    ///Екран Успешного добавления теста
+  } else if (test_status.status === 200) {
+    return <p>ADD_TEST_SUCCESS</p>;
+  }
+}
+
+{/* <Container>
         <div
           style={{
             margin: "auto",
@@ -184,114 +234,4 @@ export default function AddQuizScreen() {
           </div>
           <button onClick={saveQuizName}>Add</button>
         </div>
-      </Container>
-    );
-    ///Обработка ошибок 404
-  } else if (test_status.status === 404) {
-    return <p>ERRRROR</p>;
-    ///Екран Успешного добавления теста
-  } else if (test_status.status === 200) {
-    return <p>ADD_TEST_SUCCESS</p>;
-  }
-}
-
-{
-  //  <>
-  //       <div
-  //         style={{
-  //           margin: "auto",
-  //           width: "auto",
-  //           textAlign: "center",
-  //           color: "#e57373",
-  //         }}
-  //       >
-  //         <h1>Создать тест</h1>
-  //       </div>
-  //       <div classNameName="row">
-  //         <form classNameName="col s12" onSubmit={normalno}>
-  //           <div classNameName="row">
-  //             <div classNameName="input-field col s6">
-  //               <input
-  //                 id="icon_prefix2"
-  //                 classNameName="materialize-textarea"
-  //                 placeholder="Enter your Quiz name"
-  //                 name="quiz-name"
-  //               />
-  //             </div>
-  //           </div>
-  //         </form>
-  //       </div>
-  //       <div
-  //         style={{
-  //           margin: "auto",
-  //           width: "auto",
-  //           textAlign: "center",
-  //           color: "#e57373",
-  //         }}
-  //       >
-  //         <h2>Добавить вопрос</h2>
-  //         <form id="quiz">
-  //           {array.map((elQ) => {
-  //             return (
-  //               <div id={`question${elQ.question_id}`}>
-  //                 <input
-  //                   type="text"
-  //                   name={`question-wording-${elQ.question_id}`}
-  //                   placeholder="Название опроса"
-  //                 />
-  //                 <div id="list_answers">
-  //                   {elQ.choises.map((el) => {
-  //                     return (
-  //                       <>
-  //                         <input
-  //                           type="text"
-  //                           name={`choice-text-${elQ.question_id}-${el.choise_id}`}
-  //                           placeholder="Название опроса"
-  //                         />
-  // <label>
-  //   <input
-  //     type="checkbox_"
-  //     name={`choice-is_correct-${elQ.question_id}-${el.choise_id}`}
-  //   />
-  //   <span>this true?</span>
-  // </label>
-  //                       </>
-  //                     );
-  //                   })}
-  //                 </div>
-  //                 <div>
-  //                   <i
-  //                     onClick={() => {
-  //                       addAnswers(elQ.question_id);
-  //                     }}
-  //                     style={{ cursor: "pointer" }}
-  //                     classNameName="medium material-icons"
-  //                   >
-  //                     add_circle_outline
-  //                   </i>
-  //                 </div>
-  //               </div>
-  //             );
-  //           })}
-  //         </form>
-  //         <hr />
-  //         <div>
-  //           <i
-  //             onClick={addNewQuestion}
-  //             style={{ cursor: "pointer" }}
-  //             classNameName="medium material-icons"
-  //           >
-  //             fast_forward
-  //           </i>
-  //         </div>
-  //         <button
-  //           classNameName="btn waves-effect waves-light"
-  //           type="submit"
-  //           onClick={saveQuizName}
-  //         >
-  //           Создать тест
-  //           <i classNameName="material-icons right">send</i>
-  //         </button>
-  //       </div>
-  //     </>
-}
+      </Container> */}

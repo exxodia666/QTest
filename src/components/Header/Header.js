@@ -6,9 +6,11 @@ import "./styles.css";
 export default function Header({ takeState }) {
 
   const [header, setHeader] = useState("");
+  const [overlay, setOverlay] = useState("");
 
   function burger() {
     setHeader((header == "") ? "active" : "");
+    setOverlay((overlay == "") ? "overlay_active" : "")
     //takeState()
     // $('.leftbar').removeClass('leftbar_active');
   }
@@ -17,8 +19,8 @@ export default function Header({ takeState }) {
   console.log("RENDER HEADER");
   return (
     <header className="header">
-      <div className="container__header">
-        <div class="header__body">
+      <div className={`overlay ${overlay}`} ></div>
+        <div className="header__body">
           <Link to="/" className="header__logo">
             <p>
               <span>Q</span>TEST
@@ -53,7 +55,6 @@ export default function Header({ takeState }) {
             <span></span>
           </div>
         </div>
-      </div>
     </header>
   );
 }
