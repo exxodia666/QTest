@@ -19,8 +19,10 @@ const Question = ({
   console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', imageUrl)
 
   const handleSelectItem = (e) => {
+    console.log(e.target.checked)
     dispatch(setSelected({ answ: e.target.value, id }));
   };
+  console.log(isDone)
   return (
     <>
       <div className="content">
@@ -40,8 +42,7 @@ const Question = ({
           <div className="checkbox_container">
             {answers.map((item) => {
               return (
-                <div className="checkbox" key={item.id}>
-                  <label>
+                <div className="checkbox">
                   <input
                     disabled={isDone}
                     onChange={handleSelectItem}
@@ -49,7 +50,8 @@ const Question = ({
                     value={item.id}
                     id={item.id}
                     type="checkbox"
-                  />                 
+                  />
+                  <label htmlFor={item.id}>                
                     <p>{item.text}</p>
                   </label>
                 </div>
@@ -63,6 +65,7 @@ const Question = ({
               value="Ответить"
               disabled={isDone}
               onClick={() => {
+                console.log('Xyi')
                 dispatch(setDone(id));
               }}
             />

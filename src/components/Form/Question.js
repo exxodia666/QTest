@@ -51,7 +51,7 @@ export default function QuestionComponent({
         <p>Вопрос {question_id + 1}</p>
       </div>
       <div className="question-name_container">
-        <input type="text" class="text-input" placeholder="Название вопроса" />
+        <input type="text" class="text-input" placeholder="Название вопроса" name={`question-wording-${question_id}`}/>
       </div>
 
       {!image && (
@@ -90,9 +90,15 @@ export default function QuestionComponent({
           placeholder="Описание"
           rows="6"
           className="description"
+          name={`question-text-${question_id}`}
         ></textarea>
       </div>
-
+      <input
+        disabled={true}
+        type="hidden"
+        value={id}
+        name={`question-image-${question_id}`}
+      />
       <div className="answers_container">
         {choices.map((el) => {
           return <Choice question_id={question_id} choise_id={el.choise_id} />;

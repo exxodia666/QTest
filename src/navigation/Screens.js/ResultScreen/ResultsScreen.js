@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import Loader from "../../../components/Loader/Loader";
+import Loader from "../../../components/Loader";
 import { sendAnswers } from "../../../redux/actions/send_answers";
 import { clearQuiz } from "../../../redux/actions/show_quizzes";
 import { useHistory } from "react-router-dom";

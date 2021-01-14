@@ -427,7 +427,7 @@ hr {
       -ms-flex: 0 0 26px;
           flex: 0 0 26px;
   top: 3px;
-}
+} 
 
 .checkbox label::after {
   height: 7px;

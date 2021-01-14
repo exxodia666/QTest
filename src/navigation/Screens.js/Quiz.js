@@ -38,9 +38,10 @@ export default memo(function Quiz() {
     setSelectedAnswers([...selectedAnswers, answer]);
   };
   const handleSelect = (id) => {
+    console.log(id)
     setSelectedQuestion(id);
   };
-  const stateToQuestionName = () => state.questions.map((i) => i.question.wording);
+  const stateToQuestionName = () => state.questions.map((i) => ({wording:i.question.wording, isDone: i.isDone}));
   if (state.status === 200) {
     return (
       <>

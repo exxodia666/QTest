@@ -31,7 +31,8 @@ export default function AddQuizScreen() {
   }, [dispatch]);
 
   function saveQuizName() {
-    const inputs = document.querySelectorAll("form input");
+    const inputs = document.querySelectorAll("input, textarea");
+    console.log(inputs)
     const data = {
       quiz_name: "",
       questions: [],
@@ -45,17 +46,7 @@ export default function AddQuizScreen() {
           break;
         case "question":
           if (data.questions[parseInt(armel[2])]) {
-            switch (el.type) {
-              case "checkbox":
-                data.questions[parseInt(armel[2])][armel[1]] = el.checked;
-                break;
-              case "text":
-                data.questions[parseInt(armel[2])][armel[1]] = el.value;
-                break;
-              case "hidden":
-                data.questions[parseInt(armel[2])][armel[1]] = el.value;
-                break;
-            }
+            data.questions[parseInt(armel[2])][armel[1]] = el.checked ? el.type == 'checkbox' : el.value;
           } else {
             data.questions[parseInt(armel[2])] = {
               [armel[1]]: el.value !== "on" ? el.value : el.checked,
