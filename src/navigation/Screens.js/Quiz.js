@@ -9,7 +9,6 @@ import { Context } from "../MainNavigator";
 
 export default memo(function Quiz() {
   const overlay = useContext(Context);
-
   let { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
@@ -17,7 +16,9 @@ export default memo(function Quiz() {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const history = useHistory();
   const found = state.questions.find((i) => i.isDone === false);
+  
   console.log("RENDER TEST SCREEN");
+
   useEffect(() => {
     dispatch(loadQuizzes(id));
     return () => {
@@ -30,13 +31,16 @@ export default memo(function Quiz() {
       history.push(`/done/${id}`);
     }
   }, [found, id, history, state.status]);
+
   const handleAnswer = (answer) => {
     setSelectedAnswers([...selectedAnswers, answer]);
   };
+
   const handleSelect = (id) => {
     console.log(id);
     setSelectedQuestion(id);
   };
+
   const stateToQuestionName = () =>
     state.questions.map((i) => ({
       wording: i.question.wording,
