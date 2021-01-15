@@ -1,6 +1,6 @@
 {
   "homepage": "http://exxodia666.github.io/QTest",
-  "name": "classimekiller",
+  "name": "QTest",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
