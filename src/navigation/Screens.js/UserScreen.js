@@ -12,9 +12,9 @@ export const UserScreen = () => {
 
   console.log("RENDER USER");
 
-  // if (user.user_name.length) {
-  //   history.push("/home");
-  // }
+  if (user.user.id.length) {
+    history.push("/home");
+  }
 
   const handleName = (e) => {
     if (e.key === "Enter") {

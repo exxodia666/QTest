@@ -14,8 +14,8 @@ export default function ResultsScreen() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
   const result = useSelector((state) => state.results);
-  const user = useSelector((state) => state.user.user_name);
-  console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', state)
+  const user = useSelector((state) => state.user.user.id);
+  console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", user);
 
   console.log("RESULTS SCREEN");
 
@@ -42,9 +42,7 @@ export default function ResultsScreen() {
                   <div className="quizbox">
                     <div className="quiz-info">
                       <div className="quiz-title">
-                        <p>
-                        {i.quiz_name}
-                        </p>
+                        <p>{i.quiz_name}</p>
                       </div>
                     </div>
                     <div className="quiz-result">
