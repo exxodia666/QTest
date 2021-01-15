@@ -76,7 +76,6 @@ export default memo(function Quiz() {
       </>
     );
   } else if (state.status === 404) {
-    console.log(state);
     return <p>ERROR: {state.message}</p>;
   } else return <Loader />;
 });

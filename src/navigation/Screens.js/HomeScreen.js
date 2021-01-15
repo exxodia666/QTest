@@ -14,14 +14,12 @@ function HomeScreen() {
   console.log("RENDER HOME SCREEN");
   const [privat_input, setPrivat_input] = useState("");
 
-
   const user = useSelector((state) => state.user.loggedIn);
   if (!user) {
     history.push("/");
   }
 
   useEffect(() => {
-    console.log("LOAD QUIZZES DISPATCH");
     dispatch(loadQuizList());
   }, [dispatch]);
 
@@ -40,7 +38,7 @@ function HomeScreen() {
     if (re.test(privat_input)) {
       history.push(`/quiz/${privat_input}`);
     }
-  }
+  };
 
   if (quiz_list.status === 200) {
     return (
@@ -73,44 +71,39 @@ function HomeScreen() {
                 id="text_private"
                 onKeyPress={handleOnPres}
                 value={privat_input}
-                onChange={(e)=>setPrivat_input(e.target.value)}
+                onChange={(e) => setPrivat_input(e.target.value)}
                 placeholder="Ввести ID приватного теста"
               />
-              <div
-              onClick={handleOnClick}
-              class="private_search">
+              <div onClick={handleOnClick} class="private_search">
                 <div></div>
               </div>
             </div>
           </form>
 
           {quiz_list.data.quizzes
-          .filter((e) => {
-            if (input.length) {
-              return !e.quiz_name
-                .toLowerCase()
-                .indexOf(input.trim().toLowerCase(), 0);
-            } else {
-              return true;
-            }
-          })
-          .map((qz) => {
-            return (
-              <div className="quizbox_container" key={qz.id}>
-                <Link
-                  className="quizbox"
-                  to={`/quiz/${qz.id}`}
-                >
-                  <div className="quiz-title"> 
-                  <p>{qz.quiz_name}</p> 
-                  </div>
-                  <div className="quiz-quantity">                
-                  <p>Кол-во вопросов: {qz.questions_count}</p>
-                  </div>
-                </Link>
-              </div>
-            );
-          })}
+            .filter((e) => {
+              if (input.length) {
+                return !e.quiz_name
+                  .toLowerCase()
+                  .indexOf(input.trim().toLowerCase(), 0);
+              } else {
+                return true;
+              }
+            })
+            .map((qz) => {
+              return (
+                <div className="quizbox_container" key={qz.id}>
+                  <Link className="quizbox" to={`/quiz/${qz.id}`}>
+                    <div className="quiz-title">
+                      <p>{qz.quiz_name}</p>
+                    </div>
+                    <div className="quiz-quantity">
+                      <p>Кол-во вопросов: {qz.questions_count}</p>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
         </div>
       </div>
     );
