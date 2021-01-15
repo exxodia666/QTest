@@ -7,18 +7,28 @@ import { sendAnswers } from "../../../redux/actions/send_answers";
 import { clearQuiz } from "../../../redux/actions/show_quizzes";
 import { useHistory } from "react-router-dom";
 import "./Results.css";
+import { delete_user } from "../../../redux/actions/add_user";
 
 export default function ResultsScreen() {
   const dispatch = useDispatch();
   const result = useSelector((state) => state.results);
   const user = useSelector((state) => state.user.user.id);
   console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", user);
-
+  console.log(user);
   console.log("RESULTS SCREEN");
 
+  const handleLogout = () => {
+    console.log(user);
+    if (user.user.editing_key.length) {
+      console.log(user);
+      dispatch(delete_user({ id: user.user.id, key: user.user.editing_key }));
+      
+    }
+  };
   if (result.status === 200 || result.results.length) {
     return (
       <>
+        <button onClick={handleLogout}>Logout</button>
         <div className="content_container">
           <div className="content__">
             <div className="title_container">
