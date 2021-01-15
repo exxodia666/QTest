@@ -10,12 +10,9 @@ export default function Header({ takeState }) {
   function burger() {
     setHeader(header == "" ? "active" : "");
     setOverlay(overlay == "" ? "overlay_active" : "");
-    //takeState()
-    // $('.leftbar').removeClass('leftbar_active');
   }
 
   const user = useSelector((state) => state.user.user.name);
-  console.log(user);
   console.log("RENDER HEADER");
   return (
     <header className="header">
@@ -46,10 +43,16 @@ export default function Header({ takeState }) {
             </li>
           </ul>
         </nav>
-        <div className="header__user">
-          <Link to="/results">
-            <p> Logged as: {user && user}</p>
+        <div className="dropdown">
+          <Link to="/results" class="dropbtn">
+            <p>{ user }</p>
           </Link>
+          <div className="dropdown-content">
+            <Link to="/results">Результаты</Link>
+            <Link className="logout">
+              Выйти
+            </Link>
+          </div>
         </div>
         <div className={`header__burger ${header}`} onClick={burger}>
           <span></span>
@@ -88,3 +91,11 @@ export default function Header({ takeState }) {
 //       </ul>
 //     </div>
 //   </nav>
+
+{
+  /* <div className="header__user">
+          <Link to="/results">
+            <p> Logged as: {user && user}</p>
+          </Link>
+        </div> */
+}

@@ -15,9 +15,11 @@ export default function ResultsScreen() {
   const dispatch = useDispatch();
   const history = useHistory();
   const results = useSelector((state) => state.results);
+
   const user = useSelector((state) => state.user);
+
   const userLogged = useSelector((state) => state.user.loggedIn);
-  console.log(user);
+
   console.log("RESULTS SCREEN");
 
   React.useEffect(() => {
@@ -27,15 +29,16 @@ export default function ResultsScreen() {
   }, [userLogged]);
 
   const handleLogout = () => {
-    //console.log(user);
     if (user.user.editing_key.length) {
-      console.log(user);
       dispatch(delete_user({ id: user.user.id, key: user.user.editing_key }));
     }
   };
+  
   React.useEffect(() => {
     dispatch(loadResults(user.user.id));
   }, []);
+
+  console.log(results);
 
   if (results.status === 200 || results.results.length) {
     return (

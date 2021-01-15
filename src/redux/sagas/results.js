@@ -21,9 +21,9 @@ const fetchData = (id) =>
 function* workerLoadData(action) {
   try {
     const data = yield call(fetchData, action.payload);
-    console.log(data);
     yield put(loadResultsSuccess(data));
   } catch (e) {
+    console.log(e);
     yield put(loadResultsError(e));
   }
 }
@@ -31,7 +31,7 @@ export function* watchLoadResults() {
   try {
     yield takeEvery(LOAD_RESULTS, workerLoadData);
   } catch (e) {
-    // console.log(e);
+    console.log(e);
   }
 }
 //const jsonData = `{"quiz":{"id":1,"quiz_name":"First quiz","creation_date":"2020-12-15T11:32:27.153608+02:00"},"questions":[[{"question":{"id":1,"quiz_id":1,"wording":"Whats up?","text":"","image":"","is_multiple_choice":false},"choices":[{"id":1,"question_id":1,"text":"Good"},{"id":2,"question_id":1,"text":"Could be better"},{"id":3,"question_id":1,"text":"Bad"}]}],[{"question":{"id":2,"quiz_id":1,"wording":"Do you like this","text":"","image":"","is_multiple_choice":false},"choices":[{"id":4,"question_id":2,"text":"Yep"},{"id":5,"question_id":2,"text":"Could be better"},{"id":6,"question_id":2,"text":"Nope"}]}]]}`;
