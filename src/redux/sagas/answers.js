@@ -22,7 +22,7 @@ function* workerSendData(action) {
     })),
   };
   const res = yield call(sendAnswers, { obj: reqObj, id: action.payload.id });
-  yield put();
+  // yield put();
 }
 
 export function* watchSendData() {
