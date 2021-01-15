@@ -23,7 +23,6 @@ function* workerLoadData(action) {
     const data = yield call(fetchData, action.payload);
     yield put(loadResultsSuccess(data));
   } catch (e) {
-    console.log(e);
     yield put(loadResultsError(e));
   }
 }

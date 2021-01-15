@@ -6,12 +6,10 @@ import "./styles.css";
 export default function Header({ takeState }) {
   const [header, setHeader] = useState("");
   const [overlay, setOverlay] = useState("");
-
   function burger() {
     setHeader(header == "" ? "active" : "");
     setOverlay(overlay == "" ? "overlay_active" : "");
   }
-
   const user = useSelector((state) => state.user.user.name);
   console.log("RENDER HEADER");
   return (
@@ -45,13 +43,11 @@ export default function Header({ takeState }) {
         </nav>
         <div className="dropdown">
           <Link to="/results" class="dropbtn">
-            <p>{ user }</p>
+            <p>{user}</p>
           </Link>
           <div className="dropdown-content">
             <Link to="/results">Результаты</Link>
-            <Link className="logout">
-              Выйти
-            </Link>
+            <Link className="logout">Выйти</Link>
           </div>
         </div>
         <div className={`header__burger ${header}`} onClick={burger}>

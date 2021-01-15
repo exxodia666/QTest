@@ -35,7 +35,6 @@ const logout = ({ id, key }) => {
 };
 
 function* workerLogin(action) {
-  console.log(action.payload);
   try {
     const res = yield call(login, action.payload);
     yield put(login_success(res));
@@ -46,7 +45,9 @@ function* workerLogin(action) {
 export function* watchLogin() {
   try {
     yield takeEvery(ADD_USER, workerLogin);
-  } catch (e) {}
+  } catch (e) {
+    
+  }
 }
 function* workerLogout(action) {
   try {

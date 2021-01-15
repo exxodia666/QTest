@@ -27,6 +27,7 @@ export default function AddQuizScreen() {
   ]);
 
   const user = useSelector((state) => state.user.loggedIn);
+
   if (!user) {
     history.push("/");
   }
@@ -80,7 +81,7 @@ export default function AddQuizScreen() {
           break;
       }
     });
-    console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", data);
+
     dispatch(add_test(data));
   }
 

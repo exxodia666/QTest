@@ -19,7 +19,6 @@ const initialState = {
 const add_user = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      console.log(action.payload.data.dude);
       return {
         ...state,
         loggedIn: true,
@@ -40,7 +39,8 @@ const add_user = (state = initialState, action) => {
     case ERROR:
       return {
         ...state,
-        message: action.payload,
+        message: action.payload.message,
+        status: 400,
       };
     default:
       return state;
