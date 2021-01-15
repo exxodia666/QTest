@@ -1,49 +1,175 @@
-import React, { useEffect } from "react";
-import { ListGroup } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader";
 import { loadQuizList } from "../../redux/actions/load_quiz_list";
-//import { loadQuizzes } from "../../redux/actions/show_quizzes";
-import PageNotFound from "../../components/PageNotFound";
+import { useHistory } from "react-router-dom";
+import "./stylesforhomescreen/list.css";
 
-export default function HomeScreen() {
-  //ТУТ подключен редакс стор
+function HomeScreen() {
   const dispatch = useDispatch();
-  //QUIZ LIST STORE -->
   const quiz_list = useSelector((state) => state.quiz_list);
+  const [input, setInput] = useState("");
+  const history = useHistory();
+  console.log("RENDER HOME SCREEN");
+  const [privat_input, setPrivat_input] = useState("");
 
-  //ЗАГРУЗКА ТЕСТОВ
+  const user = useSelector((state) => state.user.loggedIn);
+  if (!user) {
+    history.push("/");
+  }
+
   useEffect(() => {
     dispatch(loadQuizList());
   }, [dispatch]);
 
-  // onClick={() => {
-  //   dispatch(loadQuizzes(qz.id));
-  // }}
+  const handleOnPres = (e) => {
+    if (e.code === "Enter") {
+      const id = e.target.value;
+      let re = /^((\w){8})-((\w){4})-((\w){4})-((\w){4})-((\w){12})$/g;
+      if (re.test(id)) {
+        history.push(`/quiz/${e.target.value}`);
+      }
+    }
+  };
+
+  const handleOnClick = (e) => {
+    let re = /^((\w){8})-((\w){4})-((\w){4})-((\w){4})-((\w){12})$/g;
+    if (re.test(privat_input)) {
+      history.push(`/quiz/${privat_input}`);
+    }
+  };
 
   if (quiz_list.status === 200) {
     return (
-      <>
-        <ListGroup>
-          {quiz_list.data.quizzes.map((qz) => {
-            return (
-              <ListGroup.Item key={qz.id}>
-                <Link
-                  style={{ color: "inherit", textDecoration: "inherit" }}
-                  to={`/quiz/${qz.id}`}
-                >
-                  {qz.quiz_name}
-                </Link>
-              </ListGroup.Item>
-            );
-          })}
-        </ListGroup>
-      </>
+      <div className="content_container">
+        <div className="content__home">
+          <div className="title_container">
+            <p>Список опросов</p>
+          </div>
+          <form>
+            <div className="search_container">
+              <div className="icon">
+                <div></div>
+              </div>
+              <input
+                id="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                type="text"
+                className="text-input"
+                placeholder="Поиск теста"
+              />
+            </div>
+            <div class="private_container">
+              <div className="icon">
+                <div></div>
+              </div>
+              <input
+                type="text"
+                className="text-input"
+                id="text_private"
+                onKeyPress={handleOnPres}
+                value={privat_input}
+                onChange={(e) => setPrivat_input(e.target.value)}
+                placeholder="Ввести ID приватного теста"
+              />
+              <div onClick={handleOnClick} class="private_search">
+                <div></div>
+              </div>
+            </div>
+          </form>
+
+          {quiz_list.data.quizzes
+            .filter((e) => {
+              if (input.length) {
+                return !e.quiz_name
+                  .toLowerCase()
+                  .indexOf(input.trim().toLowerCase(), 0);
+              } else {
+                return true;
+              }
+            })
+            .map((qz) => {
+              return (
+                <div className="quizbox_container" key={qz.id}>
+                  <Link className="quizbox" to={`/quiz/${qz.id}`}>
+                    <div className="quiz-title">
+                      <p>{qz.quiz_name}</p>
+                    </div>
+                    <div className="quiz-quantity">
+                      <p>Кол-во вопросов: {qz.questions_count}</p>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+        </div>
+      </div>
     );
   } else if (quiz_list.status === 404) {
-    <PageNotFound/>
+    return <p>ERROR: {quiz_list.message}</p>;
   } else {
     return <Loader />;
   }
+}
+export default React.memo(HomeScreen);
+
+{
+  /* <ul className="collection">
+        <div className="container">
+          <div className="row">
+            <form className="col s12">
+              <div className="row">
+                <div className="input-field col s12">
+                  <input
+                    id="text"
+                    type="text"
+                    value={input}
+                    onChange={(e) => setinput(e.target.value)}
+                  />
+                  <label htmlFor="text">Введите название теста</label>
+                </div>
+
+                <div className="input-field col s12">
+                  <input
+                    id="text_private"
+                    type="text"
+                    //value={input}
+                    onKeyPress={handleOnClick}
+                    //onChange={(e) => setinput(e.target.value)}
+                  />
+                  <label htmlFor="text_private">
+                    Введите id приватного теста
+                  </label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        {quiz_list.data.quizzes
+          .filter((e) => {
+            if (input.length) {
+              return !e.quiz_name
+                .toLowerCase()
+                .indexOf(input.trim().toLowerCase(), 0);
+            } else {
+              return true;
+            }
+          })
+          .map((qz) => {
+            return (
+              <li className="collection-item" key={qz.id}>
+                <Link
+                  style={{ color: "red", textDecoration: "inherit" }}
+                  to={`/quiz/${qz.id}`}
+                >
+                  <p>{qz.quiz_name}</p> Количество вопросов:{" "}
+                  {qz.questions_count}
+                </Link>
+              </li>
+            );
+          })}
+      </ul> */
 }

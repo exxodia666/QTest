@@ -1,35 +1,48 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Header from "../components/Header";
-//import AddQuizScreen from "./Screens.js/AddQuizScreen";
+import Header from "../components/Header/Header";
 import HomeScreen from "./Screens.js/HomeScreen";
 import Quiz from "./Screens.js/Quiz";
-import ResultsScreen from "./Screens.js/ResultsScreen";
-//import AddNewQuiz from "./Screens/AddNewQuiz.tsx"
-import { AddQuizScreen } from "./Screens.js/AddNewQuiz";
+import ResultsScreen from "./Screens.js/ResultScreen/ResultsScreen";
+import { UserScreen } from "./Screens.js/UserScreen.js";
+import AddQuizScreen from "./Screens.js/AddQuizScreen";
+import TestDoneScreen from "./Screens.js/TestDoneScreen/TestDoneScreen";
 
-export default function MainNavigator() {
+export const Context = React.createContext();
+
+function MainNavigator() {
+  // const [overlay, setOverlay] = useState("")
+
+  // function takeState() {
+  //   setOverlay((overlay == "") ? "overlay_active" : "")
+  // }
+
   return (
     <Router>
-      <Header />
-      <Switch>
-        <Route exact path="/">
-          <HomeScreen />
-        </Route>
-        <Route path="/add">
-          <AddQuizScreen />
-        </Route>
-        <Route path="/quiz/:id">
-          <Quiz />
-        </Route>
-        <Route path="/results/:id">
-          <ResultsScreen />
-        </Route>
-        <Route path="/results/">
-          <ResultsScreen />
-        </Route>
-      </Switch>
+      <Context.Provider>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <UserScreen />
+          </Route>
+          <Route path="/home">
+            <HomeScreen />
+          </Route>
+          <Route path="/add">
+            <AddQuizScreen />
+          </Route>
+          <Route path="/quiz/:id">
+            <Quiz />
+          </Route>
+          <Route path="/done/:id">
+            <TestDoneScreen />
+          </Route>
+          <Route path="/results/">
+            <ResultsScreen />
+          </Route>
+        </Switch>
+      </Context.Provider>
     </Router>
   );
 }
-///TODO если есть рейтинг - не отправлять пост
+export default React.memo(MainNavigator);

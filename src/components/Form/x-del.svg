@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="42" height="42" viewBox="0 0 42 42">
+  <defs>
+    <filter id="Эллипс_28" x="0" y="0" width="42" height="42" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="x-del" transform="translate(-1103 -549)">
+    <g transform="matrix(1, 0, 0, 1, 1103, 549)" filter="url(#Эллипс_28)">
+      <circle id="Эллипс_28-2" data-name="Эллипс 28" cx="12" cy="12" r="12" transform="translate(9 6)" fill="#fff"/>
+    </g>
+    <g id="x-del-2" data-name="x-del" transform="translate(-108 34.53)">
+      <line id="Линия_54" data-name="Линия 54" x2="9" y2="9" transform="translate(1227.5 528.5)" fill="none" stroke="#4e4e4e" stroke-width="1.5"/>
+      <line id="Линия_55" data-name="Линия 55" x1="9" y2="9" transform="translate(1227.5 528.5)" fill="none" stroke="#4e4e4e" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

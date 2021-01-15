@@ -6,8 +6,12 @@ import { LOAD_QUIZ_LIST, showQuizList } from "../actions/load_quiz_list";
 const fetchData = () => Axios.get("http://134.249.181.40:7777/api/");
 
 function* workerLoadData() {
-  const data = yield call(fetchData);
-  yield put(showQuizList(data));
+  try {
+    const data = yield call(fetchData);
+    yield put(showQuizList(data));
+  } catch (e) {
+    yield put(showQuizList({ status: 404, message: e.message }));
+  }
 }
 
 export function* watchLoadQuizList() {

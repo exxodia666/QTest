@@ -1,25 +1,30 @@
-import { ADD_RESULTS } from "../../actions/results";
-import { SHOW_RESULTS } from "../../actions/send_answers";
+import {
+  LOAD_RESULTS_ERROR,
+  LOAD_RESULTS_SUCCESS,
+} from "../../actions/results";
 
 const initialState = {
   status: null,
   results: [],
+  message: "",
 };
 
 // eslint-disable-next-line
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ADD_RESULTS:
-      //console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ 🚀", action.payload.data);
-      const newArray = [...state.results];
-      newArray.push(action.payload.data);
-      const newobj = {
-        status: action.payload.status,
-        results: newArray
+    case LOAD_RESULTS_SUCCESS:
+      return {
+        ...state,
+        results: [...action.payload.data.dude.results],
+        status: 200,
       };
-      //console.log(newobj);
-      return newobj;
-
+    case LOAD_RESULTS_ERROR:
+      console.log(action.payload);
+      return {
+        ...state,
+        message: action.payload.message,
+        status: 400,
+      };
     default:
       return state;
   }

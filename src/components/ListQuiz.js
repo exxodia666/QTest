@@ -1,27 +1,48 @@
-import ListGroup from "react-bootstrap/ListGroup";
 import React from "react";
 import Loader from "./Loader";
 import PropTypes from "prop-types"; // ES6
+import "./styles/style.css";
 
 function ListQuiz({ state, handleSelect, selectedQuestion }) {
-  if (state.questions.length) {
+  console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', state)
+  if (state.length) {
     return (
-      <div>
-        <ListGroup>
-          {state.questions &&
-            state.questions.map((item, index) => {
+      <div className="leftbar">
+        <div className="quizlist">
+          {state &&
+            state.map((item, index) => {
               return (
-                <ListGroup.Item
-                  key={index}
-                  action
-                  variant={selectedQuestion === index ? "dark" : "light"}
-                  onClick={() => handleSelect(index)}
+                <div className={`quizlist_item ${
+                  item.isDone ? "voted" : "unvoted"
+                } ${
+                  selectedQuestion === index ? "current" : ""
+                }`}
                 >
-                  {index + 1} - {item.question.wording}
-                </ListGroup.Item>
+                  <a key={index}>
+                    <span>{index + 1}</span>
+
+                    <p
+                      className="quizlist_item_name"
+                      onClick={() => handleSelect(index)}
+                    >
+                      {item.wording}
+                    </p>
+
+                    <div
+                      className={'icon'}
+                    >
+                      <div></div>
+                    </div>
+                  </a>
+                </div>
               );
             })}
-        </ListGroup>
+        </div>
+        <div className="complete-btn_container">
+          <a href="" className="complete-btn">
+            <p>Завершить тест</p>
+          </a>
+        </div>
       </div>
     );
   } else {
@@ -31,8 +52,33 @@ function ListQuiz({ state, handleSelect, selectedQuestion }) {
 
 ListQuiz.propTypes = {
   handleSelect: PropTypes.func,
-  state: PropTypes.object,
+  state: PropTypes.func,
   selectedQuestion: PropTypes.number,
 };
 
-export default ListQuiz;
+export default React.memo(ListQuiz);
+
+{
+  /* <div>
+<ul className="collection">
+  {state.questions &&
+    state.questions.map((item, index) => {
+      return (
+        <li
+          key={index}
+        >
+          <p
+            style={{ cursor: "pointer" }}
+            onClick={() => handleSelect(index)}
+            className={`collection-item ${
+              selectedQuestion === index ? "active" : ""
+            }`}
+          >
+            {index + 1} - {item.question.wording}
+          </p>
+        </li>
+      );
+    })}
+</ul>
+</div> */
+}
