@@ -22,22 +22,22 @@ function MainNavigator() {
       <Context.Provider>
         <Header />
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/ClasstimeKiller/">
             <UserScreen />
           </Route>
-          <Route path="/home">
+          <Route path="/ClasstimeKiller/home">
             <HomeScreen />
           </Route>
-          <Route path="/add">
+          <Route path="/ClasstimeKiller/add">
             <AddQuizScreen />
           </Route>
-          <Route path="/quiz/:id">
+          <Route path="/ClasstimeKiller/quiz/:id">
             <Quiz />
           </Route>
-          <Route path="/done/:id">
+          <Route path="/ClasstimeKiller/done/:id">
             <TestDoneScreen />
           </Route>
-          <Route path="/results/">
+          <Route path="/ClasstimeKiller/results/">
             <ResultsScreen />
           </Route>
         </Switch>
