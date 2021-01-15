@@ -12,26 +12,26 @@ export const Context = React.createContext();
 
 function MainNavigator() {
   return (
-    <Router history>
+    <Router>
       <Context.Provider>
         <Header />
         <Switch>
-          <Route exact path="/ClasstimeKiller/">
+          <Route exact path="/">
             <UserScreen />
           </Route>
-          <Route path="/ClasstimeKiller/home">
+          <Route path="/home">
             <HomeScreen />
           </Route>
-          <Route path="/ClasstimeKiller/add">
+          <Route path="/add">
             <AddQuizScreen />
           </Route>
-          <Route path="/ClasstimeKiller/quiz/:id">
+          <Route path="/quiz/:id">
             <Quiz />
           </Route>
-          <Route path="/ClasstimeKiller/done/:id">
+          <Route path="/done/:id">
             <TestDoneScreen />
           </Route>
-          <Route path="/ClasstimeKiller/results/">
+          <Route path="/results/">
             <ResultsScreen />
           </Route>
         </Switch>
