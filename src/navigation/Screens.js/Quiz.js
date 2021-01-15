@@ -16,7 +16,11 @@ export default memo(function Quiz() {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const history = useHistory();
   const found = state.questions.find((i) => i.isDone === false);
-  
+
+  const user = useSelector((state) => state.user.loggedIn);
+  if (!user) {
+    history.push("/");
+  }
   console.log("RENDER TEST SCREEN");
 
   useEffect(() => {

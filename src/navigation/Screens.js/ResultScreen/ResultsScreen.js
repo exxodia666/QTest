@@ -8,24 +8,36 @@ import { clearQuiz } from "../../../redux/actions/show_quizzes";
 import { useHistory } from "react-router-dom";
 import "./Results.css";
 import { delete_user } from "../../../redux/actions/add_user";
+import { loadResults } from "../../../redux/actions/results";
+import Result from "../../../components/Result/Result";
 
 export default function ResultsScreen() {
   const dispatch = useDispatch();
-  const result = useSelector((state) => state.results);
-  const user = useSelector((state) => state.user.user.id);
-  console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", user);
+  const history = useHistory();
+  const results = useSelector((state) => state.results);
+  const user = useSelector((state) => state.user);
+  const userLogged = useSelector((state) => state.user.loggedIn);
   console.log(user);
   console.log("RESULTS SCREEN");
 
+  React.useEffect(() => {
+    if (!userLogged) {
+      history.push("/");
+    }
+  }, [userLogged]);
+
   const handleLogout = () => {
-    console.log(user);
+    //console.log(user);
     if (user.user.editing_key.length) {
       console.log(user);
       dispatch(delete_user({ id: user.user.id, key: user.user.editing_key }));
-      
     }
   };
-  if (result.status === 200 || result.results.length) {
+  React.useEffect(() => {
+    dispatch(loadResults(user.user.id));
+  }, []);
+
+  if (results.status === 200 || results.results.length) {
     return (
       <>
         <button onClick={handleLogout}>Logout</button>
@@ -34,20 +46,14 @@ export default function ResultsScreen() {
             <div className="title_container">
               <p>Результаты</p>
             </div>
-            {result.results.map((i) => {
+            {results.results.map((i) => {
+              console.log();
               return (
-                <div className="quizbox_container">
-                  <div className="quizbox">
-                    <div className="quiz-info">
-                      <div className="quiz-title">
-                        <p>{i.quiz_name}</p>
-                      </div>
-                    </div>
-                    <div className="quiz-result">
-                      {(i.rating * 100).toFixed(0)}/100
-                    </div>
-                  </div>
-                </div>
+                <Result
+                  pass_date={i.pass_date}
+                  name={i.quiz.quiz_name}
+                  rating={i.rating * 100}
+                />
               );
             })}
           </div>

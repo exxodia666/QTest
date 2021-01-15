@@ -8,6 +8,7 @@ import { loadState, saveState } from "./sessionStorage";
 import { watchSendNewTest } from "./sagas/addTest";
 ///import { watchSendNewImage } from "./sagas/sendImage";
 import { watchLogin, watchLogout } from "./sagas/authUser";
+import { watchLoadResults } from "./sagas/results";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -26,7 +27,7 @@ sagaMiddleware.run(watchLoadData);
 sagaMiddleware.run(watchSendData);
 sagaMiddleware.run(watchLoadQuizList);
 sagaMiddleware.run(watchSendNewTest);
-//sagaMiddleware.run(watchSendNewImage);
+sagaMiddleware.run(watchLoadResults);
 sagaMiddleware.run(watchLogin);
 sagaMiddleware.run(watchLogout);
 
