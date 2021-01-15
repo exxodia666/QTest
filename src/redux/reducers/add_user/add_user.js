@@ -6,12 +6,14 @@ import {
 } from "../../actions/add_user";
 
 const initialState = {
+  loggedIn: false,
   user: {
     editing_key: "",
     id: "",
     name: "",
   },
-  status: 200,
+  status: null,
+  message: null,
 };
 //eslint-disable-next-line
 const add_user = (state = initialState, action) => {
@@ -19,11 +21,15 @@ const add_user = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       console.log(action.payload.data.dude);
       return {
+        ...state,
+        loggedIn: true,
         user: { ...action.payload.data.dude },
         status: 200,
       };
     case LOGOUT_SUCCESS:
       return {
+        ...state,
+        loggedIn: false,
         user: {
           editing_key: "",
           id: "",
@@ -31,10 +37,11 @@ const add_user = (state = initialState, action) => {
         },
         status: 200,
       };
-    // case ERROR:
-    //   return {
-    //     user_name: action.payload.user_name,
-    //   };
+    case ERROR:
+      return {
+        ...state,
+        message: action.payload,
+      };
     default:
       return state;
   }

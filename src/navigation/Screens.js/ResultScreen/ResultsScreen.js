@@ -9,24 +9,12 @@ import { useHistory } from "react-router-dom";
 import "./Results.css";
 
 export default function ResultsScreen() {
-  const { id } = useParams();
-  const history = useHistory();
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.quizzes);
   const result = useSelector((state) => state.results);
   const user = useSelector((state) => state.user.user.id);
   console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", user);
 
   console.log("RESULTS SCREEN");
-
-  useEffect(() => {
-    if (id && state.questions.length) {
-      dispatch(sendAnswers({ obj: state.questions, id, user }));
-      history.push("/results");
-    }
-    return () => dispatch(clearQuiz());
-    // eslint-disable-next-line
-  }, [dispatch, id]);
 
   if (result.status === 200 || result.results.length) {
     return (

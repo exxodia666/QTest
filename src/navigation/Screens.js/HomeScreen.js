@@ -12,6 +12,7 @@ function HomeScreen() {
   const [input, setinput] = useState("");
   const history = useHistory();
   console.log("RENDER HOME SCREEN");
+  
   useEffect(() => {
     console.log("LOAD QUIZZES DISPATCH");
     dispatch(loadQuizList());
