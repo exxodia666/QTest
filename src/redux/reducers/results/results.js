@@ -1,4 +1,8 @@
-import { ADD_RESULTS } from "../../actions/results";
+import {
+  LOAD_RESULTS_ERROR,
+  LOAD_RESULTS_SUCCESS,
+} from "../../actions/results";
+
 const initialState = {
   status: null,
   results: [],
@@ -7,17 +11,14 @@ const initialState = {
 // eslint-disable-next-line
 export default (state = initialState, action) => {
   switch (action.type) {
-    case ADD_RESULTS:
-      //console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ 🚀", action.payload.data);
-      const newArray = [...state.results];
-      newArray.push(action.payload.data);
-      const newobj = {
-        status: action.payload.status,
-        results: newArray,
+    case LOAD_RESULTS_SUCCESS:
+      return {
+        ...state,
       };
-      //console.log(newobj);
-      return newobj;
-
+    case LOAD_RESULTS_ERROR:
+      return {
+        ...state,
+      };
     default:
       return state;
   }

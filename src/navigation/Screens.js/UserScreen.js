@@ -9,7 +9,6 @@ export const UserScreen = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = useSelector((state) => state.user.loggedIn);
-  console.log(user);
   console.log("RENDER USER");
 
   if (user) {

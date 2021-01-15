@@ -14,6 +14,12 @@ function HomeScreen() {
   console.log("RENDER HOME SCREEN");
   const [privat_input, setPrivat_input] = useState("");
 
+
+  const user = useSelector((state) => state.user.loggedIn);
+  if (!user) {
+    history.push("/");
+  }
+
   useEffect(() => {
     console.log("LOAD QUIZZES DISPATCH");
     dispatch(loadQuizList());

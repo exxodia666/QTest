@@ -11,10 +11,11 @@ export default function TestDoneScreen() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(user, id);
     dispatch(sendAnswers({ obj: state.questions, id, user }));
     return () => dispatch(clearQuiz());
     // eslint-disable-next-line
   }, [dispatch, id]);
-  
+
   return <div>You pass test!!</div>;
 }

@@ -4,10 +4,12 @@ import { add_test, reset_add_test } from "../../redux/actions/add_test";
 import QuestionComponent from "../../components/Form/Question";
 import "./styles/global-master.css";
 import { Container } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 
 export default function AddQuizScreen() {
   const dispatch = useDispatch();
   const test_status = useSelector((state) => state.add_test);
+  const history = useHistory();
   const [array, setArray] = useState([
     {
       question_id: 0,
@@ -24,6 +26,11 @@ export default function AddQuizScreen() {
     },
   ]);
 
+  const user = useSelector((state) => state.user.loggedIn);
+  if (!user) {
+    history.push("/");
+  }
+
   React.useEffect(() => {
     return () => {
       dispatch(reset_add_test());
@@ -32,7 +39,7 @@ export default function AddQuizScreen() {
 
   function saveQuizName() {
     const inputs = document.querySelectorAll("input, textarea");
-    console.log(inputs)
+    console.log(inputs);
     const data = {
       quiz_name: "",
       questions: [],
@@ -46,7 +53,9 @@ export default function AddQuizScreen() {
           break;
         case "question":
           if (data.questions[parseInt(armel[2])]) {
-            data.questions[parseInt(armel[2])][armel[1]] = el.checked ? el.type == 'checkbox' : el.value;
+            data.questions[parseInt(armel[2])][armel[1]] = el.checked
+              ? el.type == "checkbox"
+              : el.value;
           } else {
             data.questions[parseInt(armel[2])] = {
               [armel[1]]: el.value !== "on" ? el.value : el.checked,

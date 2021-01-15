@@ -34,7 +34,7 @@ function MainNavigator() {
           <Route path="/quiz/:id">
             <Quiz />
           </Route>
-          <Route path="/done/">
+          <Route path="/done/:id">
             <TestDoneScreen />
           </Route>
           <Route path="/results/">
