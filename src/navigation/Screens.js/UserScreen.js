@@ -21,7 +21,10 @@ export const UserScreen = () => {
       ref.current.value = "";
     }
   };
-
+  const handleClickName = (e) => {
+    dispatch(add_user(ref.current.value));
+    ref.current.value = "";
+  };
   return (
     <div className="row p">
       <div className="input-field col s6">
@@ -34,6 +37,11 @@ export const UserScreen = () => {
           ref={ref}
         />
         <label htmlFor="icon_prefix">Name</label>
+        <button
+          onClick={() => {
+            handleClickName();
+          }}
+        ></button>
       </div>
     </div>
   );
