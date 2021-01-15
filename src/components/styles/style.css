@@ -63,20 +63,14 @@ html body {
           flex-direction: column;
 }
 
-.navbar {
-  height: 50px;
-  background-color: #414141;
-}
-
 .leftbar {
-  margin-top: 1px;
   height: calc(100vh - 50px);
   width: 30%;
   left: 0px;
   right: 0px;
   position: absolute;
   float: left;
-  z-index: 1;
+  z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -312,6 +306,13 @@ html body {
       -ms-flex-align: center;
           align-items: center;
   margin-bottom: 30px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 0px;
+          flex: 1 0 0;
+}
+
+.image_container img {
+  max-width: 80%;
 }
 
 .description_container {
@@ -362,14 +363,6 @@ html body {
   background-color: #979797;
 }
 
-.accomplish_button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  text-decoration: none;
-}
-
-/*------------------------------------------------------------------------------CHECKBOX*/
 .inp {
   display: none;
 }
@@ -404,21 +397,6 @@ hr {
   color: black;
 }
 
-.overlay {
-  height: calc(100vh - 50px);
-  position: relative;
-  z-index: -2;
-  background-color: black;
-  opacity: 0;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.overlay_active {
-  z-index: 2;
-  opacity: 0.7;
-}
-
 .checkbox input[type="checkbox"] {
   opacity: 0;
 }
@@ -429,7 +407,6 @@ hr {
   display: flex;
   position: relative;
   cursor: pointer;
-  /*16px width of fake checkbox + 6px distance between fake checkbox and text*/
   padding-left: 32px;
 }
 
@@ -437,11 +414,9 @@ hr {
 .checkbox label::after {
   position: absolute;
   content: "";
-  /*Needed for the line-height to take effect*/
   display: inline-block;
 }
 
-/*Outer box of the fake checkbox*/
 .checkbox label::before {
   height: 18px;
   width: 18px;
@@ -451,13 +426,9 @@ hr {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 26px;
           flex: 0 0 26px;
-  /*(24px line-height - 16px height of fake checkbox) / 2 - 1px for the border
-     *to vertically center it.
-     */
   top: 3px;
-}
+} 
 
-/*Checkmark of the fake checkbox*/
 .checkbox label::after {
   height: 7px;
   width: 12px;
@@ -469,17 +440,14 @@ hr {
   top: 7px;
 }
 
-/*Hide the checkmark by default*/
 .checkbox input[type="checkbox"] + label::after {
   content: none;
 }
 
-/*Unhide on the checked state*/
 .checkbox input[type="checkbox"]:checked + label::after {
   content: "";
 }
 
-/*------------------------------------------------------------------------------CHECKBOX*/
 @media (max-width: 768px) {
   .quiz_body {
     padding-left: 10px;
@@ -491,6 +459,7 @@ hr {
   .content {
     height: calc(100vh - 100px);
     overflow: visible;
+    width: 100%;
   }
   .leftbar {
     -webkit-transform: translateY(calc(+100%));
@@ -524,9 +493,6 @@ hr {
             transform: translateY(0%);
     -webkit-transition: 0.5s;
     transition: 0.5s;
-  }
-  .content {
-    width: 100%;
   }
   .list-btn_container {
     background-color: #fff;

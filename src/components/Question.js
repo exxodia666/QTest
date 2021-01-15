@@ -16,11 +16,13 @@ const Question = ({
   overlay,
 }) => {
   const dispatch = useDispatch();
+  console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', imageUrl)
 
   const handleSelectItem = (e) => {
+    console.log(e.target.checked)
     dispatch(setSelected({ answ: e.target.value, id }));
   };
-  console.log(`QUESTION ${imageUrl}`);
+  console.log(isDone)
   return (
     <>
       <div className="content">
@@ -32,7 +34,7 @@ const Question = ({
             <p>{wording}</p>
           </div>
           <div className="image_container">
-            {imageUrl && <img width={550} src={imageUrl} />}
+            {imageUrl && <img width={550} src={"http://134.249.181.40:7777"+imageUrl.picture} />}
           </div>
           <div className="description_container">
             <p>{text}</p>
@@ -40,7 +42,7 @@ const Question = ({
           <div className="checkbox_container">
             {answers.map((item) => {
               return (
-                <div className="checkbox" key={item.id}>
+                <div className="checkbox">
                   <input
                     disabled={isDone}
                     onChange={handleSelectItem}
@@ -49,8 +51,7 @@ const Question = ({
                     id={item.id}
                     type="checkbox"
                   />
-
-                  <label>
+                  <label htmlFor={item.id}>                
                     <p>{item.text}</p>
                   </label>
                 </div>
@@ -64,6 +65,7 @@ const Question = ({
               value="Ответить"
               disabled={isDone}
               onClick={() => {
+                console.log('Xyi')
                 dispatch(setDone(id));
               }}
             />
@@ -82,7 +84,7 @@ const Question = ({
               .getElementsByClassName("header__burger")[0]
               .classList.remove("active");
             document
-              .getElementsByClassName("header__menu__")[0]
+              .getElementsByClassName("header__menu")[0]
               .classList.remove("active");
             document
               .getElementsByClassName("overlay")[0]
@@ -95,20 +97,6 @@ const Question = ({
           </div>
         </a>
       </div>
-      <div
-        className={`overlay ${overlay}`}
-        onClick={(e) => {
-          document
-            .getElementsByClassName("header__burger")[0]
-            .classList.remove("active");
-          document
-            .getElementsByClassName("header__menu__")[0]
-            .classList.remove("active");
-          document
-            .getElementsByClassName("overlay")[0]
-            .classList.remove("overlay_active");
-        }}
-      ></div>
     </>
   );
 };

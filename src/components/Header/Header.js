@@ -4,54 +4,55 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 
 export default function Header({ takeState }) {
-
   const [header, setHeader] = useState("");
+  const [overlay, setOverlay] = useState("");
 
   function burger() {
-    setHeader((header == "") ? "active" : "");
-    takeState()
+    setHeader(header == "" ? "active" : "");
+    setOverlay(overlay == "" ? "overlay_active" : "");
+    //takeState()
     // $('.leftbar').removeClass('leftbar_active');
   }
 
-  const user = useSelector((state) => state.user.user_name);
+  const user = useSelector((state) => state.user.user.name);
+  console.log(user);
   console.log("RENDER HEADER");
   return (
     <header className="header">
-      <div className="container__header">
-        <div class="header__body">
-          <Link to="/" className="header__logo">
-            <p>
-              <span>Q</span>TEST
-            </p>
-          </Link>
+      <div className={`overlay ${overlay}`}></div>
+      <div className="header__body">
+        <Link to="/" className="header__logo">
+          <p>
+            <span>Q</span>TEST
+          </p>
+        </Link>
 
-          <nav className={`header__menu ${header}`}>
-            <ul className="header__list">
-              <li>
-                <Link to="/add" className="header__link">
-                  Add
-                </Link>
-              </li>
-              <li>
-                <Link to="/contacts" className="header__link">
-                  Contacts
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="header__link">
-                  About Ass
-                </Link>
-              </li>
-            </ul>
-          </nav>
-          <div className="header__user">
-            <Link to="/results">
-              <p> Logged as: {user}</p>
-            </Link>
-          </div>
-          <div className={`header__burger ${header}`} onClick={burger}>
-            <span></span>
-          </div>
+        <nav className={`header__menu ${header}`}>
+          <ul className="header__list">
+            <li>
+              <Link to="/add" className="header__link">
+                Add
+              </Link>
+            </li>
+            <li>
+              <Link to="/contacts" className="header__link">
+                Contacts
+              </Link>
+            </li>
+            <li>
+              <Link to="/about" className="header__link">
+                About Ass
+              </Link>
+            </li>
+          </ul>
+        </nav>
+        <div className="header__user">
+          <Link to="/results">
+            <p> Logged as: {user && user}</p>
+          </Link>
+        </div>
+        <div className={`header__burger ${header}`} onClick={burger}>
+          <span></span>
         </div>
       </div>
     </header>

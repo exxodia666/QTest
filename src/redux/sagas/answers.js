@@ -10,7 +10,7 @@ const sendAnswers = ({ obj, id }) =>
 
 function* workerSendData(action) {
   const reqObj = {
-    name: action.payload.user,
+    dude_id: action.payload.user,
     answers: action.payload.obj.map((item) => ({
       question_id: item.question.id,
       choices_id: item.choices

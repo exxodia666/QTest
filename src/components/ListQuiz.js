@@ -12,7 +12,12 @@ function ListQuiz({ state, handleSelect, selectedQuestion }) {
           {state &&
             state.map((item, index) => {
               return (
-                <div className="quizlist_item unvoted">
+                <div className={`quizlist_item ${
+                  item.isDone ? "voted" : "unvoted"
+                } ${
+                  selectedQuestion === index ? "current" : ""
+                }`}
+                >
                   <a key={index}>
                     <span>{index + 1}</span>
 
@@ -20,13 +25,11 @@ function ListQuiz({ state, handleSelect, selectedQuestion }) {
                       className="quizlist_item_name"
                       onClick={() => handleSelect(index)}
                     >
-                      {item}
+                      {item.wording}
                     </p>
 
                     <div
-                      className={`icon ${
-                        selectedQuestion === index ? "voted" : ""
-                      }`}
+                      className={'icon'}
                     >
                       <div></div>
                     </div>
