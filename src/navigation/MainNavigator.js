@@ -11,14 +11,8 @@ import TestDoneScreen from "./Screens.js/TestDoneScreen/TestDoneScreen";
 export const Context = React.createContext();
 
 function MainNavigator() {
-  // const [overlay, setOverlay] = useState("")
-
-  // function takeState() {
-  //   setOverlay((overlay == "") ? "overlay_active" : "")
-  // }
-
   return (
-    <Router>
+    <Router history>
       <Context.Provider>
         <Header />
         <Switch>
