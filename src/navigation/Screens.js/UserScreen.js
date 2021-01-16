@@ -79,27 +79,4 @@ export const UserScreen = () => {
     );
   }
 };
-{
-  /* <div className="row p">
-        <div className="input-field col s6">
-          <input
-            placeholder="Enter your name"
-            style={{ border: "1px solid black" }}
-            id="icon_prefix"
-            type="text"
-            onKeyPress={handleName}
-            className="validate"
-            ref={ref}
-          />
-          <label htmlFor="icon_prefix">Name</label>
-          <button
-            onClick={() => {
-              handleClickName();
-            }}
-          >
-            Log in
-          </button>
-          {error && <ErrorComponent message={error} />}
-        </div>
-      </div> */
-}
+

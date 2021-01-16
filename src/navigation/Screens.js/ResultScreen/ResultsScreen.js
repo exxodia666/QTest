@@ -65,17 +65,3 @@ export default function ResultsScreen() {
   }
 }
 
-{
-  /* <ul className="collection with-header">
-        <li className="collection-header" key={Math.random()}>
-          <h4>{`${result.results[0].name}`}</h4>
-        </li>
-        {result.results.map((i) => {
-          return (
-            <li className="collection-item" key={Math.random()}>
-              {i.quiz_name}: {(i.rating * 100).toFixed(0)}
-            </li>
-          );
-        })}
-      </ul> */
-}

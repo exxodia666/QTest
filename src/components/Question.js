@@ -35,7 +35,7 @@ const Question = ({
           </div>
             {imageUrl && 
             <div className="image_container">
-            <img width={550} src={"http://134.249.181.40:7777"+imageUrl.picture} />
+            <img width={550} src={"https://questimie.herokuapp.com"+imageUrl.picture} />
             </div>
             }
           <div className="description_container">
@@ -110,63 +110,3 @@ Question.propTypes = {
   answers: PropTypes.array,
 };
 export default memo(Question);
-
-{
-  /* <Container>
-      <Alert variant="light">
-        <Row>
-          <Col>
-            <Alert.Heading>{wording}</Alert.Heading>
-            {multiple && (
-              <Alert variant="info">Можете выбрать несколько ваиантов!</Alert>
-            )}
-          </Col>
-          {imageUrl && (
-            <Col>
-              <Image
-                className="Img"
-                width={350}
-                //height={300}
-                src={"http://134.249.181.40:7777" + imageUrl.picture}
-                rounded
-              />
-            </Col>
-          )}
-        </Row>
-        <hr />
-        <p className="qtext">{text}</p>
-      </Alert>
-      <List>
-        {answers.map((item) => {
-          return (
-            <ListItem key={item.id}>
-              <p>
-                <label>
-                  <input
-                    disabled={isDone}
-                    onChange={handleSelectItem}
-                    checked={item.isSelected}
-                    value={item.id}
-                    id={item.id}
-                    type="checkbox"
-                  />
-                  <span>{item.text}</span>
-                </label>
-              </p>
-            </ListItem>
-          );
-        })}
-      </List>
-      <Button
-        disabled={isDone}
-        variant="primary"
-        size="lg"
-        block
-        onClick={() => {
-          dispatch(setDone(id));
-        }}
-      >
-        Ответить
-      </Button>
-    </Container> */
-}

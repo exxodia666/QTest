@@ -53,12 +53,12 @@ export default function Header({ takeState }) {
           </ul>
         </nav>
         <div className="dropdown">
-          <Link to="/results" class="dropbtn">
+          <p class="dropbtn">
             <p>{user}</p>
-          </Link>
-          <div className="dropdown-content">
+          </p>
+          <div className="dropdown-content" style={{minWidth: user.length*8}}>
             <Link to="/results">Результаты</Link>
-            <Link onClick={handleLogout} className="logout">Выйти</Link>
+            <Link onClick={handleLogout} className="logout">Krakin loh</Link>
           </div>
         </div>
         <div className={`header__burger ${header}`} onClick={burger}>
@@ -69,40 +69,3 @@ export default function Header({ takeState }) {
   );
 }
 
-//  <nav>
-//     <div className="nav-wrapper mv">
-//       <Link
-//         style={{
-//           color: "inherit",
-//           textDecoration: "inherit",
-//           cursor: "pointer",
-//         }}
-//         className="brand-logo left"
-//         to="/"
-//       >
-//         QTest
-//       </Link>
-//       <ul className="right hide-on-med-and-down">
-//         <li>
-//           <Link to="/add">Add</Link>
-//         </li>
-//         <li>
-//           <Link to="/contacts">Contacts</Link>
-//         </li>
-//         <li>
-//           <Link to="/about">About ASS</Link>
-//         </li>
-//         <li>
-//           <Link to="/results">Logged as: {user}</Link>
-//         </li>
-//       </ul>
-//     </div>
-//   </nav>
-
-{
-  /* <div className="header__user">
-          <Link to="/results">
-            <p> Logged as: {user && user}</p>
-          </Link>
-        </div> */
-}
