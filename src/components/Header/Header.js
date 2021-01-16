@@ -1,9 +1,20 @@
-import React, { useState, useContext } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import { delete_user } from "../../redux/actions/add_user"
 
 export default function Header({ takeState }) {
+
+  const dispatch = useDispatch();
+  const userr = useSelector((state) => state.user);
+
+  const handleLogout = () => {
+    if (userr.user.editing_key.length) {
+      dispatch(delete_user({ id: userr.user.id, key: userr.user.editing_key }));
+    }
+  };
+
   const [header, setHeader] = useState("");
   const [overlay, setOverlay] = useState("");
   function burger() {
@@ -47,7 +58,7 @@ export default function Header({ takeState }) {
           </Link>
           <div className="dropdown-content">
             <Link to="/results">Результаты</Link>
-            <Link className="logout">Выйти</Link>
+            <Link onClick={handleLogout} className="logout">Выйти</Link>
           </div>
         </div>
         <div className={`header__burger ${header}`} onClick={burger}>

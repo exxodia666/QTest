@@ -33,9 +33,11 @@ const Question = ({
           <div className="quizname">
             <p>{wording}</p>
           </div>
-          <div className="image_container">
-            {imageUrl && <img width={550} src={"http://134.249.181.40:7777"+imageUrl.picture} />}
-          </div>
+            {imageUrl && 
+            <div className="image_container">
+            <img width={550} src={"http://134.249.181.40:7777"+imageUrl.picture} />
+            </div>
+            }
           <div className="description_container">
             <p>{text}</p>
           </div>

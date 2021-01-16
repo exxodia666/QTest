@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../../components/Loader";
 import { useHistory } from "react-router-dom";
 import "./Results.css";
-import { delete_user } from "../../../redux/actions/add_user";
+//import { delete_user } from "../../../redux/actions/add_user";
 import { loadResults } from "../../../redux/actions/results";
 import Result from "../../../components/Result/Result";
 import ErrorComponent from "../../../components/ErrorComponent/Error";
@@ -23,11 +23,11 @@ export default function ResultsScreen() {
     }
   }, [userLogged]);
 
-  const handleLogout = () => {
-    if (user.user.editing_key.length) {
-      dispatch(delete_user({ id: user.user.id, key: user.user.editing_key }));
-    }
-  };
+  // const handleLogout = () => {
+  //   if (user.user.editing_key.length) {
+  //     dispatch(delete_user({ id: user.user.id, key: user.user.editing_key }));
+  //   }
+  // };
 
   React.useEffect(() => {
     dispatch(loadResults(user.user.id));
@@ -40,7 +40,7 @@ export default function ResultsScreen() {
   if (results.status === 200 || results.results.length) {
     return (
       <>
-        <button onClick={handleLogout}>Logout</button>
+        {/* <button onClick={handleLogout}>Logout</button> */}
         <div className="content_container">
           <div className="content__">
             <div className="title_container">
