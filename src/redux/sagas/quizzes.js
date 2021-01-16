@@ -6,7 +6,7 @@ import {
   showQuizzes,
 } from "../actions/show_quizzes";
 
-const fetchData = (p) => Axios.get(`http://134.249.181.40:7777/api/${p}/`);
+const fetchData = (p) => Axios.get(`https://questimie.herokuapp.com/api/${p}`);
 
 function* workerLoadData(action) {
   try {

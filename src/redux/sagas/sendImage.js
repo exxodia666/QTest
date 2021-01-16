@@ -10,7 +10,7 @@ const sendImages = (images) => {
   console.log(images);
   return axios({
     method: "post",
-    url: "http://134.249.181.40:7777/api/image",
+    url: "https://questimie.herokuapp.com/api/image",
     data: images,
   });
 };

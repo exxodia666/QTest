@@ -15,7 +15,7 @@ import {
 const fetchData = (id) =>
   Axios({
     method: "get",
-    url: `http://134.249.181.40:7777/api/dude/${id}`,
+    url: `https://questimie.herokuapp.com/api/dude/${id}`,
   });
 
 function* workerLoadData(action) {
