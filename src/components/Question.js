@@ -35,7 +35,7 @@ const Question = ({
           </div>
             {imageUrl && 
             <div className="image_container">
-            <img width={550} src={"https://questimie.herokuapp.com"+imageUrl.picture} />
+            <img width={550} src={imageUrl.picture} />
             </div>
             }
           <div className="description_container">

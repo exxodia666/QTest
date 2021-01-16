@@ -77,7 +77,7 @@ export default function QuestionComponent({
       {image && (
         <div className="img_container">
           <div className="img-wrap">
-            <img src={"https://questimie.herokuapp.com" + image} className="img" />
+            <img src={image} className="img" />
             <div onClick={deleteImage} className="del-img-btn">
               <div></div>
             </div>
