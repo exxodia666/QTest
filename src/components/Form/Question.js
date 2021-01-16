@@ -11,7 +11,7 @@ export default function QuestionComponent({
   function deleteImage() {
     return Axios({
       method: "delete",
-      url: `http://134.249.181.40:7777/api/image/${id}`,
+      url: `https://questimie.herokuapp.com/api/image/${id}`,
       data: {
         editing_key: key,
       },
@@ -28,7 +28,7 @@ export default function QuestionComponent({
     formdata.append("picture", selectedFile);
     return Axios({
       method: "post",
-      url: "http://134.249.181.40:7777/api/image",
+      url: "https://questimie.herokuapp.com/api/image",
       headers: {
         "Content-Type": "multipart/form-data",
       },
@@ -77,7 +77,7 @@ export default function QuestionComponent({
       {image && (
         <div className="img_container">
           <div className="img-wrap">
-            <img src={"http://134.249.181.40:7777" + image} className="img" />
+            <img src={"https://questimie.herokuapp.com" + image} className="img" />
             <div onClick={deleteImage} className="del-img-btn">
               <div></div>
             </div>

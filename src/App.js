@@ -5,13 +5,11 @@
 // //import ImageComponent from "./navigation/Image";
 
 function App() {
+  console.log("RENDER APP");
   return (
-    <p>TEST</p>
-    // <Provider store={store}>
-    //   <Profiler id="Quizzes" onRender={callback}>
-    //     <MainNavigator />
-    //   </Profiler>
-    // </Provider>
+    <Provider store={store}>
+      <MainNavigator />
+    </Provider>
   );
 }
 

@@ -3,7 +3,7 @@ import { takeEvery, call, put } from "redux-saga/effects";
 import { LOAD_QUIZ_LIST, showQuizList } from "../actions/load_quiz_list";
 //import { LOAD_QUIZZES, showQuizzes } from "../actions/show_quizzes";
 
-const fetchData = () => Axios.get("http://134.249.181.40:7777/api/");
+const fetchData = () => Axios.get("https://questimie.herokuapp.com/api/");
 
 function* workerLoadData() {
   try {

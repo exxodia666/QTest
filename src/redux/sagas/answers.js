@@ -4,7 +4,7 @@ import { addResults } from "../actions/results";
 import { SEND_ANSWERS } from "../actions/send_answers";
 
 const sendAnswers = ({ obj, id }) =>
-  Axios.post(`http://134.249.181.40:7777/api/${id}/answer/`, obj);
+  Axios.post(`https://questimie.herokuapp.com/api/${id}/answer/`, obj);
 
 //TODO NORMAL USER
 

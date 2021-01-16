@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "../components/Header/Header";
 import HomeScreen from "./Screens.js/HomeScreen";
 import Quiz from "./Screens.js/Quiz";
@@ -11,12 +11,6 @@ import TestDoneScreen from "./Screens.js/TestDoneScreen/TestDoneScreen";
 export const Context = React.createContext();
 
 function MainNavigator() {
-  // const [overlay, setOverlay] = useState("")
-
-  // function takeState() {
-  //   setOverlay((overlay == "") ? "overlay_active" : "")
-  // }
-
   return (
     <Router>
       <Context.Provider>

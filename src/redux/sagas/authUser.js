@@ -1,12 +1,6 @@
 import axios from "axios";
 import { takeEvery, call, put } from "redux-saga/effects";
 import {
-  ADD_TEST,
-  add_test_error,
-  add_test_success,
-} from "../actions/add_test";
-import {
-  add_user,
   ADD_USER,
   DELETE_USER,
   login_success,
@@ -20,7 +14,7 @@ const login = (name) => {
   };
   return axios({
     method: "post",
-    url: "http://134.249.181.40:7777/api/dude",
+    url: "https://questimie.herokuapp.com/api/dude",
     data: { dude: req },
   });
 };
@@ -29,7 +23,7 @@ const logout = ({ id, key }) => {
   const req = { editing_key: key };
   return axios({
     method: "delete",
-    url: `http://134.249.181.40:7777/api/dude/${id}`,
+    url: `https://questimie.herokuapp.com/api/dude/${id}`,
     data: req,
   });
 };
@@ -45,9 +39,7 @@ function* workerLogin(action) {
 export function* watchLogin() {
   try {
     yield takeEvery(ADD_USER, workerLogin);
-  } catch (e) {
-    
-  }
+  } catch (e) {}
 }
 function* workerLogout(action) {
   try {

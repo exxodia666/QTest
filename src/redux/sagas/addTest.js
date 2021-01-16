@@ -15,7 +15,7 @@ const sendTest = (quiz) => {
   console.log(quiz);
   return axios({
     method: "post",
-    url: "http://134.249.181.40:7777/api/",
+    url: "https://questimie.herokuapp.com/api/",
     data: quiz,
   });
 };
