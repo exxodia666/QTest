@@ -2,8 +2,8 @@ import React from "react";
 
 export default function ErrorComponent({ message }) {
   return (
-    <div style={{ border: "1px solid black" }}>
-      <p style={{ color: "red" }}>{message}</p>
+    <div className="input-error_container">
+      <p className="input-error">*Ошибка в развитии</p>
     </div>
   );
 }
