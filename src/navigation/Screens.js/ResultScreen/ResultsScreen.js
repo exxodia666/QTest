@@ -42,7 +42,7 @@ export default function ResultsScreen() {
       <>
         {/* <button onClick={handleLogout}>Logout</button> */}
         <div className="content_container">
-          <div className="content__">
+          <div className="content___">
             <div className="title_container">
               <p>Результаты</p>
             </div>

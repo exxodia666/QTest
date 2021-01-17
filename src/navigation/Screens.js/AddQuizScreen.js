@@ -5,10 +5,12 @@ import QuestionComponent from "../../components/Form/Question";
 import "./styles/global-master.css";
 import { Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+//import "../../components/Form/checkbox.css"
 
 export default function AddQuizScreen() {
   const dispatch = useDispatch();
   const test_status = useSelector((state) => state.add_test);
+  console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", test_status);
   const history = useHistory();
   const [array, setArray] = useState([
     {
@@ -50,7 +52,7 @@ export default function AddQuizScreen() {
       let armel = el.name.split("-");
       switch (armel[0]) {
         case "quiz":
-          data["quiz_name"] = el.value;
+          data[armel[1]] = el.value !== "on" ? el.value : el.checked;
           break;
         case "question":
           if (data.questions[parseInt(armel[2])]) {
@@ -135,10 +137,21 @@ export default function AddQuizScreen() {
           <div className="test-name_container">
             <input
               type="text"
-              name="quiz-name"
+              name="quiz-quiz_name"
               class="text-input"
               placeholder="Название теста"
             />
+          </div>
+          <div className="checkbox">
+            <input
+              id="is_public"
+              name="quiz-is_public"
+              type="checkbox"
+              className="inp"
+            />
+            <label className="labelforcheckbox" for="is_public">
+              Открьітьій тест?
+            </label>
           </div>
           <form name="quiz" className="questions_global_container">
             {array.map((elQ) => {
@@ -177,6 +190,21 @@ export default function AddQuizScreen() {
     return <p>ERRRROR</p>;
     ///Екран Успешного добавления теста
   } else if (test_status.status === 200) {
-    return <p>ADD_TEST_SUCCESS</p>;
+    function copy() {
+      var msg = test_status.action.quiz_id;;
+      var temp = document.createElement("textarea");
+      var tempMsg = document.createTextNode(msg);
+      temp.appendChild(tempMsg);
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      document.body.removeChild(temp);
+    }
+    return (
+      <div id="quiz_id">
+        <p>Ід вашего теста: {test_status.action.quiz_id}</p>
+        <button onClick={copy}>Copy</button>
+      </div>
+    );
   }
 }

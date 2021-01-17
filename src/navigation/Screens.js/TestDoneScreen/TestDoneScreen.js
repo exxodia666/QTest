@@ -27,7 +27,7 @@ export default function TestDoneScreen() {
 
   return (
     <div className="content_container">
-      <div className="content__">
+      <div className="content___">
         <div className="title_container">
           <p>Посмотри на остальных лохоууу!</p>
         </div>

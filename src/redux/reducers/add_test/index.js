@@ -11,9 +11,10 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TEST_SUCCESS:
+      //console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', action.payload)
       return {
         status: action.payload.status,
-        message: action.payload.action,
+        action: action.payload.data,
       };
     case ADD_TEST_ERROR:
       return {
