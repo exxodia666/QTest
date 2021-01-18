@@ -37,17 +37,7 @@ export default function Header({ takeState }) {
           <ul className="header__list">
             <li>
               <Link to="/add" className="header__link">
-                Add
-              </Link>
-            </li>
-            <li>
-              <Link to="/contacts" className="header__link">
-                Contacts
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="header__link">
-                About Ass
+                Add &#10010;
               </Link>
             </li>
           </ul>
@@ -58,7 +48,7 @@ export default function Header({ takeState }) {
           </p>
           <div className="dropdown-content" style={{minWidth: user.length*8}}>
             <Link to="/results">Результаты</Link>
-            <Link onClick={handleLogout} className="logout">Krakin loh</Link>
+            <Link onClick={handleLogout} className="logout">Вийти</Link>
           </div>
         </div>
         <div className={`header__burger ${header}`} onClick={burger}>
