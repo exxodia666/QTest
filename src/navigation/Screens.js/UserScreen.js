@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { add_user } from "../../redux/actions/add_user.js";
 import { useHistory } from "react-router-dom";
 import ErrorComponent from "../../components/ErrorComponent/Error.js";
+import "./stylesforhomescreen/autorization.css";
 
 export const UserScreen = () => {
   const ref = useRef(null);
@@ -44,28 +45,38 @@ export const UserScreen = () => {
     return <ErrorComponent message={message} />;
   } else {
     return (
-      <div className="row p">
-        <div className="input-field col s6">
-          <input
-            placeholder="Enter your name"
-            style={{ border: "1px solid black" }}
-            id="icon_prefix"
-            type="text"
-            onKeyPress={handleName}
-            className="validate"
-            ref={ref}
-          />
-          <label htmlFor="icon_prefix">Name</label>
-          <button
-            onClick={() => {
-              handleClickName();
-            }}
-          >
-            Log in
-          </button>
-          {error && <ErrorComponent message={error} />}
+      <div className="content__auth">
+        <div className="autorization_container">
+          <div className="title_container">
+            <p className="title">
+              Для начала, пройдите нашу несложную авторизацию и получите доступ
+              к лучшим ковченым тестам
+            </p>
+          </div>
+          <div class="name-input_container">
+            <input
+              ref={ref}
+              onKeyPress={handleName}
+              id="icon_prefix"
+              type="text"
+              className="text-input"
+              placeholder="Введите имя"
+            />
+          </div>
+          {error && <ErrorComponent />}
+          <div className="button_container">
+            <input
+              onClick={() => {
+                handleClickName();
+              }}
+              type="button"
+              className="button_vote button"
+              value="Подтвердить"
+            />
+          </div>
         </div>
       </div>
     );
   }
 };
+

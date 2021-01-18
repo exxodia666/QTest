@@ -9,6 +9,7 @@ import { watchSendNewTest } from "./sagas/addTest";
 ///import { watchSendNewImage } from "./sagas/sendImage";
 import { watchLogin, watchLogout } from "./sagas/authUser";
 import { watchLoadResults } from "./sagas/results";
+import { watchLoadQuizRating } from "./sagas/getQuizRating";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -18,8 +19,8 @@ const store = createStore(
   rootReducer,
   persistedState,
   compose(
-    applyMiddleware(sagaMiddleware),
-    //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    applyMiddleware(sagaMiddleware)
+   // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   )
 );
 
@@ -30,6 +31,7 @@ sagaMiddleware.run(watchSendNewTest);
 sagaMiddleware.run(watchLoadResults);
 sagaMiddleware.run(watchLogin);
 sagaMiddleware.run(watchLogout);
+sagaMiddleware.run(watchLoadQuizRating);
 
 export default store;
 

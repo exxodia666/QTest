@@ -58,27 +58,3 @@ ListQuiz.propTypes = {
 
 export default React.memo(ListQuiz);
 
-{
-  /* <div>
-<ul className="collection">
-  {state.questions &&
-    state.questions.map((item, index) => {
-      return (
-        <li
-          key={index}
-        >
-          <p
-            style={{ cursor: "pointer" }}
-            onClick={() => handleSelect(index)}
-            className={`collection-item ${
-              selectedQuestion === index ? "active" : ""
-            }`}
-          >
-            {index + 1} - {item.question.wording}
-          </p>
-        </li>
-      );
-    })}
-</ul>
-</div> */
-}

@@ -170,3 +170,8 @@ p {
   border-bottom: 3px solid #FFC2C2;
   margin-bottom: -3px;
 }
+
+.labelforcheckbox {
+  color: #989898;
+  vertical-align: middle;
+}

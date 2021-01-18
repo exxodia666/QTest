@@ -16,6 +16,7 @@ export default memo(function Quiz() {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const history = useHistory();
   const found = state.questions.find((i) => i.isDone === false);
+  console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', state)
 
   const user = useSelector((state) => state.user.loggedIn);
   if (!user) {

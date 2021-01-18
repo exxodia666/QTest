@@ -1,9 +1,20 @@
-import React, { useState, useContext } from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles.css";
+import { delete_user } from "../../redux/actions/add_user"
 
 export default function Header({ takeState }) {
+
+  const dispatch = useDispatch();
+  const userr = useSelector((state) => state.user);
+
+  const handleLogout = () => {
+    if (userr.user.editing_key.length) {
+      dispatch(delete_user({ id: userr.user.id, key: userr.user.editing_key }));
+    }
+  };
+
   const [header, setHeader] = useState("");
   const [overlay, setOverlay] = useState("");
   function burger() {
@@ -42,12 +53,12 @@ export default function Header({ takeState }) {
           </ul>
         </nav>
         <div className="dropdown">
-          <Link to="/results" class="dropbtn">
+          <p class="dropbtn">
             <p>{user}</p>
-          </Link>
-          <div className="dropdown-content">
+          </p>
+          <div className="dropdown-content" style={{minWidth: user.length*8}}>
             <Link to="/results">Результаты</Link>
-            <Link className="logout">Выйти</Link>
+            <Link onClick={handleLogout} className="logout">Krakin loh</Link>
           </div>
         </div>
         <div className={`header__burger ${header}`} onClick={burger}>
@@ -58,40 +69,3 @@ export default function Header({ takeState }) {
   );
 }
 
-//  <nav>
-//     <div className="nav-wrapper mv">
-//       <Link
-//         style={{
-//           color: "inherit",
-//           textDecoration: "inherit",
-//           cursor: "pointer",
-//         }}
-//         className="brand-logo left"
-//         to="/"
-//       >
-//         QTest
-//       </Link>
-//       <ul className="right hide-on-med-and-down">
-//         <li>
-//           <Link to="/add">Add</Link>
-//         </li>
-//         <li>
-//           <Link to="/contacts">Contacts</Link>
-//         </li>
-//         <li>
-//           <Link to="/about">About ASS</Link>
-//         </li>
-//         <li>
-//           <Link to="/results">Logged as: {user}</Link>
-//         </li>
-//       </ul>
-//     </div>
-//   </nav>
-
-{
-  /* <div className="header__user">
-          <Link to="/results">
-            <p> Logged as: {user && user}</p>
-          </Link>
-        </div> */
-}
