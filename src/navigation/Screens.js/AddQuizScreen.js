@@ -5,7 +5,7 @@ import QuestionComponent from "../../components/Form/Question";
 import "./styles/global-master.css";
 import { Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-//import "../../components/Form/checkbox.css"
+import "./stylesforhomescreen/autorization.css";
 
 export default function AddQuizScreen() {
   const dispatch = useDispatch();
@@ -191,7 +191,7 @@ export default function AddQuizScreen() {
     ///Екран Успешного добавления теста
   } else if (test_status.status === 200) {
     function copy() {
-      var msg = test_status.action.quiz_id;;
+      var msg = test_status.action.quiz_id;
       var temp = document.createElement("textarea");
       var tempMsg = document.createTextNode(msg);
       temp.appendChild(tempMsg);
@@ -201,9 +201,23 @@ export default function AddQuizScreen() {
       document.body.removeChild(temp);
     }
     return (
-      <div id="quiz_id">
-        <p>Ід вашего теста: {test_status.action.quiz_id}</p>
-        <button onClick={copy}>Copy</button>
+      <div id="quiz_id" className="content__auth">
+        <div className="autorization_container">
+          <div className="title_container">
+            <p className="title">
+              Ід вашего теста: <br/>
+              <strong>{test_status.action.quiz_id}</strong>
+            </p>
+          </div>
+          <div className="button_container">
+            <input
+              onClick={copy}
+              type="button"
+              className="button_vote button"
+              value="Копировать"
+            />
+          </div>
+        </div>
       </div>
     );
   }
