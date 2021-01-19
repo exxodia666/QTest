@@ -31,16 +31,7 @@ export default function AddQuizScreen() {
 
 	function del(id, arr, entity){
 		console.log('state in del', arr)
-		// let res = arr.map((item)=>{
-		// 	if(item[entity]<id){
-		// 		return item
-		// 	}else if(item[entity] == id){
-		// 		return
-		// 	}else if (item[entity]> id) {
-		// 		item[entity] -=1
-		// 		return item
-		// 	}
-		// })
+	
 		let a =  arr.filter((item => {
 			 	if(item[entity]<id){
 			 		return item
@@ -51,14 +42,7 @@ export default function AddQuizScreen() {
 			 		return item
 			 	}
 			 })) 
-		// let b = a.map((el, index)=>{
-		// 	console.log('index', index)
-		// 	if (el[index] == 2 && el[index-1] == 0) {
-		// 		return el[index]--;
-		// 	} else if (el[index]%el[index-1]) {
-		// 		return el[index]--;
-		// 	}
-		// })
+		
 		   console.log('state after del', a)
 		   return a
 	}
@@ -66,16 +50,8 @@ export default function AddQuizScreen() {
 
 	function deleteAnswerOrQuestion(id, entity) {
 		console.log('state in delAOQ', array)
-		// if (entity == 'question_id') {
-		   setArray((prevArray)=>[
-			   //...del(id, prevArray, entity)
-			   ...del(id, prevArray, entity)
-		   ])
-		// }else if (entity == 'choice_id') {
-		// 	setArray((arr)=>[
-		// 		...del(id, arr, entity)
-		// 	])
-		// }
+		    setArray(del(id, array, entity))
+		
 	}
 
 	const user = useSelector((state) => state.user.loggedIn);
