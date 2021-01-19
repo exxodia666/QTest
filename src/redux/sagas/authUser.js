@@ -44,7 +44,6 @@ export function* watchLogin() {
 function* workerLogout(action) {
   try {
     const res = yield call(logout, { ...action.payload });
-    console.log(res);
     yield put(logout_success(res));
   } catch (e) {
     yield put(req_error(e));

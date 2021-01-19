@@ -14,7 +14,6 @@ export const loadResultsSuccess = (payload) => {
   };
 };
 export const loadResultsError = (payload) => {
-  //console.log(payload);
   return {
     type: LOAD_RESULTS_ERROR,
     payload,

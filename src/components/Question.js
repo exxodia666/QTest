@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import PropTypes from "prop-types"; // ES6
 import { useDispatch } from "react-redux";
 import { setDone, setSelected } from "../redux/actions/show_quizzes";
-//import ModalComponent from "./Modal";
 import "./styles/style.css";
 
 const Question = ({
@@ -16,13 +15,10 @@ const Question = ({
   overlay,
 }) => {
   const dispatch = useDispatch();
-  console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', imageUrl)
 
   const handleSelectItem = (e) => {
-    console.log(e.target.checked)
     dispatch(setSelected({ answ: e.target.value, id }));
   };
-  console.log(isDone)
   return (
     <>
       <div className="content">

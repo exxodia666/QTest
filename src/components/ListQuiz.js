@@ -4,7 +4,6 @@ import PropTypes from "prop-types"; // ES6
 import "./styles/style.css";
 
 function ListQuiz({ state, handleSelect, selectedQuestion }) {
-  console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', state)
   if (state.length) {
     return (
       <div className="leftbar">

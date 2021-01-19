@@ -6,7 +6,6 @@ import { watchSendData } from "./sagas/answers";
 import { watchLoadQuizList } from "./sagas/load_quizlist";
 import { loadState, saveState } from "./sessionStorage";
 import { watchSendNewTest } from "./sagas/addTest";
-///import { watchSendNewImage } from "./sagas/sendImage";
 import { watchLogin, watchLogout } from "./sagas/authUser";
 import { watchLoadResults } from "./sagas/results";
 import { watchLoadQuizRating } from "./sagas/getQuizRating";

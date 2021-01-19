@@ -16,13 +16,11 @@ export default memo(function Quiz() {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
   const history = useHistory();
   const found = state.questions.find((i) => i.isDone === false);
-  console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', state)
 
   const user = useSelector((state) => state.user.loggedIn);
   if (!user) {
     history.push("/");
   }
-  console.log("RENDER TEST SCREEN");
 
   useEffect(() => {
     dispatch(loadQuizzes(id));
@@ -42,7 +40,6 @@ export default memo(function Quiz() {
   };
 
   const handleSelect = (id) => {
-    console.log(id);
     setSelectedQuestion(id);
   };
 

@@ -11,7 +11,6 @@ function HomeScreen() {
   const quiz_list = useSelector((state) => state.quiz_list);
   const [input, setInput] = useState("");
   const history = useHistory();
-  console.log("RENDER HOME SCREEN");
   const [privat_input, setPrivat_input] = useState("");
 
   const user = useSelector((state) => state.user.loggedIn);
