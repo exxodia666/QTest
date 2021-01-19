@@ -1,8 +1,7 @@
 import React from "react";
-import { Col } from "react-bootstrap";
 import "./global-slave.css";
 
-function Choice({ question_id, choise_id }) {
+function Choice({ question_id, choise_id, deleteAnswerOrQuestion }) {
   return (
     <div className="answer_container">
       <div className="checkbox">
@@ -14,6 +13,7 @@ function Choice({ question_id, choise_id }) {
       <input 
       name={`choice-text-${question_id}-${choise_id}`}
       type="text" className="text-input" placeholder={`Ответ ${choise_id+1}`} />
+      <button  id={`btn_${question_id}-${choise_id}`} onClick={()=>deleteAnswerOrQuestion(choise_id, 'choice_id')}>Delete</button>
     </div>
   );
 }

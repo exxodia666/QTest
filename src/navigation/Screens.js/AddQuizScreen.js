@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { add_test, reset_add_test } from '../../redux/actions/add_test';
 import QuestionComponent from '../../components/Form/Question';
 import './styles/global-master.css';
-import { Container } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import './stylesforhomescreen/autorization.css';
 
@@ -14,7 +13,6 @@ export default function AddQuizScreen() {
 	const [array, setArray] = useState([
 		{
 			question_id: 0,
-			image: '',
 			choises: [
 				{
 					choise_id: 0,
@@ -27,6 +25,58 @@ export default function AddQuizScreen() {
 			],
 		},
 	]);
+	console.log('state', array)
+	
+	
+
+	function del(id, arr, entity){
+		console.log('state in del', arr)
+		// let res = arr.map((item)=>{
+		// 	if(item[entity]<id){
+		// 		return item
+		// 	}else if(item[entity] == id){
+		// 		return
+		// 	}else if (item[entity]> id) {
+		// 		item[entity] -=1
+		// 		return item
+		// 	}
+		// })
+		let a =  arr.filter((item => {
+			 	if(item[entity]<id){
+			 		return item
+			 	}else if(item[entity] == id){
+			 		return
+			 	}else if (item[entity]> id) {
+			 		item[entity] -=1
+			 		return item
+			 	}
+			 })) 
+		// let b = a.map((el, index)=>{
+		// 	console.log('index', index)
+		// 	if (el[index] == 2 && el[index-1] == 0) {
+		// 		return el[index]--;
+		// 	} else if (el[index]%el[index-1]) {
+		// 		return el[index]--;
+		// 	}
+		// })
+		   console.log('state after del', a)
+		   return a
+	}
+
+
+	function deleteAnswerOrQuestion(id, entity) {
+		console.log('state in delAOQ', array)
+		// if (entity == 'question_id') {
+		   setArray((prevArray)=>[
+			   //...del(id, prevArray, entity)
+			   ...del(id, prevArray, entity)
+		   ])
+		// }else if (entity == 'choice_id') {
+		// 	setArray((arr)=>[
+		// 		...del(id, arr, entity)
+		// 	])
+		// }
+	}
 
 	const user = useSelector((state) => state.user.loggedIn);
 
@@ -143,6 +193,7 @@ export default function AddQuizScreen() {
 									choices={elQ.choises}
 									addAnswers={addAnswers}
 									question_id={elQ.question_id}
+									deleteAnswerOrQuestion={deleteAnswerOrQuestion}
 								/>
 							);
 						})}

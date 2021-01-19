@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Choice from './Choice';
 import './global-slave.css';
 
-export default function QuestionComponent({ addAnswers, question_id, choices, setArray }) {
+export default function QuestionComponent({ addAnswers, question_id, choices, deleteAnswerOrQuestion }) {
 	const [image, setImage] = useState(null);
 	const [id, setId] = useState(null);
 	const [key, setKey] = useState(null);
@@ -52,6 +52,7 @@ export default function QuestionComponent({ addAnswers, question_id, choices, se
 					placeholder="Название вопроса"
 					name={`question-wording-${question_id}`}
 				/>
+				<button onClick={()=>{deleteAnswerOrQuestion(question_id, 'question_id')}} id={`question-wording-${question_id}`}>Delete</button>
 			</div>
 
 			{!image && (
@@ -96,7 +97,7 @@ export default function QuestionComponent({ addAnswers, question_id, choices, se
 			<input type="hidden" value={id} name={`question-image-${question_id}`} />
 			<div className="answers_container">
 				{choices.map((el) => {
-					return <Choice question_id={question_id} choise_id={el.choise_id} />;
+					return <Choice question_id={question_id} choise_id={el.choise_id} deleteAnswerOrQuestion={deleteAnswerOrQuestion} />;
 				})}
 			</div>
 			<div className="add-answer-button_container">
@@ -116,50 +117,4 @@ export default function QuestionComponent({ addAnswers, question_id, choices, se
 	);
 }
 
-{
-	/* <div id={`question${question_id}`}>
-      {image && <img src={"http://134.249.181.40:7777" + image} />}
-      <input
-        type="text"
-        name={`question-wording-${question_id}`}
-        placeholder="Название опроса"
-      />
-      <input
-        disabled={true}
-        type="hidden"
-        value={id}
-        name={`question-image-${question_id}`}
-      />
-      <input
-        type="file"
-        //value={selectedFile}
-        onChange={(e) => {
-          //console.log(e.target);
-          sendImages(e.target.files[0]);
-        }}
-      />
-      <input
-        //accept="image/*"
-        type="button"
-        value="delete"
-        onClick={deleteImage}
-      />
-      <div id="list_answers">
-        {choices.map((el) => {
-          console.log(el);
-          return <Choice question_id={question_id} choise_id={el.choise_id} />;
-        })}
-      </div>
-      <div>
-        <i
-          onClick={() => {
-            addAnswers(question_id);
-          }}
-          style={{ cursor: "pointer" }}
-          className="medium material-icons"
-        >
-          add_circle_outline
-        </i>
-      </div>
-    </div> */
-}
+
