@@ -51,7 +51,7 @@ export default function QuestionComponent({
         <p>Вопрос {question_id + 1}</p>
       </div>
       <div className="question-name_container">
-        <input type="text" class="text-input" placeholder="Название вопроса" name={`question-wording-${question_id}`}/>
+        <input type="text" className="text-input" placeholder="Название вопроса" name={`question-wording-${question_id}`}/>
       </div>
 
       {!image && (

@@ -135,7 +135,7 @@ export default function AddQuizScreen() {
             <input
               type="text"
               name="quiz-quiz_name"
-              class="text-input"
+              className="text-input"
               placeholder="Название теста"
             />
           </div>

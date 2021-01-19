@@ -42,7 +42,7 @@ export default function Header() {
           </ul>
         </nav>
         <div className="dropdown">
-          <p class="dropbtn">
+          <p className="dropbtn">
             <p>{user}</p>
           </p>
           <div className="dropdown-content" style={{minWidth: user.length*8}}>

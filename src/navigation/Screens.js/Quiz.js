@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState, useContext } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import ListQuiz from "../../components/ListQuiz";
@@ -8,7 +8,6 @@ import { clearQuiz, loadQuizzes } from "../../redux/actions/show_quizzes";
 import { Context } from "../MainNavigator";
 
 export default memo(function Quiz() {
-  const overlay = useContext(Context);
   let { id } = useParams();
   const dispatch = useDispatch();
   const state = useSelector((state) => state.quizzes);
@@ -69,7 +68,6 @@ export default memo(function Quiz() {
           multiple={
             state.questions[selectedQuestion].question.is_multiple_choice
           }
-          overlay={overlay}
         />
       </>
     );
