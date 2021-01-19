@@ -10,7 +10,6 @@ import "./stylesforhomescreen/autorization.css";
 export default function AddQuizScreen() {
   const dispatch = useDispatch();
   const test_status = useSelector((state) => state.add_test);
-  console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", test_status);
   const history = useHistory();
   const [array, setArray] = useState([
     {
@@ -42,12 +41,10 @@ export default function AddQuizScreen() {
 
   function saveQuizName() {
     const inputs = document.querySelectorAll("input, textarea");
-    console.log(inputs);
     const data = {
       quiz_name: "",
       questions: [],
     };
-    console.log(inputs);
     Array.from(inputs).forEach((el) => {
       let armel = el.name.split("-");
       switch (armel[0]) {
@@ -155,7 +152,6 @@ export default function AddQuizScreen() {
           </div>
           <form name="quiz" className="questions_global_container">
             {array.map((elQ) => {
-              console.log(elQ);
               return (
                 <QuestionComponent
                   choices={elQ.choises}

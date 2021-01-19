@@ -8,10 +8,8 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SAVE_IMAGE:
-      console.log(action.payload);
       const newImageUrls = [...state.imageUrl];
       newImageUrls.push(action.payload);
-      console.log(newImageUrls);
       const newState = {
         ...state,
         status: 200,

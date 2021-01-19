@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 import { delete_user } from "../../redux/actions/add_user"
 
-export default function Header({ takeState }) {
+export default function Header() {
 
   const dispatch = useDispatch();
   const userr = useSelector((state) => state.user);
@@ -22,7 +22,6 @@ export default function Header({ takeState }) {
     setOverlay(overlay == "" ? "overlay_active" : "");
   }
   const user = useSelector((state) => state.user.user.name);
-  console.log("RENDER HEADER");
   return (
     <header className="header">
       <div className={`overlay ${overlay}`}></div>

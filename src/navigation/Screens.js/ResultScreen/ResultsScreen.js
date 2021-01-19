@@ -15,8 +15,6 @@ export default function ResultsScreen() {
   const user = useSelector((state) => state.user);
   const userLogged = useSelector((state) => state.user.loggedIn);
 
-  console.log("RESULTS SCREEN");
-
   React.useEffect(() => {
     if (!userLogged) {
       history.push("/");
@@ -47,7 +45,6 @@ export default function ResultsScreen() {
               <p>Результаты</p>
             </div>
             {results.results.map((i) => {
-              console.log();
               return (
                 <Result
                   pass_date={i.pass_date}

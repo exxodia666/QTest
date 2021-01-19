@@ -10,7 +10,6 @@ export default function TestDoneScreen() {
   const state = useSelector((state) => state.quizzes);
   const user = useSelector((state) => state.user.user.id);
   const quiz_rating = useSelector((state) => state.quiz_rating.quiz_results);
-  console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", quiz_rating);
   const { id } = useParams();
   const dispatch = useDispatch();
 

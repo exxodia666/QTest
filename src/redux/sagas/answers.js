@@ -9,7 +9,6 @@ const sendAnswers = ({ obj, id }) =>
 //TODO NORMAL USER
 
 function* workerSendData(action) {
-  console.log(action);
   const reqObj = {
     dude_id: action.payload.user,
     answers: action.payload.obj.map((item) => ({
@@ -22,7 +21,6 @@ function* workerSendData(action) {
     })),
   };
   const res = yield call(sendAnswers, { obj: reqObj, id: action.payload.id });
-  // yield put();
 }
 
 export function* watchSendData() {
