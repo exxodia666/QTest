@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Choice from './Choice';
 import './global-slave.css';
 
-export default function QuestionComponent({ addAnswers, question_id, choices, deleteAnswerOrQuestion }) {
+export default function QuestionComponent({ addAnswers, question_id, choices, deleteQuestion, deleteAnswer }) {
 	const [image, setImage] = useState(null);
 	const [id, setId] = useState(null);
 	const [key, setKey] = useState(null);
@@ -44,6 +44,7 @@ export default function QuestionComponent({ addAnswers, question_id, choices, de
 		<div className="question_container">
 			<div className="question-title_container">
 				<p>Вопрос {question_id + 1}</p>
+				<p className="krestik" onClick={()=>{deleteQuestion(question_id, 'question_id')}} id={`question-wording-${question_id}`}>&#10060;</p>
 			</div>
 			<div className="question-name_container">
 				<input
@@ -52,7 +53,6 @@ export default function QuestionComponent({ addAnswers, question_id, choices, de
 					placeholder="Название вопроса"
 					name={`question-wording-${question_id}`}
 				/>
-				<button onClick={()=>{deleteAnswerOrQuestion(question_id, 'question_id')}} id={`question-wording-${question_id}`}>Delete</button>
 			</div>
 
 			{!image && (
@@ -97,7 +97,7 @@ export default function QuestionComponent({ addAnswers, question_id, choices, de
 			<input type="hidden" value={id} name={`question-image-${question_id}`} />
 			<div className="answers_container">
 				{choices.map((el) => {
-					return <Choice question_id={question_id} choise_id={el.choise_id} deleteAnswerOrQuestion={deleteAnswerOrQuestion} />;
+					return <Choice question_id={question_id} choise_id={el.choise_id} deleteAnswer={deleteAnswer} />;
 				})}
 			</div>
 			<div className="add-answer-button_container">

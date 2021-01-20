@@ -20,12 +20,24 @@
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
   text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #E8F3FF;
+}
+
+.krestik{
+  position: absolute;
+  right: 10px;
+  
 }
 
 .question-title_container p {
   color: #646464;
   font-size: 18px;
+  flex: 1 0 0;
+  text-align: center;
 }
 
 .question-name_container {

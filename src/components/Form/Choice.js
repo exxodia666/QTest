@@ -1,7 +1,7 @@
 import React from "react";
 import "./global-slave.css";
 
-function Choice({ question_id, choise_id, deleteAnswerOrQuestion }) {
+function Choice({ question_id, choise_id, deleteAnswer }) {
   return (
     <div className="answer_container">
       <div className="checkbox">
@@ -13,7 +13,7 @@ function Choice({ question_id, choise_id, deleteAnswerOrQuestion }) {
       <input 
       name={`choice-text-${question_id}-${choise_id}`}
       type="text" className="text-input" placeholder={`Ответ ${choise_id+1}`} />
-      <button  id={`btn_${question_id}-${choise_id}`} onClick={()=>deleteAnswerOrQuestion(choise_id, 'choice_id')}>Delete</button>
+      <p  id={`btn_${question_id}-${choise_id}`} onClick={()=>deleteAnswer(question_id, 'choise_id', choise_id)}>&#10060;</p>
     </div>
   );
 }
