@@ -66,9 +66,9 @@ a {
   height: calc(100vh - 50px);
   width: 30%;
   left: 0px;
-  right: 0px;
-  position: absolute;
-  float: left;
+  
+  position: fixed;
+ 
   z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -222,7 +222,6 @@ a {
 
 .content {
   margin-top: 50px;
-  height: calc(100vh - 50px);
   background-color: #fff;
   width: 70%;
   float: right;
@@ -483,8 +482,7 @@ hr {
             transform: translateY(0%);
     -webkit-transition: 0.5s;
     transition: 0.5s;
-    position: relative;
-    height: auto;
+    
   }
   .content_inactive {
     display: none;

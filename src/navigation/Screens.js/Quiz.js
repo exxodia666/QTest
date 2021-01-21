@@ -41,7 +41,8 @@ export default memo(function Quiz() {
 	};
 
 	const handleSelect = (id) => {
-		setSelectedQuestion(id);
+		
+		setSelectedQuestion(id % stateToQuestionName().length) ;
 	};
 
 	const stateToQuestionName = () =>
@@ -58,9 +59,10 @@ export default memo(function Quiz() {
 					state={stateToQuestionName()}
 					handleSelect={handleSelect}
 					selectedQuestion={selectedQuestion}
-					//finishTest={handleAnswer}
 				/>
 				<Question
+					selectedQuestion={selectedQuestion}
+					handleSelect={handleSelect}
 					isDone={state.questions[selectedQuestion].isDone}
 					setSelectedAnswers={handleAnswer}
 					imageUrl={state.questions[selectedQuestion].question.image}

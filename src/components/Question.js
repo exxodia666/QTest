@@ -11,8 +11,8 @@ const Question = ({
   wording,
   answers,
   imageUrl,
-  multiple,
-  overlay,
+  selectedQuestion,
+  handleSelect
 }) => {
   const dispatch = useDispatch();
 
@@ -20,13 +20,15 @@ const Question = ({
 
   const handleSelectItem = (e) => {
     dispatch(setSelected({ answ: e.target.value, id }));
+ 
   };
+
   return (
     <>
       <div className={`content ${content}`}>
         <div className="quiz_body">
           <div className="title_container">
-            <p>{`Вопрос `}</p>
+            <p>{`Вопрос №${selectedQuestion + 1}`}</p>
           </div>
           <div className="quizname">
             <p>{wording}</p>
@@ -65,8 +67,8 @@ const Question = ({
               value="Ответить"
               disabled={isDone}
               onClick={() => {
-                console.log('Xyi')
                 dispatch(setDone(id));
+                handleSelect(selectedQuestion + 1)
               }}
             />
           </div>
