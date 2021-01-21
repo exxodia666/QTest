@@ -41,7 +41,12 @@ export default function Header() {
           <ul className="header__list">
             <li>
               <Link to="/add" className="header__link">
-                Add &#10010;
+              Создать тест 
+              </Link>
+            </li>
+            <li>
+              <Link to="#" className="header__link"> 
+              Приложение
               </Link>
             </li>
           </ul>

@@ -3,29 +3,12 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    height: calc(100vh - 50px);
+    height: 100vh;
 }
-.loader_container img {
+
+.loader_container div {
     margin: auto;
-}
-img.rot {
-    animation: 2s linear 0s normal none infinite running rot;
-    -webkit-animation: 2s linear 0s normal none infinite running rot;
-    width: 150px;
-}
-@keyframes rot {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-@-webkit-keyframes rot {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    width: 100px;
+    height: 100px;
+    background: url("Double Ring-1s-84px.svg") no-repeat center;
 }

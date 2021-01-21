@@ -3,11 +3,8 @@ import "./styles/loader.css";
 
 function Loader() {
   return (
-    <div>
-      <div className="loader_container">
-       {//TODO LOADER
-       }
-      </div>
+    <div class="loader_container">
+      <div></div>
     </div>
   );
 }
