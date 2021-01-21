@@ -92,7 +92,7 @@ function HomeScreen() {
             .map((qz) => {
               return (
                 <div className="quizbox_container" key={qz.id}>
-                  <Link className="quizbox" to={`/quiz/${qz.id}`}>
+                  <Link className="quizbox__" to={`/quiz/${qz.id}`}>
                     <div className="quiz-title">
                       <p>{qz.quiz_name}</p>
                     </div>

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles.css";
-import { delete_user } from "../../redux/actions/add_user"
+import { delete_user } from "../../redux/actions/add_user";
 
 export default function Header() {
-
   const dispatch = useDispatch();
   const userr = useSelector((state) => state.user);
 
@@ -41,15 +40,24 @@ export default function Header() {
             </li>
           </ul>
         </nav>
-        <div className="dropdown">
-          <p className="dropbtn">
-            <p>{user}</p>
-          </p>
-          <div className="dropdown-content" style={{minWidth: user.length*8}}>
-            <Link to="/results">Результаты</Link>
-            <Link onClick={handleLogout} className="logout">Вийти</Link>
+        {user && (
+          <div className="dropdown-container">
+            <div className="dropdown">
+              <p className="dropbtn">
+                <p>{user}</p>
+              </p>
+              <div
+                className="dropdown-content"
+                style={{ minWidth: user.length * 8 }}
+              >
+                <Link to="/results">Результаты</Link>
+                <Link onClick={handleLogout} className="logout">
+                  Вийти
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
         <div className={`header__burger ${header}`} onClick={burger}>
           <span></span>
         </div>
@@ -57,4 +65,3 @@ export default function Header() {
     </header>
   );
 }
-

@@ -31,6 +31,7 @@ export default function ResultsScreen() {
     dispatch(loadResults(user.user.id));
   }, []);
 
+
   if (user.status === 400 && user.message.length) {
     return <ErrorComponent message={user.message} />;
   }
@@ -44,7 +45,8 @@ export default function ResultsScreen() {
             <div className="title_container">
               <p>Результаты</p>
             </div>
-            {results.results.map((i) => {
+            {(results.results.length &&
+            results.results.map((i) => {
               return (
                 <Result
                   pass_date={i.pass_date}
@@ -52,7 +54,7 @@ export default function ResultsScreen() {
                   rating={i.rating * 100}
                 />
               );
-            })}
+            })) || <div className="title_container">Сначала пройдите любой тест</div>}
           </div>
         </div>
       </>
