@@ -38,7 +38,7 @@ export default function AddQuizScreen() {
   }
 
   function deleteAnswer(id, entity, chId) {
-    
+
     setArray(delC(id, array, entity, chId));
   }
 
@@ -127,17 +127,17 @@ export default function AddQuizScreen() {
       ...prevArray.map((e) =>
         e.question_id === el
           ? {
-              ...e,
-              choises: [
-                ...e.choises,
-                {
-                  choise_id:
-                    prevArray[el].choises[prevArray[el].choises.length - 1]
-                      .choise_id + 1,
-                  isCorect: false,
-                },
-              ],
-            }
+            ...e,
+            choises: [
+              ...e.choises,
+              {
+                choise_id:
+                  prevArray[el].choises[prevArray[el].choises.length - 1]
+                    .choise_id + 1,
+                isCorect: false,
+              },
+            ],
+          }
           : e
       ),
     ]);
@@ -167,7 +167,7 @@ export default function AddQuizScreen() {
     return (
       <div className="content_container">
         <div className="content__">
-          <div className="title_container">
+          <div className="title_container_crt">
             <p>Создать тест</p>
           </div>
           <div className="test-name_container">
@@ -186,7 +186,7 @@ export default function AddQuizScreen() {
                 className="inp"
                 name="quiz-is_public"
               />
-              
+
               <label for="is_public"></label>
             </div>
             <p>Сделать открытым</p>
