@@ -130,7 +130,7 @@ export default function QuestionComponent({
 
       <div className="descr_container">
         <textarea
-          placeholder="Описание"
+          placeholder="Описание!"
           rows="6"
           className="descr"
           name={`question-text-${question_id}`}
