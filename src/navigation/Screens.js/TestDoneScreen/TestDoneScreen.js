@@ -18,7 +18,7 @@ export default function TestDoneScreen() {
   }, []);
 
   useEffect(() => {
-    console.log(user, id);
+    //console.log(user, id);
     dispatch(sendAnswers({ obj: state.questions, id, user }));
     return () => dispatch(clearQuiz());
     // eslint-disable-next-line

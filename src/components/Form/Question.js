@@ -31,8 +31,8 @@ export default function QuestionComponent({
   }
 
   function del() {
-	deleteImage();
-	setLoader(false);
+	  deleteImage();
+	  setLoader(false);
   }
 
   const sendImages = (selectedFile) => {

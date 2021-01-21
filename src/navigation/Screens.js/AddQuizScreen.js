@@ -30,7 +30,6 @@ export default function AddQuizScreen() {
   function delC(id, arr, entity, chId) {
     let choices = arr.map((item) => {
       if (item.question_id == id) {
-        console.log("item", item.choises);
         item.choises = delA(chId, item.choises, entity);
       }
       return item;
@@ -39,7 +38,7 @@ export default function AddQuizScreen() {
   }
 
   function deleteAnswer(id, entity, chId) {
-    console.log("state in delAOQ", array);
+    
     setArray(delC(id, array, entity, chId));
   }
 
