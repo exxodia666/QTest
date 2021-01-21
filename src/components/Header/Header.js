@@ -20,10 +20,16 @@ export default function Header() {
     setHeader(header == "" ? "active" : "");
     setOverlay(overlay == "" ? "overlay_active" : "");
   }
+
+  function over() {
+    setHeader(header == "" ? "active" : "");
+    setOverlay(overlay == "" ? "overlay_active" : "");
+  }
+  
   const user = useSelector((state) => state.user.user.name);
   return (
     <header className="header">
-      <div className={`overlay ${overlay}`}></div>
+      <div className={`overlay ${overlay}`} onClick={over}></div>
       <div className="header__body">
         <Link to="/" className="header__logo">
           <p>

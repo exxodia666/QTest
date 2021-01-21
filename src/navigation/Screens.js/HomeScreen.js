@@ -41,9 +41,9 @@ function HomeScreen() {
 
   if (quiz_list.status === 200) {
     return (
-      <div className="content_container">
+      <div className="content_container_home">
         <div className="content__home">
-          <div className="title_container">
+          <div className="title_container_home">
             <p>Список опросов</p>
           </div>
           <form>

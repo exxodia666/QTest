@@ -179,16 +179,18 @@ export default function AddQuizScreen() {
               placeholder="Название теста"
             />
           </div>
-          <div className="checkbox">
-            <input
-              id="is_public"
-              name="quiz-is_public"
-              type="checkbox"
-              className="inp"
-            />
-            <label className="labelforcheckbox" for="is_public">
-              Открытый тест?
-            </label>
+          <div class="is-private_container">
+            <div class="checkbox">
+              <input
+                type="checkbox"
+                id="is_public"
+                className="inp"
+                name="quiz-is_public"
+              />
+              
+              <label for="is_public"></label>
+            </div>
+            <p>Сделать открытым</p>
           </div>
           <form name="quiz" className="questions_global_container">
             {array.map((elQ) => {

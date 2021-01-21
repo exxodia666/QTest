@@ -50,10 +50,6 @@ a {
   outline: none;
 }
 
-html body {
-  margin: 0px;
-  font-family: "Roboto", sans-serif;
-}
 
 .main_container {
   display: -webkit-box;
@@ -516,7 +512,7 @@ hr {
     border-radius: 3px;
     padding: 8px 25px 7px 25px;
   }
-  .list-btnp {
+  .list-btn p {
     margin: 0px !important;
   }
   .list-btn .arrow {

@@ -13,7 +13,7 @@ function Choice({ question_id, choise_id, deleteAnswer }) {
       <input 
       name={`choice-text-${question_id}-${choise_id}`}
       type="text" className="text-input" placeholder={`Ответ ${choise_id+1}`} />
-      <p  id={`btn_${question_id}-${choise_id}`} onClick={()=>deleteAnswer(question_id, 'choise_id', choise_id)}>&#10060;</p>
+      <p style={{color: "red", fontSize: "25px", margin: "0 0 0 10px"}} id={`btn_${question_id}-${choise_id}`} onClick={()=>deleteAnswer(question_id, 'choise_id', choise_id)}>×</p>
     </div>
   );
 }
