@@ -25,7 +25,9 @@ p {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-input[type="text"], textarea, [contenteditable] {
+input[type="text"],
+textarea,
+[contenteditable] {
   -webkit-user-select: text;
   -moz-user-select: text;
   -ms-user-select: text;
@@ -33,7 +35,7 @@ input[type="text"], textarea, [contenteditable] {
 }
 
 .current {
-  background-color: #E8F3FF !important;
+  background-color: #e8f3ff !important;
 }
 
 .current span {
@@ -64,6 +66,7 @@ html body {
 }
 
 .leftbar {
+  margin-top: 50px;
   height: calc(100vh - 50px);
   width: 30%;
   left: 0px;
@@ -92,24 +95,9 @@ html body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  overflow: auto;
   padding-bottom: 5px;
   background-color: #fff;
-  /*-----SCROLLBAR----*/
-  /*&::-webkit-scrollbar {
-        width: 10px;
-        background-color: #f9f9fd;
-      }
-      
-    &::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        background-color: #838383;
-      }
-      
-    &::-webkit-scrollbar-track {
-        width: 0px;
-        background-color: #e4e4e4;
-    }*/
+  overflow: auto;
 }
 
 .quizlist .quizlist_item {
@@ -156,7 +144,7 @@ html body {
 }
 
 .quizlist .voted a {
-  color: #D6D6D6;
+  color: #d6d6d6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -228,7 +216,7 @@ html body {
 }
 
 .complete-btn:hover {
-  border-bottom: 3px solid #FFC2C2;
+  border-bottom: 3px solid #ffc2c2;
   margin-bottom: -3px;
 }
 
@@ -237,6 +225,7 @@ html body {
 }
 
 .content {
+  margin-top: 50px;
   height: calc(100vh - 50px);
   background-color: #fff;
   width: 70%;
@@ -281,8 +270,8 @@ html body {
 }
 
 .quizname {
-  background-color: #E8F3FF;
-  margin: 0px 0px 50px 0px;
+  background-color: #e8f3ff;
+  margin: 0px 0px 30px 0px;
   padding: 10px 0px 12px 15px;
   height: auto;
   position: relative;
@@ -317,7 +306,7 @@ html body {
 
 .description_container {
   padding-bottom: 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #a8a8a8;
 }
 
 .description_container p {
@@ -346,7 +335,7 @@ html body {
   padding-top: 10px;
   height: auto;
   color: #fff;
-  background-color: #4185C9;
+  background-color: #4185c9;
   -webkit-box-shadow: none;
           box-shadow: none;
   border: 0px;
@@ -355,7 +344,7 @@ html body {
 }
 
 .button_vote:hover {
-  border-bottom: 3px solid #C2E1FF;
+  border-bottom: 3px solid #c2e1ff;
   margin-top: 3px;
 }
 
@@ -427,7 +416,7 @@ hr {
       -ms-flex: 0 0 26px;
           flex: 0 0 26px;
   top: 3px;
-} 
+}
 
 .checkbox label::after {
   height: 7px;
@@ -449,6 +438,9 @@ hr {
 }
 
 @media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
   .quiz_body {
     padding-left: 10px;
     padding-right: 10px;
@@ -457,9 +449,10 @@ hr {
     font-size: 17px;
   }
   .content {
-    height: calc(100vh - 100px);
-    overflow: visible;
+    height: auto;
+    margin-bottom: 50px;
     width: 100%;
+    position: relative;
   }
   .leftbar {
     -webkit-transform: translateY(calc(+100%));
@@ -469,6 +462,7 @@ hr {
     -webkit-transition: 0.3s;
     transition: 0.3s;
     height: calc(100vh - 100px);
+    margin-bottom: 50px;
   }
   .quizlist .quizlist_item {
     font-size: 15px;
@@ -493,6 +487,11 @@ hr {
             transform: translateY(0%);
     -webkit-transition: 0.5s;
     transition: 0.5s;
+    position: relative;
+    height: auto;
+  }
+  .content_inactive {
+    display: none;
   }
   .list-btn_container {
     background-color: #fff;
@@ -516,6 +515,9 @@ hr {
     text-decoration: none;
     border-radius: 3px;
     padding: 8px 25px 7px 25px;
+  }
+  .list-btnp {
+    margin: 0px !important;
   }
   .list-btn .arrow {
     margin-left: 5px;
