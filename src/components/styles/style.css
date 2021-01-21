@@ -50,15 +50,14 @@ a {
   outline: none;
 }
 
-
 .main_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .leftbar {
@@ -66,32 +65,32 @@ a {
   height: calc(100vh - 50px);
   width: 30%;
   left: 0px;
-  
+
   position: fixed;
- 
+
   z-index: 2;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   border-right: 1px solid #b9b9b9;
 }
 
 .quizlist {
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding-bottom: 5px;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  padding: 10px;
   background-color: #fff;
   overflow: auto;
 }
@@ -99,8 +98,8 @@ a {
 .quizlist .quizlist_item {
   padding: 10px 15px 10px 15px;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   background-color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -115,28 +114,30 @@ a {
   display: flex;
   font-size: 15px;
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 0px;
-          flex: 1 0 0;
+  -ms-flex: 1 0 0px;
+  flex: 1 0 0;
 }
 
 .quizlist .quizlist_item a:hover {
   color: #d44b4b;
+  cursor: pointer;
 }
 
 .quizlist .quizlist_item a span {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 15px;
-          flex: 0 0 15px;
+  -ms-flex: 0 0 15px;
+  flex: 0 0 15px;
   font-weight: 400;
 }
 
 .quizlist .quizlist_item a p {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 0px;
-          flex: 1 1 0;
+  -ms-flex: 1 1 0px;
+  flex: 1 1 0;
   margin: 0;
   margin-right: 15px;
   margin-left: 5px;
+  cursor: pointer;
 }
 
 .quizlist .voted a {
@@ -151,8 +152,8 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   height: auto;
 }
 
@@ -168,8 +169,8 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
   height: auto;
 }
 
@@ -185,16 +186,16 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 37px;
-          flex: 0 0 37px;
+  -ms-flex: 0 0 37px;
+  flex: 0 0 37px;
   background-color: #fff;
   padding: 15px 15px 15px 15px;
 }
 
 .complete-btn {
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 0px;
-          flex: 1 0 0;
+  -ms-flex: 1 0 0px;
+  flex: 1 0 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -237,15 +238,15 @@ a {
   padding-left: 20px;
   padding-right: 20px;
   -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   overflow: auto;
 }
 
@@ -284,15 +285,15 @@ a {
   display: flex;
   position: relative;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   margin-bottom: 30px;
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 0px;
-          flex: 1 0 0;
+  -ms-flex: 1 0 0px;
+  flex: 1 0 0;
 }
 
 .image_container img {
@@ -316,23 +317,23 @@ a {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .button_vote {
   cursor: pointer;
   margin-top: 3px;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 200px;
-          flex: 0 0 200px;
+  -ms-flex: 0 0 200px;
+  flex: 0 0 200px;
   padding-bottom: 10px;
   padding-top: 10px;
   height: auto;
   color: #fff;
   background-color: #4185c9;
   -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: 0px;
   font-size: 16px;
   outline: none;
@@ -367,8 +368,8 @@ hr {
 
 .checkbox p {
   -webkit-box-flex: 1;
-      -ms-flex: 1 0 0px;
-          flex: 1 0 0;
+  -ms-flex: 1 0 0px;
+  flex: 1 0 0;
   padding-top: 4px;
   height: 23;
   color: #383838;
@@ -408,8 +409,8 @@ hr {
   border: 2px solid #707070;
   left: 0px;
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 26px;
-          flex: 0 0 26px;
+  -ms-flex: 0 0 26px;
+  flex: 0 0 26px;
   top: 3px;
 }
 
@@ -419,7 +420,7 @@ hr {
   border-left: 2px solid #707070;
   border-bottom: 2px solid #707070;
   -webkit-transform: rotate(-45deg);
-          transform: rotate(-45deg);
+  transform: rotate(-45deg);
   left: 4px;
   top: 7px;
 }
@@ -451,7 +452,7 @@ hr {
   }
   .leftbar {
     -webkit-transform: translateY(calc(+100%));
-            transform: translateY(calc(+100%));
+    transform: translateY(calc(+100%));
     width: 100%;
     position: fixed;
     -webkit-transition: 0.3s;
@@ -479,10 +480,10 @@ hr {
   }
   .leftbar_active {
     -webkit-transform: translateY(0%);
-            transform: translateY(0%);
+    transform: translateY(0%);
     -webkit-transition: 0.5s;
     transition: 0.5s;
-    
+    height: calc(100vh - 100px);
   }
   .content_inactive {
     display: none;
@@ -498,7 +499,7 @@ hr {
     display: flex;
     height: 50px;
     -webkit-box-shadow: 0px -2px 3px #b1b1b1;
-            box-shadow: 0px -2px 3px #b1b1b1;
+    box-shadow: 0px -2px 3px #b1b1b1;
   }
   .list-btn {
     margin: auto;
@@ -516,8 +517,8 @@ hr {
   .list-btn .arrow {
     margin-left: 5px;
     -webkit-box-flex: 0;
-        -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
     height: auto;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -531,17 +532,17 @@ hr {
     -webkit-transition: 0.3s;
     transition: 0.3s;
     -webkit-transform: rotate(-180deg);
-            transform: rotate(-180deg);
+    transform: rotate(-180deg);
   }
   .list-btn .arrow .arrow_icon_active {
     margin-top: 6px;
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   .list-btn p {
     -webkit-box-flex: 1;
-        -ms-flex: 1 0 0px;
-            flex: 1 0 0;
+    -ms-flex: 1 0 0px;
+    flex: 1 0 0;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -552,7 +553,7 @@ hr {
   }
   .button_vote {
     -webkit-box-flex: 1;
-        -ms-flex: 1 0 0px;
-            flex: 1 0 0;
+    -ms-flex: 1 0 0px;
+    flex: 1 0 0;
   }
 }

@@ -25,7 +25,7 @@ export default function Header() {
     setHeader(header == "" ? "active" : "");
     setOverlay(overlay == "" ? "overlay_active" : "");
   }
-  
+
   const user = useSelector((state) => state.user.user.name);
   return (
     <header className="header">
@@ -41,12 +41,12 @@ export default function Header() {
           <ul className="header__list">
             <li>
               <Link to="/add" className="header__link">
-              Создать тест 
+                Создать тест
               </Link>
             </li>
             <li>
-              <Link to="#" className="header__link"> 
-              Приложение
+              <Link to="#" className="header__link">
+                Приложение
               </Link>
             </li>
           </ul>
