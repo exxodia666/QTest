@@ -22,7 +22,7 @@ function HomeScreen() {
     dispatch(loadQuizList());
   }, [dispatch]);
 
-  const handleOnPres = (e) => {
+  const handleOnPress = (e) => {
     if (e.code === "Enter") {
       const id = e.target.value;
       let re = /^((\w){8})-((\w){4})-((\w){4})-((\w){4})-((\w){12})$/g;
@@ -44,7 +44,7 @@ function HomeScreen() {
       <div className="content_container_home">
         <div className="content__home">
           <div className="title_container_home">
-            <p>Список опросов</p>
+            <p>Список тестов</p>
           </div>
           <form>
             <div className="search_container">
@@ -68,7 +68,7 @@ function HomeScreen() {
                 type="text"
                 className="text-input"
                 id="text_private"
-                onKeyPress={handleOnPres}
+                onKeyPress={handleOnPress}
                 value={privat_input}
                 onChange={(e) => setPrivat_input(e.target.value)}
                 placeholder="Ввести ID приватного теста"
