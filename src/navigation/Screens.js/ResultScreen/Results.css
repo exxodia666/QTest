@@ -9,10 +9,9 @@ p {
   cursor: default;
 }
 
-.content_container {
+.content_container_results {
   padding: 0px 10px 0px 10px;
-  overflow: auto;
-  height: calc(100vh - 50px);
+  margin-top: 75px;
 }
 
 .content___ {

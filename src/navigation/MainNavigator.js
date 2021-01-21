@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { HashRouter as Router, Switch, Route } from "react-router-dom";
 import Header from "../components/Header/Header";
 import HomeScreen from "./Screens.js/HomeScreen";
@@ -8,12 +8,10 @@ import { UserScreen } from "./Screens.js/UserScreen.js";
 import AddQuizScreen from "./Screens.js/AddQuizScreen";
 import TestDoneScreen from "./Screens.js/TestDoneScreen/TestDoneScreen";
 
-export const Context = React.createContext();
 
 function MainNavigator() {
   return (
     <Router>
-      <Context.Provider>
         <Header />
         <Switch>
           <Route exact path="/">
@@ -35,7 +33,6 @@ function MainNavigator() {
             <ResultsScreen />
           </Route>
         </Switch>
-      </Context.Provider>
     </Router>
   );
 }

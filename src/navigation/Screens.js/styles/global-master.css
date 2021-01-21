@@ -18,11 +18,11 @@ p {
 .content_container {
   padding: 0px 10px 0px 10px;
   overflow: auto;
-  height: calc(100vh - 50px);
+  margin-top: 75px;
 }
 
 .content__ {
-  margin: 25px auto;
+  margin: 0px auto;
   max-width: 768px;
 }
 
@@ -36,7 +36,7 @@ p {
 }
 
 .test-name_container {
-  margin: 0px 0px 25px 0px;
+  margin: 0px 0px 10px 0px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -171,7 +171,18 @@ p {
   margin-bottom: -3px;
 }
 
-.labelforcheckbox {
-  color: #989898;
-  vertical-align: middle;
+
+
+.is-private_container {
+  margin: 0px 0px 25px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.is-private_container p {
+  margin: 0px;
+  color: #484848;
+  font-size: 15px;
+  margin-top: 5px;
 }

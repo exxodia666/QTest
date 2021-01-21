@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { add_test, reset_add_test } from "../../redux/actions/add_test";
 import QuestionComponent from "../../components/Form/Question";
 import "./styles/global-master.css";
-import { Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import "./stylesforhomescreen/autorization.css";
 
@@ -26,6 +25,43 @@ export default function AddQuizScreen() {
       ],
     },
   ]);
+  console.log("state", array);
+
+  function delC(id, arr, entity, chId) {
+    let choices = arr.map((item) => {
+      if (item.question_id == id) {
+        item.choises = delA(chId, item.choises, entity);
+      }
+      return item;
+    });
+    return choices;
+  }
+
+  function deleteAnswer(id, entity, chId) {
+    
+    setArray(delC(id, array, entity, chId));
+  }
+
+  function delA(id, arr, entity) {
+    if (arr.length <= 1) {
+      return arr;
+    }
+    let a = arr.filter((item) => {
+      if (item[entity] < id) {
+        return item;
+      } else if (item[entity] == id) {
+        return;
+      } else if (item[entity] > id) {
+        item[entity] -= 1;
+        return item;
+      }
+    });
+    return a;
+  }
+
+  function deleteQuestion(id, entity) {
+    setArray(delA(id, array, entity));
+  }
 
   const user = useSelector((state) => state.user.loggedIn);
 
@@ -73,7 +109,9 @@ export default function AddQuizScreen() {
           } else {
             data.questions[parseInt(armel[2])]["choices"][
               parseInt(armel[3])
-            ] = { [armel[1]]: el.value !== "on" ? el.value : el.checked };
+            ] = {
+              [armel[1]]: el.value !== "on" ? el.value : el.checked,
+            };
           }
           break;
         default:
@@ -124,6 +162,7 @@ export default function AddQuizScreen() {
   function addNewQuestion() {
     setArray((prevArray) => [...prevArray, nextQuestion(prevArray.length)]);
   }
+
   if (test_status.status === "idle") {
     return (
       <div className="content_container">
@@ -135,28 +174,33 @@ export default function AddQuizScreen() {
             <input
               type="text"
               name="quiz-quiz_name"
-              class="text-input"
+              className="text-input"
               placeholder="Название теста"
             />
           </div>
-          <div className="checkbox">
-            <input
-              id="is_public"
-              name="quiz-is_public"
-              type="checkbox"
-              className="inp"
-            />
-            <label className="labelforcheckbox" for="is_public">
-              Открьітьій тест?
-            </label>
+          <div class="is-private_container">
+            <div class="checkbox">
+              <input
+                type="checkbox"
+                id="is_public"
+                className="inp"
+                name="quiz-is_public"
+              />
+              
+              <label for="is_public"></label>
+            </div>
+            <p>Сделать открытым</p>
           </div>
           <form name="quiz" className="questions_global_container">
             {array.map((elQ) => {
               return (
                 <QuestionComponent
+                  setImage={setArray}
                   choices={elQ.choises}
                   addAnswers={addAnswers}
                   question_id={elQ.question_id}
+                  deleteQuestion={deleteQuestion}
+                  deleteAnswer={deleteAnswer}
                 />
               );
             })}
@@ -201,7 +245,7 @@ export default function AddQuizScreen() {
         <div className="autorization_container">
           <div className="title_container">
             <p className="title">
-              Ід вашего теста: <br/>
+              Ід вашего теста: <br />
               <strong>{test_status.action.quiz_id}</strong>
             </p>
           </div>

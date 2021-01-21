@@ -50,7 +50,7 @@ export const UserScreen = () => {
               к лучшим ковченым тестам
             </p>
           </div>
-          <div class="name-input_container">
+          <div className="name-input_container">
             <input
               ref={ref}
               onKeyPress={handleName}

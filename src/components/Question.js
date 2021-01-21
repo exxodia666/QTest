@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import PropTypes from "prop-types"; // ES6
 import { useDispatch } from "react-redux";
 import { setDone, setSelected } from "../redux/actions/show_quizzes";
@@ -11,20 +11,24 @@ const Question = ({
   wording,
   answers,
   imageUrl,
-  multiple,
-  overlay,
+  selectedQuestion,
+  handleSelect
 }) => {
   const dispatch = useDispatch();
 
+  const [content, setContent] = useState('')
+
   const handleSelectItem = (e) => {
     dispatch(setSelected({ answ: e.target.value, id }));
+ 
   };
+
   return (
     <>
-      <div className="content">
+      <div className={`content ${content}`}>
         <div className="quiz_body">
           <div className="title_container">
-            <p>{`Вопрос `}</p>
+            <p>{`Вопрос №${selectedQuestion + 1}`}</p>
           </div>
           <div className="quizname">
             <p>{wording}</p>
@@ -63,8 +67,8 @@ const Question = ({
               value="Ответить"
               disabled={isDone}
               onClick={() => {
-                console.log('Xyi')
                 dispatch(setDone(id));
+                handleSelect(selectedQuestion + 1)
               }}
             />
           </div>
@@ -84,9 +88,8 @@ const Question = ({
             document
               .getElementsByClassName("header__menu")[0]
               .classList.remove("active");
-            document
-              .getElementsByClassName("overlay")[0]
-              .classList.remove("overlay_active");
+            setContent(content == "" ? "content_inactive" : "")
+
           }}
         >
           <p>Список</p>
