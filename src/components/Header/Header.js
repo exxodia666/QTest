@@ -8,23 +8,11 @@ export default function Header() {
   const dispatch = useDispatch();
   const userr = useSelector((state) => state.user);
 
-	const [header, setHeader] = useState('');
-	const [overlay, setOverlay] = useState('');
-	function burger() {
-		setHeader(header == '' ? 'active' : '');
-		setOverlay(overlay == '' ? 'overlay_active' : '');
-	}
-	const user = useSelector((state) => state.user.user.name);
-	console.log('RENDER HEADER');
-	return (
-		<header className="header">
-			<div className={`overlay ${overlay}`}></div>
-			<div className="header__body">
-				<Link to="/" className="header__logo">
-					<p>
-						<span>Q</span>TEST
-					</p>
-				</Link>
+  const handleLogout = () => {
+    if (userr.user.editing_key.length) {
+      dispatch(delete_user({ id: userr.user.id, key: userr.user.editing_key }));
+    }
+  };
 
   const [header, setHeader] = useState("");
   const [overlay, setOverlay] = useState("");
