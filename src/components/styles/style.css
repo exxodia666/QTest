@@ -484,6 +484,7 @@ hr {
     -webkit-transition: 0.5s;
     transition: 0.5s;
     height: calc(100vh - 100px);
+    margin-bottom: 50px;
   }
   .content_inactive {
     display: none;
