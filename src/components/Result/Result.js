@@ -10,7 +10,7 @@ export default function Result({ pass_date, name, rating }) {
             <p>Дата складання: {new Date(pass_date).toLocaleDateString()}</p>
           </div>
         </div>
-        <div className="quiz-result">{rating}/100</div>
+        <div className="quiz-result">{Math.round(rating)}/100</div>
       </div>
     </div>
   );

@@ -2,10 +2,9 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "./styles.css";
-import { delete_user } from "../../redux/actions/add_user"
+import { delete_user } from "../../redux/actions/add_user";
 
-export default function Header({ takeState }) {
-
+export default function Header() {
   const dispatch = useDispatch();
   const userr = useSelector((state) => state.user);
 
@@ -21,11 +20,16 @@ export default function Header({ takeState }) {
     setHeader(header == "" ? "active" : "");
     setOverlay(overlay == "" ? "overlay_active" : "");
   }
+
+  function over() {
+    setHeader(header == "" ? "active" : "");
+    setOverlay(overlay == "" ? "overlay_active" : "");
+  }
+
   const user = useSelector((state) => state.user.user.name);
-  console.log("RENDER HEADER");
   return (
     <header className="header">
-      <div className={`overlay ${overlay}`}></div>
+      <div className={`overlay ${overlay}`} onClick={over}></div>
       <div className="header__body">
         <Link to="/" className="header__logo">
           <p>
@@ -37,30 +41,34 @@ export default function Header({ takeState }) {
           <ul className="header__list">
             <li>
               <Link to="/add" className="header__link">
-                Add
+                Создать тест
               </Link>
             </li>
             <li>
-              <Link to="/contacts" className="header__link">
-                Contacts
-              </Link>
-            </li>
-            <li>
-              <Link to="/about" className="header__link">
-                About Ass
+              <Link to="#" className="header__link">
+                Приложение
               </Link>
             </li>
           </ul>
         </nav>
-        <div className="dropdown">
-          <p class="dropbtn">
-            <p>{user}</p>
-          </p>
-          <div className="dropdown-content" style={{minWidth: user.length*8}}>
-            <Link to="/results">Результаты</Link>
-            <Link onClick={handleLogout} className="logout">Krakin loh</Link>
+        {user && (
+          <div className="dropdown-container">
+            <div className="dropdown">
+              <p className="dropbtn">
+                <p>{user}</p>
+              </p>
+              <div
+                className="dropdown-content"
+                style={{ minWidth: user.length * 8 }}
+              >
+                <Link to="/results">Результаты</Link>
+                <Link onClick={handleLogout} className="logout">
+                  Вийти
+                </Link>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
         <div className={`header__burger ${header}`} onClick={burger}>
           <span></span>
         </div>
@@ -68,4 +76,3 @@ export default function Header({ takeState }) {
     </header>
   );
 }
-

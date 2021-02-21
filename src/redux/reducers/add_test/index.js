@@ -13,7 +13,7 @@ export default (state = initialState, action) => {
     case ADD_TEST_SUCCESS:
       return {
         status: action.payload.status,
-        message: action.payload.action,
+        action: action.payload.data,
       };
     case ADD_TEST_ERROR:
       return {

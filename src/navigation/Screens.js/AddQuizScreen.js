@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { add_test, reset_add_test } from "../../redux/actions/add_test";
 import QuestionComponent from "../../components/Form/Question";
 import "./styles/global-master.css";
-import { Container } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import "./stylesforhomescreen/autorization.css";
 
 export default function AddQuizScreen() {
   const dispatch = useDispatch();
@@ -25,6 +25,43 @@ export default function AddQuizScreen() {
       ],
     },
   ]);
+  console.log("state", array);
+
+  function delC(id, arr, entity, chId) {
+    let choices = arr.map((item) => {
+      if (item.question_id == id) {
+        item.choises = delA(chId, item.choises, entity);
+      }
+      return item;
+    });
+    return choices;
+  }
+
+  function deleteAnswer(id, entity, chId) {
+
+    setArray(delC(id, array, entity, chId));
+  }
+
+  function delA(id, arr, entity) {
+    if (arr.length <= 1) {
+      return arr;
+    }
+    let a = arr.filter((item) => {
+      if (item[entity] < id) {
+        return item;
+      } else if (item[entity] == id) {
+        return;
+      } else if (item[entity] > id) {
+        item[entity] -= 1;
+        return item;
+      }
+    });
+    return a;
+  }
+
+  function deleteQuestion(id, entity) {
+    setArray(delA(id, array, entity));
+  }
 
   const user = useSelector((state) => state.user.loggedIn);
 
@@ -40,17 +77,15 @@ export default function AddQuizScreen() {
 
   function saveQuizName() {
     const inputs = document.querySelectorAll("input, textarea");
-    console.log(inputs);
     const data = {
       quiz_name: "",
       questions: [],
     };
-    console.log(inputs);
     Array.from(inputs).forEach((el) => {
       let armel = el.name.split("-");
       switch (armel[0]) {
         case "quiz":
-          data["quiz_name"] = el.value;
+          data[armel[1]] = el.value !== "on" ? el.value : el.checked;
           break;
         case "question":
           if (data.questions[parseInt(armel[2])]) {
@@ -74,7 +109,9 @@ export default function AddQuizScreen() {
           } else {
             data.questions[parseInt(armel[2])]["choices"][
               parseInt(armel[3])
-            ] = { [armel[1]]: el.value !== "on" ? el.value : el.checked };
+            ] = {
+              [armel[1]]: el.value !== "on" ? el.value : el.checked,
+            };
           }
           break;
         default:
@@ -90,17 +127,17 @@ export default function AddQuizScreen() {
       ...prevArray.map((e) =>
         e.question_id === el
           ? {
-              ...e,
-              choises: [
-                ...e.choises,
-                {
-                  choise_id:
-                    prevArray[el].choises[prevArray[el].choises.length - 1]
-                      .choise_id + 1,
-                  isCorect: false,
-                },
-              ],
-            }
+            ...e,
+            choises: [
+              ...e.choises,
+              {
+                choise_id:
+                  prevArray[el].choises[prevArray[el].choises.length - 1]
+                    .choise_id + 1,
+                isCorect: false,
+              },
+            ],
+          }
           : e
       ),
     ]);
@@ -125,29 +162,45 @@ export default function AddQuizScreen() {
   function addNewQuestion() {
     setArray((prevArray) => [...prevArray, nextQuestion(prevArray.length)]);
   }
+
   if (test_status.status === "idle") {
     return (
       <div className="content_container">
         <div className="content__">
-          <div className="title_container">
+          <div className="title_container_crt">
             <p>Создать тест</p>
           </div>
           <div className="test-name_container">
             <input
               type="text"
-              name="quiz-name"
-              class="text-input"
+              name="quiz-quiz_name"
+              className="text-input"
               placeholder="Название теста"
             />
           </div>
+          <div class="is-private_container">
+            <div class="checkbox">
+              <input
+                type="checkbox"
+                id="is_public"
+                className="inp"
+                name="quiz-is_public"
+              />
+
+              <label for="is_public"></label>
+            </div>
+            <p>Сделать открытым</p>
+          </div>
           <form name="quiz" className="questions_global_container">
             {array.map((elQ) => {
-              console.log(elQ);
               return (
                 <QuestionComponent
+                  setImage={setArray}
                   choices={elQ.choises}
                   addAnswers={addAnswers}
                   question_id={elQ.question_id}
+                  deleteQuestion={deleteQuestion}
+                  deleteAnswer={deleteAnswer}
                 />
               );
             })}
@@ -177,6 +230,35 @@ export default function AddQuizScreen() {
     return <p>ERRRROR</p>;
     ///Екран Успешного добавления теста
   } else if (test_status.status === 200) {
-    return <p>ADD_TEST_SUCCESS</p>;
+    function copy() {
+      var msg = test_status.action.quiz_id;
+      var temp = document.createElement("textarea");
+      var tempMsg = document.createTextNode(msg);
+      temp.appendChild(tempMsg);
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      document.body.removeChild(temp);
+    }
+    return (
+      <div id="quiz_id" className="content__auth">
+        <div className="autorization_container">
+          <div className="title_container">
+            <p className="title">
+              Ід вашего теста: <br />
+              <strong>{test_status.action.quiz_id}</strong>
+            </p>
+          </div>
+          <div className="button_container">
+            <input
+              onClick={copy}
+              type="button"
+              className="button_vote button"
+              value="Копировать"
+            />
+          </div>
+        </div>
+      </div>
+    );
   }
 }

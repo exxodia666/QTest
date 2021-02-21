@@ -16,7 +16,6 @@ const sendImages = (images) => {
 };
 
 function* workerSendData(action) {
-  console.log(action);
   try {
     const res = yield call(sendImages, action.payload);
     yield put(save_image(res));
@@ -29,6 +28,6 @@ export function* watchSendNewImage() {
   try {
     yield takeEvery(SEND_IMAGE, workerSendData);
   } catch (e) {
-    ///
+    console.log(e);
   }
 }

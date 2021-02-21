@@ -18,7 +18,6 @@ export function* watchLoadQuizRating() {
   function* workerGetQuizRating(action) {
     try {
       const data = yield call(fetchData, action.payload);
-      console.log('ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:', data)
       yield put(loadQuizRatingSuccess(data));
     } catch (e) {
       yield put(loadQuizRatingError(e));

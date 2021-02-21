@@ -15,8 +15,6 @@ export default function ResultsScreen() {
   const user = useSelector((state) => state.user);
   const userLogged = useSelector((state) => state.user.loggedIn);
 
-  console.log("RESULTS SCREEN");
-
   React.useEffect(() => {
     if (!userLogged) {
       history.push("/");
@@ -33,6 +31,7 @@ export default function ResultsScreen() {
     dispatch(loadResults(user.user.id));
   }, []);
 
+
   if (user.status === 400 && user.message.length) {
     return <ErrorComponent message={user.message} />;
   }
@@ -41,13 +40,13 @@ export default function ResultsScreen() {
     return (
       <>
         {/* <button onClick={handleLogout}>Logout</button> */}
-        <div className="content_container">
-          <div className="content__">
+        <div className="content_container_results">
+          <div className="content___">
             <div className="title_container">
               <p>Результаты</p>
             </div>
-            {results.results.map((i) => {
-              console.log();
+            {(results.results.length &&
+            results.results.map((i) => {
               return (
                 <Result
                   pass_date={i.pass_date}
@@ -55,7 +54,7 @@ export default function ResultsScreen() {
                   rating={i.rating * 100}
                 />
               );
-            })}
+            })) || <div className="title_container">Сначала пройдите любой тест</div>}
           </div>
         </div>
       </>

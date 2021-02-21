@@ -7,7 +7,14 @@ export default function QuestionComponent({
   addAnswers,
   question_id,
   choices,
+  deleteQuestion,
+  deleteAnswer,
 }) {
+  const [image, setImage] = useState(null);
+  const [id, setId] = useState(null);
+  const [key, setKey] = useState(null);
+  const [loader, setLoader] = useState(false);
+
   function deleteImage() {
     return Axios({
       method: "delete",
@@ -21,6 +28,11 @@ export default function QuestionComponent({
       setKey(null);
       console.log(e);
     });
+  }
+
+  function del() {
+	  deleteImage();
+	  setLoader(false);
   }
 
   const sendImages = (selectedFile) => {
@@ -41,17 +53,27 @@ export default function QuestionComponent({
       })
       .catch((e) => console.log(e));
   };
-
-  const [image, setImage] = useState(null);
-  const [id, setId] = useState(null);
-  const [key, setKey] = useState(null);
   return (
     <div className="question_container">
       <div className="question-title_container">
         <p>Вопрос {question_id + 1}</p>
+        <p
+          className="krestik"
+          onClick={() => {
+            deleteQuestion(question_id, "question_id");
+          }}
+          id={`question-wording-${question_id}`}
+        >
+          ×
+        </p>
       </div>
       <div className="question-name_container">
-        <input type="text" class="text-input" placeholder="Название вопроса" name={`question-wording-${question_id}`}/>
+        <input
+          type="text"
+          className="text-input"
+          placeholder="Название вопроса"
+          name={`question-wording-${question_id}`}
+        />
       </div>
 
       {!image && (
@@ -59,14 +81,19 @@ export default function QuestionComponent({
           <div className="form-group">
             <input
               onChange={(e) => {
+                setLoader(true);
+                console.log("ДЕБАГ РАКЕТА ЗАЛЕТАЄ :rocket:", loader);
                 sendImages(e.target.files[0]);
               }}
               type="file"
-              name="file"
-              id="file"
+              name={`question-file-${question_id}`}
+              id={`question-file-${question_id}`}
               className="input-file"
             />
-            <label for="file" className="btn-tertiary">
+            <label
+              htmlFor={`question-file-${question_id}`}
+              className="btn-tertiary"
+            >
               <div></div>
               <span className="js-fileName">Загрузить картинку</span>
             </label>
@@ -74,34 +101,51 @@ export default function QuestionComponent({
         </div>
       )}
 
-      {image && (
+      {/* <div class="loading-img_container">
+        <div class="loading-img">
+          <div></div>
+        </div>
+      </div> */}
+
+      {(image && (
         <div className="img_container">
           <div className="img-wrap">
             <img src={image} className="img" />
-            <div onClick={deleteImage} className="del-img-btn">
+            <div
+              onClick={del}
+              className="del-img-btn"
+            >
               <div></div>
             </div>
           </div>
         </div>
-      )}
+      )) ||
+        (loader && (
+          <div class="loading-img_container">
+            <div class="loading-img">
+              <div></div>
+            </div>
+          </div>
+        ))}
 
-      <div className="description_container">
+      <div className="descr_container">
         <textarea
-          placeholder="Описание"
+          placeholder="Описание!"
           rows="6"
-          className="description"
+          className="descr"
           name={`question-text-${question_id}`}
         ></textarea>
       </div>
-      <input
-        disabled={true}
-        type="hidden"
-        value={id}
-        name={`question-image-${question_id}`}
-      />
+      <input type="hidden" value={id} name={`question-image-${question_id}`} />
       <div className="answers_container">
         {choices.map((el) => {
-          return <Choice question_id={question_id} choise_id={el.choise_id} />;
+          return (
+            <Choice
+              question_id={question_id}
+              choise_id={el.choise_id}
+              deleteAnswer={deleteAnswer}
+            />
+          );
         })}
       </div>
       <div className="add-answer-button_container">
@@ -119,52 +163,4 @@ export default function QuestionComponent({
       </div>
     </div>
   );
-}
-
-{
-  /* <div id={`question${question_id}`}>
-      {image && <img src={"http://134.249.181.40:7777" + image} />}
-      <input
-        type="text"
-        name={`question-wording-${question_id}`}
-        placeholder="Название опроса"
-      />
-      <input
-        disabled={true}
-        type="hidden"
-        value={id}
-        name={`question-image-${question_id}`}
-      />
-      <input
-        type="file"
-        //value={selectedFile}
-        onChange={(e) => {
-          //console.log(e.target);
-          sendImages(e.target.files[0]);
-        }}
-      />
-      <input
-        //accept="image/*"
-        type="button"
-        value="delete"
-        onClick={deleteImage}
-      />
-      <div id="list_answers">
-        {choices.map((el) => {
-          console.log(el);
-          return <Choice question_id={question_id} choise_id={el.choise_id} />;
-        })}
-      </div>
-      <div>
-        <i
-          onClick={() => {
-            addAnswers(question_id);
-          }}
-          style={{ cursor: "pointer" }}
-          className="medium material-icons"
-        >
-          add_circle_outline
-        </i>
-      </div>
-    </div> */
 }

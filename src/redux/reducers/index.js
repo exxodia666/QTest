@@ -6,7 +6,6 @@ import quiz_list from "./quiz_list/quiz_list";
 import addedQuizes from "./addedQuizes/addedQuizes";
 import user from "./add_user/add_user.js";
 import quiz_rating from "./quiz_rating/quiz_rating";
-//import User from "../../navigation/Screens.js/dist/User";
 import add_test from "./add_test";
 export default combineReducers({
   quizzes,

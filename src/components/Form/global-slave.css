@@ -20,12 +20,25 @@
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
   text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #E8F3FF;
+}
+
+.krestik{
+  position: absolute;
+  right: 10px;
+  color: red !important;
+  font-size: 25px !important;
 }
 
 .question-title_container p {
   color: #646464;
   font-size: 18px;
+  flex: 1 0 0;
+  text-align: center;
 }
 
 .question-name_container {
@@ -178,14 +191,14 @@
           justify-content: center;
   margin: 0px 0px 15px 0px;
 }
-.description_container {
+.descr_container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 25px;
 }
 
-.description {
+.descr {
   resize: none;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 0px;
@@ -196,4 +209,45 @@
   border: 1px solid #dbdbdb;
   color: #616161;
   padding: 5px;
+}
+
+.descr:focus {
+  outline: 2px solid #4185c9;
+}
+
+.descr::-webkit-input-placeholder {
+  color: #919191;
+}
+
+.descr:-ms-input-placeholder {
+  color: #919191;
+}
+
+.descr::-ms-input-placeholder {
+  color: #919191;
+}
+
+.descr::placeholder {
+  color: #919191;
+}
+
+.loading-img_container {
+  margin-bottom: 15px;
+}
+
+.loading-img_container .loading-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.loading-img_container .loading-img div {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 60px;
+          flex: 0 0 60px;
+  height: 30px;
+  background: url("Infinity.svg") no-repeat center;
 }

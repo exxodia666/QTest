@@ -12,8 +12,6 @@ export const UserScreen = () => {
   const history = useHistory();
   const user = useSelector((state) => state.user.loggedIn);
 
-  console.log("RENDER USER");
-
   const status = useSelector((state) => state.user.status);
   const message = useSelector((state) => state.user.message);
 
@@ -40,7 +38,6 @@ export const UserScreen = () => {
     submit();
   };
 
-  console.log(status, message);
   if (status === 400 && message.length) {
     return <ErrorComponent message={message} />;
   } else {
@@ -53,7 +50,7 @@ export const UserScreen = () => {
               к лучшим ковченым тестам
             </p>
           </div>
-          <div class="name-input_container">
+          <div className="name-input_container">
             <input
               ref={ref}
               onKeyPress={handleName}

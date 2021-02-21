@@ -11,7 +11,6 @@ function HomeScreen() {
   const quiz_list = useSelector((state) => state.quiz_list);
   const [input, setInput] = useState("");
   const history = useHistory();
-  console.log("RENDER HOME SCREEN");
   const [privat_input, setPrivat_input] = useState("");
 
   const user = useSelector((state) => state.user.loggedIn);
@@ -23,7 +22,7 @@ function HomeScreen() {
     dispatch(loadQuizList());
   }, [dispatch]);
 
-  const handleOnPres = (e) => {
+  const handleOnPress = (e) => {
     if (e.code === "Enter") {
       const id = e.target.value;
       let re = /^((\w){8})-((\w){4})-((\w){4})-((\w){4})-((\w){12})$/g;
@@ -42,10 +41,10 @@ function HomeScreen() {
 
   if (quiz_list.status === 200) {
     return (
-      <div className="content_container">
+      <div className="content_container_home">
         <div className="content__home">
-          <div className="title_container">
-            <p>Список опросов</p>
+          <div className="title_container_home">
+            <p>Список тестов</p>
           </div>
           <form>
             <div className="search_container">
@@ -69,7 +68,7 @@ function HomeScreen() {
                 type="text"
                 className="text-input"
                 id="text_private"
-                onKeyPress={handleOnPres}
+                onKeyPress={handleOnPress}
                 value={privat_input}
                 onChange={(e) => setPrivat_input(e.target.value)}
                 placeholder="Ввести ID приватного теста"
@@ -93,7 +92,7 @@ function HomeScreen() {
             .map((qz) => {
               return (
                 <div className="quizbox_container" key={qz.id}>
-                  <Link className="quizbox" to={`/quiz/${qz.id}`}>
+                  <Link className="quizbox__" to={`/quiz/${qz.id}`}>
                     <div className="quiz-title">
                       <p>{qz.quiz_name}</p>
                     </div>

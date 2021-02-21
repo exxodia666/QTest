@@ -10,7 +10,6 @@ export default (state = initialState, action) => {
     case SHOW_QUIZ_LIST:
       return { ...state, ...action.payload };
     case LOAD_QUIZ_LIST_ERROR:
-      // console.log(action.payload);
       return {
         status: action.payload.status,
         message: action.payload.message,

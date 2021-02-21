@@ -19,7 +19,6 @@ export default (state = initialState, action) => {
         status: 200,
       };
     case LOAD_RESULTS_ERROR:
-      console.log(action.payload);
       return {
         ...state,
         message: action.payload.message,

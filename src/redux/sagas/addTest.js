@@ -7,7 +7,6 @@ import {
 } from "../actions/add_test";
 
 const sendTest = (quiz) => {
-  console.log(quiz);
   return axios({
     method: "post",
     url: "https://questimie.herokuapp.com/api/",
@@ -15,7 +14,6 @@ const sendTest = (quiz) => {
   });
 };
 function* workerSendData(action) {
-  console.log(action.payload);
   try {
     const res = yield call(sendTest, { quiz: action.payload });
     //const img_res = yield call(sendImages, { images: [] });
