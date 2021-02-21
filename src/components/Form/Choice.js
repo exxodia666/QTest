@@ -6,8 +6,10 @@ function Choice({ question_id, choise_id, deleteAnswer }) {
     <div className="answer_container">
       <div className="checkbox">
         <input 
-        name={`choice-is_correct-${question_id}-${choise_id}`}
-        type="checkbox" id={`checkbox_${question_id}-${choise_id}`} className="inp" />
+          name={`choice-is_correct-${question_id}-${choise_id}`}
+          type="checkbox" 
+          id={`checkbox_${question_id}-${choise_id}`} 
+          className="inp" />
         <label for={`checkbox_${question_id}-${choise_id}`}></label>
       </div>
       <input 

@@ -25,7 +25,7 @@ export default function AddQuizScreen() {
       ],
     },
   ]);
-  console.log("state", array);
+  const [errors, setErrors] = useState([])
 
   function delC(id, arr, entity, chId) {
     let choices = arr.map((item) => {
@@ -38,7 +38,6 @@ export default function AddQuizScreen() {
   }
 
   function deleteAnswer(id, entity, chId) {
-
     setArray(delC(id, array, entity, chId));
   }
 
@@ -62,13 +61,11 @@ export default function AddQuizScreen() {
   function deleteQuestion(id, entity) {
     setArray(delA(id, array, entity));
   }
-
   const user = useSelector((state) => state.user.loggedIn);
 
   if (!user) {
     history.push("/");
   }
-
   React.useEffect(() => {
     return () => {
       dispatch(reset_add_test());
@@ -118,8 +115,37 @@ export default function AddQuizScreen() {
           break;
       }
     });
-
-    dispatch(add_test(data));
+    // if(data.quiz_name.length) {
+    //   console.log(data)
+    //   data.questions.forEach(e=> {
+    //     if(e.wording.length) {
+    //       let find_true = []
+    //       e.choices.forEach((item => {
+    //           if(!item.text.length) {
+    //             alert("Нету вариантов ответа")
+    //           } else {
+    //             if(item.is_correct) {
+    //               find_true.push(true)
+    //             } else if (!item.is_correct) {
+    //               find_true.push(false);
+    //             }
+    //             const found = find_true.find(element => element);
+    //             if(!found) {
+    //               alert("Нету прав. ответа")
+    //             } else {
+    //               console.log(data);
+    //               //dispatch(add_test(data));
+    //             }
+    //           }
+    //       })); 
+    //     } else {
+    //       alert("Нету вопроса")
+    //     }
+    //     console.log(e);
+    //   })
+    // } else {
+    //   alert('Нету названия!')
+    // }
   }
 
   function addAnswers(el) {
@@ -169,6 +195,7 @@ export default function AddQuizScreen() {
         <div className="content__">
           <div className="title_container_crt">
             <p>Создать тест</p>
+            {errors.map(e=> <p>{e}</p>)}
           </div>
           <div className="test-name_container">
             <input
@@ -227,7 +254,7 @@ export default function AddQuizScreen() {
     );
     ///Обработка ошибок 404
   } else if (test_status.status === 404) {
-    return <p>ERRRROR</p>;
+    return <p>{test_status.message.toString()}</p>;
     ///Екран Успешного добавления теста
   } else if (test_status.status === 200) {
     function copy() {

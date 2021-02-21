@@ -100,13 +100,6 @@ export default function QuestionComponent({
           </div>
         </div>
       )}
-
-      {/* <div class="loading-img_container">
-        <div class="loading-img">
-          <div></div>
-        </div>
-      </div> */}
-
       {(image && (
         <div className="img_container">
           <div className="img-wrap">

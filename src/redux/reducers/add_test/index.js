@@ -6,12 +6,14 @@ import {
 
 const initialState = {
   status: "idle",
+  message: ''
 };
 //eslint-disable-next-line
 export default (state = initialState, action) => {
   switch (action.type) {
     case ADD_TEST_SUCCESS:
       return {
+        ...state,
         status: action.payload.status,
         action: action.payload.data,
       };
