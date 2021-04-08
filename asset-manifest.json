@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/QTest/static/css/main.ae36a6f1.chunk.css",
+    "main.js": "/QTest/static/js/main.913c07ed.chunk.js",
+    "main.js.map": "/QTest/static/js/main.913c07ed.chunk.js.map",
+    "runtime-main.js": "/QTest/static/js/runtime-main.c8be2a46.js",
+    "runtime-main.js.map": "/QTest/static/js/runtime-main.c8be2a46.js.map",
+    "static/css/2.5d72e303.chunk.css": "/QTest/static/css/2.5d72e303.chunk.css",
+    "static/js/2.9feb66d7.chunk.js": "/QTest/static/js/2.9feb66d7.chunk.js",
+    "static/js/2.9feb66d7.chunk.js.map": "/QTest/static/js/2.9feb66d7.chunk.js.map",
+    "index.html": "/QTest/index.html",
+    "static/css/2.5d72e303.chunk.css.map": "/QTest/static/css/2.5d72e303.chunk.css.map",
+    "static/css/main.ae36a6f1.chunk.css.map": "/QTest/static/css/main.ae36a6f1.chunk.css.map",
+    "static/js/2.9feb66d7.chunk.js.LICENSE.txt": "/QTest/static/js/2.9feb66d7.chunk.js.LICENSE.txt",
+    "static/media/loader.css": "/QTest/static/media/Double Ring-1s-84px.3fb368dc.svg",
+    "static/media/global-slave.css": "/QTest/static/media/x-del.2931e94b.svg",
+    "static/media/global-master.css": "/QTest/static/media/addimg.e6ed5abf.svg",
+    "static/media/list.css": "/QTest/static/media/search-outline.443b5bd9.svg",
+    "static/media/style.css": "/QTest/static/media/voted.cf2ef738.svg",
+    "static/media/index.css": "/QTest/static/media/roboto-vietnamese-400-normal.52cebac0.woff2"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c8be2a46.js",
+    "static/css/2.5d72e303.chunk.css",
+    "static/js/2.9feb66d7.chunk.js",
+    "static/css/main.ae36a6f1.chunk.css",
+    "static/js/main.913c07ed.chunk.js"
+  ]
+}
