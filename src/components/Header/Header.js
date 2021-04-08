@@ -44,11 +44,11 @@ export default function Header() {
                 Создать тест
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="#" className="header__link">
                 Приложение
               </Link>
-            </li>
+            </li> */}
           </ul>
         </nav>
         {user && (

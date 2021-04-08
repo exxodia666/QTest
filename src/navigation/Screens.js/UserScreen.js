@@ -47,7 +47,7 @@ export const UserScreen = () => {
           <div className="title_container">
             <p className="title">
               Для начала, пройдите нашу несложную авторизацию и получите доступ
-              к лучшим ковченым тестам
+              к лучшим тестам
             </p>
           </div>
           <div className="name-input_container">

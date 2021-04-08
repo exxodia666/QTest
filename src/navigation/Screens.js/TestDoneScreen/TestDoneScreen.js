@@ -28,7 +28,7 @@ export default function TestDoneScreen() {
     <div className="content_container">
       <div className="content___">
         <div className="title_container">
-          <p>Посмотри на остальных лохоууу!</p>
+          <p>Результаты других пользователей</p>
         </div>
         {quiz_rating.map((el) => {
           return (
